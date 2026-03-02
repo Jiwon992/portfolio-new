@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jiwonkm</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+
+    <style>
+       * {
+    box-sizing: border-box;
+}
+
+/* 상단 네비게이션 */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 20px; /* 좌우 패딩 줄임 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    font-family:'Life','Regular';
+    font-size: 20px;
+}
+
+.nav-right {
+    display: flex;       /* 링크들을 가로로 정렬 */
+    gap: 20px;           /* 링크 사이 간격 */
+}
+
+.nav-right a {
+    text-decoration: none;
+    white-space: nowrap; /* 링크가 줄 바뀌지 않게 함 */
+}
+
+        /* --- 컨텐츠 --- */
+.work-unit {
+    width: 732px;
+    height: auto;   /* 고정 높이 제거 ⭐ */
+    position: relative;
+    margin: 150px auto 0 auto;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.work-unit.reveal-visible {
+    opacity: 1;
+    /* transform 관련 제거 */
+}
+
+.work-unit img {
+    filter: grayscale(100%);
+    transition: filter 0.8s ease;
+}
+
+/* 마우스 오버 시 컬러 */
+.work-unit:hover img {
+    filter: grayscale(0%);
+}
+
+        img.work {
+            width: 100%;
+            display: block;
+            
+        }
+
+        figcaption {
+            display: block;
+            position: absolute;
+            text-align: left;
+        }
+
+        .des {
+            font-family: 'Life','Italic';
+        }
+
+        .date {
+            font-family: 'LifeEF','Regular';
+            color: grey;
+        }
+
+.video-row {
+  width: 990px;             /* 기준 폭 */
+  margin: 150px auto 0;     /* 가운데 정렬 */
+}
+
+.video-container {
+  display: flex;
+  gap: 10px;                /* 영상 사이 간격 */
+  justify-content: space-between;
+}
+
+.video-container video {
+  flex: 1;                   /* 균등 분배 */
+  max-height: 530px;         /* 기준 높이 */
+  min-width: 330px;          /* 너무 작지 않게 최소 너비 지정 */
+  width: auto;               /* 비율 유지 */
+  height: auto;              /* 비율 유지 */
+  object-fit: cover;         /* 영역 채우면서 비율 유지, 약간 잘릴 수 있음 */
+  filter: grayscale(100%);
+  transition: filter 0.8s ease;
+}
+
+.work-unit:hover video {
+  filter: grayscale(0%);
+}
+
+/* 제목/날짜 동영상 아래 */
+.video-row .des,
+.video-row .date {
+  position: static;
+  margin-top: 8px;
+  text-align: left;
+}
+
+
+</style>
+</head>
+
+<body>
+
+    <!-- --- 상단 네비게이션 --- -->
+    <header class="top-nav">
+        <div class="nav-left">Jiwon Kim</div>
+        <div class="nav-right">
+            <a href="#">About</a>
+            <a href="#">Overview</a>
+        </div>
+    </header>
+
+    <!-- --- 작품들 --- -->
+   <figure class="work-unit">
+    <a href="fake-news.html">
+        <img src="PU5A92361-11-min.png" class="work"> 
+    </a>
+    <figcaption class="des">Fake news on facebook</figcaption>
+    <figcaption class="date">publication, 2025</figcaption>
+</figure>
+
+<figure class="work-unit">
+    <a href="foilage.html">
+        <img src="_U5A8068-2-2-min.png" class="work">
+    </a>
+    <figcaption class="des">Foliege</figcaption>
+    <figcaption class="date">photo series, 2025</figcaption>
+</figure>
+
+<figure class="work-unit">
+    <a href="the lovers.html">
+        <img src="12-2.jpg" class="work">
+    </a>
+    <figcaption class="des">The Lovers</figcaption>
+    <figcaption class="date">publication, 2025</figcaption>
+</figure>
+
+    <figure class="work-unit">
+         <a href="perspective transition.html">
+        <img src="7M4A2297-2-3.jpg" class="work">
+        <figcaption class="des">Perspective Transition</figcaption>
+        <figcaption class="date">publication, 2025</figcaption>
+    </figure>
+
+    <figure class="work-unit">
+        <a href="graphic scores.html">
+        <img src="Untitled-1-10-min.png" class="work">
+        <figcaption class="des">Graphic Scores in the Library</figcaption>
+        <figcaption class="date">publication, 2024</figcaption>
+    </figure>
+
+     <figure class="work-unit">
+        <a href="video.html">
+        <img src="IMG_7359-3-2-2.jpg" class="work">
+        <figcaption class="des">video</figcaption>
+        <figcaption class="date">video, 2025</figcaption>
+    </figure>
+
+
+    <!-- --- JS: absolute 위치 계산 --- -->
+  <script>
+window.addEventListener('DOMContentLoaded', () => {
+    const units = document.querySelectorAll('.work-unit');
+
+    // 위치 계산 함수
+    function setPosition(unit) {
+        const img = unit.querySelector('img');
+        const des = unit.querySelector('.des');
+        const date = unit.querySelector('.date');
+
+        if (img && des) {
+            const parentRect = img.parentElement.getBoundingClientRect();
+            const imgRect = img.getBoundingClientRect();
+            const leftOffset = imgRect.left - parentRect.left;
+
+            const gap = 10; // 이미지와 텍스트 사이 간격
+            des.style.left = leftOffset + "px";
+            des.style.top = img.height + gap + "px";
+
+            if (date) {
+                date.style.left = leftOffset + "px";
+                date.style.top = img.height + gap + des.offsetHeight + "px";
+            }
+        }
+    }
+
+    // Intersection Observer 설정
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const unit = entry.target;
+
+                // 위치 계산
+                setPosition(unit);
+
+                // fade-in 클래스 추가
+                unit.classList.add('reveal-visible');
+
+                // 한 번 나타나면 observer에서 제거
+                observer.unobserve(unit);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    // 모든 work-unit 관찰 시작
+    units.forEach(unit => {
+        observer.observe(unit);
+    });
+});
+
+</script>
+
+
+</body>
+</html>

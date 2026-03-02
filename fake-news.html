@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Fake news on facebook</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 상단 네비게이션 */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family:'Life','Regular';
+    font-size: 20px;
+    background: white;
+    z-index: 1000;
+}
+
+.nav-right {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-right a {
+    text-decoration: none;
+    color: black;
+}
+
+/* 슬라이드 영역 */
+.detail-container {
+    margin-top: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; /* 세로 정렬 */
+    align-items: center;
+}
+
+.image-wrapper {
+    width: 732px; /* 메인 작업 이미지 폭과 동일 */
+}
+
+.image-wrapper img {
+    width: 100%;
+    max-height: 500px; /* 화면 높이에 맞추기 */
+    object-fit: contain; /* 비율 유지 */
+}
+
+/* 1 of 10 텍스트 */
+.counter {
+    margin-top: 10px;
+    font-family: 'Life','Italic';
+    text-align: left;
+    color: gray;
+}
+/* description 박스 */
+.text-box {
+    width: 586px;
+    height: auto;
+    margin: 30px auto 0 auto;   /* 가운데 정렬 */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;    /* 세로 가운데 */
+    align-items: center;        /* 가로 가운데 */
+    margin-top: 20px;
+}
+
+/* 타이틀 */
+.text-center .title {
+    font-family: 'LifeEF','Italic';
+    font-size: 20px;
+    margin-top:20px;
+}
+
+/* 설명 */
+.text-center .description {
+    font-family: 'Life','Regular';
+    color: black;
+    font-size: 15px;
+    margin-top: 10px;
+    max-height: 40vh;       /* 화면 높이에 맞춰 텍스트 높이 제한 */
+    overflow: hidden;       /* 넘치는 텍스트 숨김 */
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="top-nav">
+    <div class="nav-left">
+        <a href="jiwon.html" style="text-decoration:none; color:black;">
+            Jiwon Kim
+        </a>
+    </div>
+    <div class="nav-right">
+        <a href="#">About</a>
+        <a href="#">Overview</a>
+    </div>
+</header>
+
+<div class="detail-container">
+    <div class="image-wrapper">
+        <img id="slideImage" src="fake news-4-min.png">
+        <div class="counter" id="counter">1 of 10</div>
+         <div class="text-center">
+            <div class="title"> </div>
+            <div class="description">   Fake News on Facebook is a publication that works with data from fake news posts on Facebook posts. The data is categorized into left, right, and mainstream sources, and all posts with no factual context. Each piece of data is visualized through color, size, and layout to represent its level of inaccuracy and political bias. By arranging the information this way, viewers can observe patterns, compare sources, and understand how misinformation spreads across the platform. The project aims to encourage critical thinking about online content and to highlight the ways in which false information can influence public perception.   
+    </div>
+</div>
+
+<script>
+const images = [
+    "fake news-4-min.png",
+    "PU5A3257-3-min.png",
+    "PU5A3260-2-min.png",
+    "PU5A3263-2-min.png",
+    "PU5A3272-min.png",
+    "PU5A3274-min.png",
+    "PU5A32789-min.png",
+    "PU5A328035-min.png",
+    "PU5A3294-min.png",
+    "PU5A32856-min.png"
+    
+];
+
+let currentIndex = 0;
+
+const slideImage = document.getElementById("slideImage");
+const counter = document.getElementById("counter");
+
+slideImage.addEventListener("click", () => {
+    currentIndex++;
+    if (currentIndex >= images.length) {
+        currentIndex = 0;
+    }
+
+    slideImage.src = images[currentIndex];
+    counter.textContent = `${currentIndex + 1} of ${images.length}`;
+});
+</script>
+
+</body>
+</html>
+
+

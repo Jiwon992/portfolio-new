@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Fake news on facebook</title>
+
+<style>
+* { box-sizing: border-box; margin:0; padding:0; }
+
+/* 상단 네비 */
+.top-nav {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:'Life','Regular';
+    font-size:20px;
+    background:white;
+    z-index:1000;
+}
+
+.nav-right { display:flex; gap:20px; }
+.nav-right a { text-decoration:none; color:black; }
+
+/* detail-container */
+.detail-container {
+    margin-top:120px;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* 메인 이미지 */
+.image-wrapper { width:732px; }
+.image-wrapper img {
+    width:100%;
+    max-height:500px;
+    object-fit:contain;
+    cursor:pointer;
+}
+
+/* counter */
+.counter {
+    margin-top:10px;
+    font-family:'Life','Italic';
+    text-align:left;
+    color:gray;
+}
+
+/* description */
+.text-center .title { font-family:'LifeEF','Italic'; font-size:20px; margin-top:20px; }
+.text-center .description {
+    font-family:'Life','Regular';
+    color:black;
+    font-size:15px;
+    margin-top:10px;
+    max-height:40vh;
+    overflow:hidden;
+}
+
+/* ===== GRID GALLERY ===== */
+.extra-gallery {
+    width:732px;
+    margin-top:30px;
+    margin-bottom:100px;
+}
+
+.grid-gallery-wrapper {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.grid-gallery {
+    display: flex;
+    transition: transform 0.8s ease-in-out;
+}
+
+.grid-page {
+    flex: 0 0 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 15px;          /* 내부 이미지 간격 */
+    padding-right: 15px; /* 페이지 오른쪽 여유 */
+    box-sizing: border-box;
+}
+
+.grid-page img {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+}
+
+/* 반응형 */
+@media (max-width:760px) {
+    .extra-gallery { width:90%; }
+    .grid-page { grid-template-columns: repeat(2,1fr); }
+}
+
+@media (max-width:500px) {
+    .grid-page { grid-template-columns:1fr; }
+}
+
+/* LIGHTBOX */
+.lightbox {
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+    transition: opacity 0.4s ease;
+}
+
+.lightbox img {
+    max-width:95vw;
+    max-height:95vh;
+    object-fit:contain;
+    cursor:pointer;
+}
+
+.lightbox-btn {
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:40px;
+    color:black;
+    cursor:pointer;
+    user-select:none;
+    padding:20px;
+}
+.lightbox-prev { left:20px; }
+.lightbox-next { right:20px; }
+
+</style>
+</head>
+
+<body>
+
+<header class="top-nav">
+    <div class="nav-left">
+        <a href="jiwon.html" style="text-decoration:none; color:black;">Jiwon Kim</a>
+    </div>
+    <div class="nav-right">
+        <a href="#">About</a>
+        <a href="#">Overview</a>
+    </div>
+</header>
+
+<div class="detail-container">
+    <div class="image-wrapper">
+        <img id="slideImage" src="Scan 7-min.jpg">
+        <div class="counter" id="counter">1 of 19</div>
+        <div class="text-center">
+            <div class="title"></div>
+            <div class="description">The Lovers is a magazine project that reinterprets Another Magazine in my own way. The publication is divided into three sections: Art Lovers, Pop Culture and Lovers, and Fashion Lovers. Each section approaches the idea of love from a different perspective. Throughout the magazine, personal ads written by students who are looking for a partner are placed between the main visual content.Each category presents a different perspective on love, blending personal narratives with art, pop culture, and fashion visuals.</div>
+        </div>
+    </div>
+
+    <section class="extra-gallery">
+        <div class="grid-gallery-wrapper">
+            <div class="grid-gallery" id="gridGallery">
+                <!-- page 1 -->
+                <div class="grid-page">
+                    <img src="PU5A9297-3-min.png">
+                    <img src="PU5A9302-3-2-min.png">
+                    <img src="PU5A9308-2.jpg">
+                    <img src="yuy_Page_20-2-min.png">
+                    <img src="yuy_Page_14-min.png">
+                    <img src="yuy_Page_08-2-min.png">
+                </div>
+                <!-- page 2 -->
+                <div class="grid-page">
+                    <img src="yuy_Page_19-min.png">
+                    <img src="yuy_Page_02-min.png">
+                    <img src="yuy_Page_22-2-min.png">
+                    <img src="yuy_Page_09-min.png">
+                    <img src="yuy_Page_15-min.png">
+                    <img src="yuy_Page_04-min.png">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-btn lightbox-prev">&#10094;</div>
+        <img id="lightboxImg">
+        <div class="lightbox-btn lightbox-next">&#10095;</div>
+    </div>
+
+</div>
+
+<script>
+/* ====== MAIN IMAGE SLIDER ====== */
+const images = [ "Scan 7-min.jpg", "Scan 11-min.png", "Scan 21-min.png", "Scan 12-min.png", "Scan 14.jpg", "Scan 13.jpg", "Scan 15.jpg", "Scan 18-min.png", "Scan 19.jpg","scan5.jpg", "Scan 16.jpg", "Scan 27-min.png", "Scan 28-min.png", "Scan 31-min.png", "Scan 23-min.png", "Scan 22-min.png", "Scan 30.jpg", "Scan 32-min.png", "Scan 33.jpg", ];
+let currentIndex = 0;
+const slideImage = document.getElementById("slideImage");
+const counter = document.getElementById("counter");
+
+slideImage.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    slideImage.src = images[currentIndex];
+    counter.textContent = `${currentIndex + 1} of ${images.length}`;
+});
+
+/* ====== GRID SLIDER (한 방향 루프) ====== */
+const gridGallery = document.getElementById("gridGallery");
+let pages = document.querySelectorAll(".grid-page");
+let currentPage = 0;
+let autoSlide;
+const slideSpeed = 3000;
+
+/* 첫 페이지 복제 (무한루프용) */
+const firstClone = pages[0].cloneNode(true);
+gridGallery.appendChild(firstClone);
+pages = document.querySelectorAll(".grid-page");  // 페이지 다시 선택
+const totalPages = pages.length;
+
+function updateSlide() {
+    gridGallery.style.transition = "transform 0.8s ease-in-out";
+    gridGallery.style.transform = `translateX(-${currentPage * 100}%)`;
+}
+
+function startAutoSlide() {
+    autoSlide = setInterval(() => {
+        currentPage++;
+        updateSlide();
+    }, slideSpeed);
+}
+
+/* 마지막 페이지 → 첫 페이지 순식간 이동 */
+gridGallery.addEventListener("transitionend", () => {
+    if (currentPage === totalPages - 1) {
+        gridGallery.style.transition = "none";
+        currentPage = 0;
+        gridGallery.style.transform = `translateX(0)`;
+        setTimeout(() => {
+            gridGallery.style.transition = "transform 0.8s ease-in-out";
+        }, 20);
+    }
+});
+
+startAutoSlide();
+function stopAutoSlide(){ clearInterval(autoSlide); }
+
+/* ====== LIGHTBOX ====== */
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const lightboxPrev = document.querySelector(".lightbox-prev");
+const lightboxNext = document.querySelector(".lightbox-next");
+
+let allImages = [];
+pages.forEach(p => allImages.push(...p.querySelectorAll("img")));
+let lightboxIndex = 0;
+
+gridGallery.addEventListener("click", e => {
+    if(e.target.tagName !== "IMG") return;
+    stopAutoSlide();
+    lightboxIndex = allImages.indexOf(e.target);
+    lightboxImg.src = e.target.src;
+    lightbox.style.display = "flex";
+    lightbox.style.opacity = 0;
+    setTimeout(() => { lightbox.style.opacity = 1; }, 10);
+});
+
+function closeLightbox(){ 
+    lightbox.style.opacity = 0; 
+    setTimeout(() => { lightbox.style.display = "none"; startAutoSlide(); }, 300);
+}
+
+function showNext(){ 
+    lightboxIndex = (lightboxIndex+1)%allImages.length; 
+    lightboxImg.src = allImages[lightboxIndex].src; 
+}
+function showPrev(){ 
+    lightboxIndex = (lightboxIndex-1+allImages.length)%allImages.length; 
+    lightboxImg.src = allImages[lightboxIndex].src; 
+}
+
+lightboxNext.addEventListener("click", e=>{ e.stopPropagation(); showNext(); });
+lightboxPrev.addEventListener("click", e=>{ e.stopPropagation(); showPrev(); });
+lightbox.addEventListener("click", closeLightbox);
+
+document.addEventListener("keydown", e=>{
+    if(lightbox.style.display==="flex"){
+        if(e.key==="Escape") closeLightbox();
+        if(e.key==="ArrowRight") showNext();
+        if(e.key==="ArrowLeft") showPrev();
+    }
+});
+</script>
+
+</body>
+</html>
+
+

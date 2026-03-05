@@ -10,7 +10,9 @@
     @font-face {
         font-family: 'Life';
         src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
+        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'),
+             url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'),
+             url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
         font-weight: normal;
         font-style: normal;
     }
@@ -18,16 +20,14 @@
     @font-face {
         font-family: 'Life';
         src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.ttf?v=162763466313126598491770164188');
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.eot?%23iefix&v=36830789672214481861770164188') format('embedded-opentype'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff?v=164715903325973277161770164188') format('woff'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff2?v=157444114806194521391770164188') format('woff2');
+        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.eot?%23iefix&v=36830789672214481861770164188') format('embedded-opentype'),
+             url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff?v=164715903325973277161770164188') format('woff'),
+             url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff2?v=157444114806194521391770164188') format('woff2');
         font-weight: normal;
         font-style: italic;
     }
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-    * { box-sizing: border-box; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* 상단 네비게이션 */
     .top-nav{
@@ -41,6 +41,7 @@
       z-index: 1000;
       font-family: 'Life','Regular';
       font-size: 20px;
+      background: white;
     }
 
     .nav-right{
@@ -51,45 +52,37 @@
     .nav-right a{
       text-decoration: none;
       white-space: nowrap;
+      color: #00f; /* 스크린샷처럼 파란 링크면 */
     }
 
     /* --- 컨텐츠 --- */
     .work-unit{
-  width: 732px;
-  margin: 150px auto 0;
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
-  justify-content: center;
-}
-    
-
-    .work-unit.reveal-visible{
-      opacity: 1;
+      width: 732px;
+      margin: 150px auto 0;
+      opacity: 0;
+      transition: opacity 0.3s ease-out;
+      justify-content: center;
     }
 
-    /* ✅ 이미지 폭 기준으로 캡션 정렬용 래퍼 */
+    .work-unit.reveal-visible{ opacity: 1; }
+
     .work-inner{
-      display: inline-block;   /* 내부 폭 = 이미지 폭 */
-      margin: 0 auto;          /* figure 안에서 가운데 */
+      display: inline-block;
+      margin: 0 auto;
     }
 
-    /* ✅ 모든 이미지: 비율 유지 + 높이 통일 */
     img.work{
       display: block;
       max-width: 100%;
-      max-height: 530px;       /* <- 여기만 바꾸면 전체 통일 높이 조절 */
+      max-height: 530px;
       width: auto;
       height: auto;
-
       filter: grayscale(100%);
       transition: filter 0.8s ease;
     }
 
-    .work-unit:hover img.work{
-      filter: grayscale(0%);
-    }
+    .work-unit:hover img.work{ filter: grayscale(0%); }
 
-    /* 캡션: 이제 absolute 없이 자연스럽게 아래로 */
     figcaption{
       position: static;
       display: block;
@@ -99,6 +92,7 @@
     .des{
       margin-top: 10px;
       font-family: 'Life','Italic';
+      color: #000;
     }
 
     .date{
@@ -107,27 +101,101 @@
       color: grey;
     }
 
-    /* (옵션) window만 더 작게 하고 싶으면 사용
-    img.work.is-small{
-      max-height: 420px;
+    .work-inner.window-only{ display:block; width:100%; }
+    .work-inner.window-only .media-center{ display:flex; justify-content:center; }
+    .work-inner.window-only figcaption{ text-align:left; }
+
+    /* =========================
+       ✅ ABOUT OVERLAY (왼쪽 블록)
+       ========================= */
+    .about-overlay{
+      position: fixed;
+      inset: 0;
+      z-index: 1500;
+      pointer-events: none;
     }
-    */
 
-    /* ---- video 기존 코드 유지 ---- */
+    /* 배경은 거의 변화 없음(원하면 아주 살짝만) */
+    .about-overlay .dim{
+      position:absolute;
+      inset:0;
+      background: rgba(255,255,255,0);
+      opacity: 0;
+      transition: opacity 220ms ease;
+    }
 
-/* ✅ window: 이미지(미디어)만 가운데, 캡션은 다른 작품처럼 왼쪽 그대로 */
-.work-inner.window-only{
-  display: block;
-  width: 100%;
+    /* 왼쪽 정보 블록 */
+    .about-overlay .panel{
+      position: absolute;
+      left: 20px;
+      top: 82px; /* 네비 아래 */
+      width: 210px;
+
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: opacity 260ms ease, transform 260ms ease;
+    }
+
+    .about-overlay.is-open{
+      pointer-events: auto;
+    }
+    .about-overlay.is-open .dim{
+      opacity: 1;
+    }
+    .about-overlay.is-open .panel{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .about-portrait{
+      width: 86px;     /* 스크린샷처럼 작게 */
+      height: 110px;   /* ID 느낌 */
+      object-fit: cover;
+      display:block;
+      margin-bottom: 18px;
+      filter: contrast(1.02) saturate(0.98);
+    }
+
+    .about-info{
+      font-family: 'Life','Regular';
+      font-size: 14px;
+      line-height: 1.55;
+      color: #000;
+    }
+
+    .about-info a{
+      color: #000;
+      text-decoration: none;
+    }
+    .about-info a:hover{ opacity: 0.6; }
+
+    /* 닫기: 바깥 클릭/ESC 가능 + X는 숨겨도 되고 */
+    .about-close{
+      position:absolute;
+      right:0;
+      top:-34px;
+      border:0;
+      background:transparent;
+      font-family:'Life','Regular';
+      font-size: 20px;
+      cursor:pointer;
+      line-height:1;
+      opacity:0.7;
+    }
+    .about-close:hover{ opacity:1; }
+
+    /* 모바일: 패널 조금 아래로 */
+    @media (max-width: 520px){
+      .about-overlay .panel{ left: 16px; top: 78px; }
+    }
+body.about-open .work-unit{
+  filter: blur(2px);
+  opacity: 0.6;
+  transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
-.work-inner.window-only .media-center{
-  display: flex;
-  justify-content: center; /* 이미지만 가운데 */
-}
-
-.work-inner.window-only figcaption{
-  text-align: left;        /* 캡션은 왼쪽 유지 */
+.work-unit{
+  transition: filter 0.3s ease, opacity 0.3s ease;
 }
   </style>
 </head>
@@ -138,10 +206,29 @@
   <header class="top-nav">
     <div class="nav-left">Jiwon Kim</div>
     <div class="nav-right">
-      <a href="#">About</a>
-      <a href="#">Overview</a>
+      <!-- ✅ href를 about.html이 아니라 버튼처럼 -->
+      <a href="#" id="aboutBtn">About</a>
+      <a href="#" id="overviewBtn">Overview</a>
     </div>
   </header>
+
+  <!-- ✅ About Overlay -->
+  <div class="about-overlay" id="aboutOverlay" aria-hidden="true">
+    <div class="dim" id="aboutDim"></div>
+
+    <div class="panel" role="dialog" aria-modal="true" aria-label="About panel">
+      <button class="about-close" id="aboutClose" aria-label="Close"></button>
+
+      <img src="지원.jpg" alt="portrait" class="about-portrait">
+
+      <div class="about-info">
+        (31) 6 20 61 47 99<br>
+        (82) 10 7628 8209<br>
+        <a href="mailto:jiwongim992@gmail.com">jiwongim992@gmail.com</a><br>
+        <a href="https://www.instagram.com/_jiwonkm?igsh=ZGZqeTR3c25naGk0&utm_source=qr" target="_blank" rel="noopener">instagram</a>
+      </div>
+    </div>
+  </div>
 
   <!-- --- 작품들 --- -->
   <figure class="work-unit">
@@ -203,21 +290,22 @@
       <figcaption class="date">video, 2025</figcaption>
     </div>
   </figure>
-<figure class="work-unit">
-  <div class="work-inner window-only">
-    <div class="media-center">
-      <a href="window.html">
-        <img src="IMG_7321-4.jpg" class="work" alt="window still">
-      </a>
+
+  <figure class="work-unit">
+    <div class="work-inner window-only">
+      <div class="media-center">
+        <a href="window.html">
+          <img src="IMG_7321-4.jpg" class="work" alt="window still">
+        </a>
+      </div>
+      <figcaption class="des">Raining</figcaption>
+      <figcaption class="date">Installation, 2025</figcaption>
     </div>
+  </figure>
 
-    <figcaption class="des">Raining</figcaption>
-    <figcaption class="date">Installation, 2025</figcaption>
-  </div>
-</figure>
-
-  <!-- --- JS: fade-in만 남김 (캡션 위치 계산 삭제) --- -->
+  <!-- --- JS --- -->
   <script>
+    // fade-in
     window.addEventListener('DOMContentLoaded', () => {
       const units = document.querySelectorAll('.work-unit');
 
@@ -231,6 +319,50 @@
       }, { threshold: 0.3 });
 
       units.forEach(unit => observer.observe(unit));
+    });
+
+    // About overlay
+    const aboutBtn = document.getElementById('aboutBtn');
+    const aboutOverlay = document.getElementById('aboutOverlay');
+    const aboutDim = document.getElementById('aboutDim');
+    const aboutClose = document.getElementById('aboutClose');
+
+    function openAbout(){
+  aboutOverlay.classList.add('is-open');
+  document.body.classList.add('about-open');
+  aboutOverlay.setAttribute('aria-hidden', 'false');
+}
+
+function closeAbout(){
+  aboutOverlay.classList.remove('is-open');
+  document.body.classList.remove('about-open');
+  aboutOverlay.setAttribute('aria-hidden', 'true');
+}
+
+   aboutBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  if (aboutOverlay.classList.contains('is-open')){
+    closeAbout();
+  } else {
+    openAbout();
+  }
+});
+
+    aboutDim.addEventListener('click', closeAbout);
+    aboutClose.addEventListener('click', closeAbout);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && aboutOverlay.classList.contains('is-open')) {
+        closeAbout();
+      }
+    });
+
+    // Overview 버튼은 그냥 닫기처럼(원하면 다른 기능 연결 가능)
+    document.getElementById('overviewBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      closeAbout();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 

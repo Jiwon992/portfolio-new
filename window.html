@@ -114,23 +114,129 @@
     max-height: 40vh;
     overflow: hidden;
 }
+/* =========================
+       ✅ ABOUT OVERLAY (왼쪽 블록)
+       ========================= */
+    .about-overlay{
+      position: fixed;
+      inset: 0;
+      z-index: 1500;
+      pointer-events: none;
+    }
 
+    /* 배경은 거의 변화 없음(원하면 아주 살짝만) */
+    .about-overlay .dim{
+      position:absolute;
+      inset:0;
+      background: rgba(255,255,255,0);
+      opacity: 0;
+      transition: opacity 220ms ease;
+    }
+
+    /* 왼쪽 정보 블록 */
+    .about-overlay .panel{
+      position: absolute;
+      left: 20px;
+      top: 82px; /* 네비 아래 */
+      width: 210px;
+
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: opacity 260ms ease, transform 260ms ease;
+    }
+
+    .about-overlay.is-open{
+      pointer-events: auto;
+    }
+    .about-overlay.is-open .dim{
+      opacity: 1;
+    }
+    .about-overlay.is-open .panel{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .about-portrait{
+      width: 86px;     /* 스크린샷처럼 작게 */
+      height: 110px;   /* ID 느낌 */
+      object-fit: cover;
+      display:block;
+      margin-bottom: 18px;
+      filter: contrast(1.02) saturate(0.98);
+    }
+
+    .about-info{
+      font-family: 'Life','Regular';
+      font-size: 14px;
+      line-height: 1.55;
+      color: #000;
+    }
+
+    .about-info a{
+      color: #000;
+      text-decoration: none;
+    }
+    .about-info a:hover{ opacity: 0.6; }
+
+    /* 닫기: 바깥 클릭/ESC 가능 + X는 숨겨도 되고 */
+    .about-close{
+      position:absolute;
+      right:0;
+      top:-34px;
+      border:0;
+      background:transparent;
+      font-family:'Life','Regular';
+      font-size: 20px;
+      cursor:pointer;
+      line-height:1;
+      opacity:0.7;
+    }
+    .about-close:hover{ opacity:1; }
+
+    /* 모바일: 패널 조금 아래로 */
+    @media (max-width: 520px){
+      .about-overlay .panel{ left: 16px; top: 78px; }
+    }
+body.about-open .work-unit{
+  filter: blur(2px);
+  opacity: 0.6;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.work-unit{
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
 </style>
 </head>
 
 <body>
-
-<header class="top-nav">
-    <div class="nav-left">
-        <a href="index.html" style="text-decoration:none; color:black;">
-            Jiwon Kim
-        </a>
-    </div>
+<!-- --- 상단 네비게이션 --- -->
+  <header class="top-nav">
+    <div class="nav-left">Jiwon Kim</div>
     <div class="nav-right">
-        <a href="#">About</a>
-        <a href="#">Overview</a>
+      <!-- ✅ href를 about.html이 아니라 버튼처럼 -->
+      <a href="#" id="aboutBtn">About</a>
+      <a href="#" id="overviewBtn">Overview</a>
     </div>
-</header>
+  </header>
+
+  <!-- ✅ About Overlay -->
+  <div class="about-overlay" id="aboutOverlay" aria-hidden="true">
+    <div class="dim" id="aboutDim"></div>
+
+    <div class="panel" role="dialog" aria-modal="true" aria-label="About panel">
+      <button class="about-close" id="aboutClose" aria-label="Close"></button>
+
+      <img src="jiwon.jpg" alt="portrait" class="about-portrait">
+
+      <div class="about-info">
+        (31) 6 20 61 47 99<br>
+        (82) 10 7628 8209<br>
+        <a href="mailto:jiwongim992@gmail.com">jiwongim992@gmail.com</a><br>
+        <a href="https://www.instagram.com/_jiwonkm?igsh=ZGZqeTR3c25naGk0&utm_source=qr" target="_blank" rel="noopener">instagram</a>
+      </div>
+    </div>
+  </div>
 
 <div class="detail-container">
   <div class="center-wrap">
@@ -153,29 +259,51 @@
         </div>
     </div>
 </div>
+    <script>
+        // About overlay
+    const aboutBtn = document.getElementById('aboutBtn');
+    const aboutOverlay = document.getElementById('aboutOverlay');
+    const aboutDim = document.getElementById('aboutDim');
+    const aboutClose = document.getElementById('aboutClose');
 
-<script>
-const images = [
-    "video2.mp4"
-];
-
-let currentIndex = 0;
-
-const slideImage = document.getElementById("slideImage");
-const counter = document.getElementById("counter");
-
-if(slideImage){
-slideImage.addEventListener("click", () => {
-    currentIndex++;
-    if (currentIndex >= images.length) {
-        currentIndex = 0;
-    }
-
-    slideImage.src = images[currentIndex];
-    counter.textContent = `${currentIndex + 1} of ${images.length}`;
-});
+    function openAbout(){
+  aboutOverlay.classList.add('is-open');
+  document.body.classList.add('about-open');
+  aboutOverlay.setAttribute('aria-hidden', 'false');
 }
-</script>
+
+function closeAbout(){
+  aboutOverlay.classList.remove('is-open');
+  document.body.classList.remove('about-open');
+  aboutOverlay.setAttribute('aria-hidden', 'true');
+}
+
+   aboutBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  if (aboutOverlay.classList.contains('is-open')){
+    closeAbout();
+  } else {
+    openAbout();
+  }
+});
+
+    aboutDim.addEventListener('click', closeAbout);
+    aboutClose.addEventListener('click', closeAbout);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && aboutOverlay.classList.contains('is-open')) {
+        closeAbout();
+      }
+    });
+
+    // Overview 버튼은 그냥 닫기처럼(원하면 다른 기능 연결 가능)
+    document.getElementById('overviewBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      closeAbout();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    </script>
 
 </body>
 </html>

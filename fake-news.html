@@ -103,8 +103,9 @@
 .text-center .description {
     font-family: 'Life','Regular';
     color: black;
-    font-size: 15px;
+    font-size: 13px;
     margin-top: 10px;
+        margin-bottom: 10px;
     max-height: 40vh;       /* 화면 높이에 맞춰 텍스트 높이 제한 */
     overflow: hidden;       /* 넘치는 텍스트 숨김 */
 }
@@ -204,34 +205,18 @@ body.about-open .work-unit{
 </head>
 
 <body>
+
 <header class="top-nav">
     <div class="nav-left">
         <a href="index.html" style="text-decoration:none; color:black;">
             Jiwon Kim
         </a>
-      <!-- ✅ href를 about.html이 아니라 버튼처럼 -->
-      <a href="#" id="aboutBtn">About</a>
-      <a href="#" id="overviewBtn">Overview</a>
     </div>
-  </header>
-
-  <!-- ✅ About Overlay -->
-  <div class="about-overlay" id="aboutOverlay" aria-hidden="true">
-    <div class="dim" id="aboutDim"></div>
-
-    <div class="panel" role="dialog" aria-modal="true" aria-label="About panel">
-      <button class="about-close" id="aboutClose" aria-label="Close"></button>
-
-      <img src="jiwon.jpg" alt="portrait" class="about-portrait">
-
-      <div class="about-info">
-        (31) 6 20 61 47 99<br>
-        (82) 10 7628 8209<br>
-        <a href="mailto:jiwongim992@gmail.com">jiwongim992@gmail.com</a><br>
-        <a href="https://www.instagram.com/_jiwonkm?igsh=ZGZqeTR3c25naGk0&utm_source=qr" target="_blank" rel="noopener">instagram</a>
-      </div>
+    <div class="nav-right">
+        <a href="#">About</a>
+        <a href="#">Overview</a>
     </div>
-  </div>
+</header>
 
 <div class="detail-container">
     <div class="image-wrapper">
@@ -239,54 +224,13 @@ body.about-open .work-unit{
         <div class="counter" id="counter">1 of 10</div>
          <div class="text-center">
             <div class="title"> </div>
-            <div class="description">   Fake News on Facebook is a publication that works with data from fake news posts on Facebook posts. The data is categorized into left, right, and mainstream sources, and all posts with no factual context. Each piece of data is visualized through color, size, and layout to represent its level of inaccuracy and political bias. By arranging the information this way, viewers can observe patterns, compare sources, and understand how misinformation spreads across the platform. The project aims to encourage critical thinking about online content and to highlight the ways in which false information can influence public perception.   
+            <div class="description">  Fake News on Facebook is a publication based on a dataset of 390 fake news posts collected from Facebook. The book groups posts by political leaning - left, right, and mainstream sources and shows each post with a color that represents its political position. Information below each post shows where the data comes from.<br>Some posts have been deleted, so users can no longer see the original content. However, some information such as the source and date still remains. In these cases, the original title is replaced with the word “Facebook.”<br>
+Fake news is often deleted after it has already spread online. Even if the post disappears, the opinions or beliefs it created may still remain. This book presents the dataset in a repeated layout where only the title and color change, allowing readers to see how false information appears, spreads, and disappears
+ 
     </div>
 </div>
 
 <script>
-     // About overlay
-    const aboutBtn = document.getElementById('aboutBtn');
-    const aboutOverlay = document.getElementById('aboutOverlay');
-    const aboutDim = document.getElementById('aboutDim');
-    const aboutClose = document.getElementById('aboutClose');
-
-    function openAbout(){
-  aboutOverlay.classList.add('is-open');
-  document.body.classList.add('about-open');
-  aboutOverlay.setAttribute('aria-hidden', 'false');
-}
-
-function closeAbout(){
-  aboutOverlay.classList.remove('is-open');
-  document.body.classList.remove('about-open');
-  aboutOverlay.setAttribute('aria-hidden', 'true');
-}
-
-   aboutBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  if (aboutOverlay.classList.contains('is-open')){
-    closeAbout();
-  } else {
-    openAbout();
-  }
-});
-
-    aboutDim.addEventListener('click', closeAbout);
-    aboutClose.addEventListener('click', closeAbout);
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && aboutOverlay.classList.contains('is-open')) {
-        closeAbout();
-      }
-    });
-
-    // Overview 버튼은 그냥 닫기처럼(원하면 다른 기능 연결 가능)
-    document.getElementById('overviewBtn').addEventListener('click', (e) => {
-      e.preventDefault();
-      closeAbout();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
 const images = [
     "fake news-4-min.png",
     "PU5A3257-3-min.png",

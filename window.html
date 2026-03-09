@@ -5,21 +5,25 @@
 <title>Fake news on facebook</title>
 
 <style>
-       @font-face {
-        font-family: 'Life';
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
-        font-weight: normal;
-        font-style: normal;
-    }
+@font-face {
+    font-family: 'Life';
+    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
+    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'),
+         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'),
+         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 
-    @font-face {
-        font-family: 'Life';
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.ttf?v=162763466313126598491770164188');
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.eot?%23iefix&v=36830789672214481861770164188') format('embedded-opentype'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff?v=164715903325973277161770164188') format('woff'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff2?v=157444114806194521391770164188') format('woff2');
-        font-weight: normal;
-        font-style: italic;
-    }
+@font-face {
+    font-family: 'Life';
+    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.ttf?v=162763466313126598491770164188');
+    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.eot?%23iefix&v=36830789672214481861770164188') format('embedded-opentype'),
+         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff?v=164715903325973277161770164188') format('woff'),
+         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff2?v=157444114806194521391770164188') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+}
 
 * {
     box-sizing: border-box;
@@ -37,7 +41,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family:'Life','Regular';
+    font-family: 'Life','Regular';
     font-size: 20px;
     background: white;
     z-index: 1000;
@@ -48,36 +52,34 @@
     gap: 20px;
 }
 
-.nav-right a {
+.nav-right a,
+.nav-left a {
     text-decoration: none;
     color: black;
 }
 
-/* 슬라이드 영역 */
 .detail-container {
     margin-top: 120px;
     width: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: column; /* 세로 정렬 */
     align-items: center;
-     min-height: calc(100vh - 120px);
-
 }
+
 
 .image-wrapper {
     width: 732px;
+    height: 500px;
 }
 
-/* img 대신 video */
 .image-wrapper video {
-    width: 100%;
-    max-height: 500px;
-    object-fit: contain;
-    display: block;
+    width: 732px;
+   height: 500px; /* 화면 높이에 맞추기 */
+   object-fit: cover;
 }
 
-/* 1 of 10 텍스트 */
+/* 카운터 */
 .counter {
     margin-top: 10px;
     font-family: 'Life','Italic';
@@ -85,16 +87,15 @@
     color: gray;
 }
 
-/* description 박스 */
 .text-box {
     width: 586px;
     height: auto;
-    margin: 30px auto 0 auto;
+    margin: 30px auto 0 auto;   /* 가운데 정렬 */
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: flex-start;    /* 세로 가운데 */
+    align-items: center;        /* 가로 가운데 */
     margin-top: 20px;
 }
 
@@ -111,199 +112,56 @@
     color: black;
     font-size: 15px;
     margin-top: 10px;
-    max-height: 40vh;
-    overflow: hidden;
-}
-/* =========================
-       ✅ ABOUT OVERLAY (왼쪽 블록)
-       ========================= */
-    .about-overlay{
-      position: fixed;
-      inset: 0;
-      z-index: 1500;
-      pointer-events: none;
-    }
-
-    /* 배경은 거의 변화 없음(원하면 아주 살짝만) */
-    .about-overlay .dim{
-      position:absolute;
-      inset:0;
-      background: rgba(255,255,255,0);
-      opacity: 0;
-      transition: opacity 220ms ease;
-    }
-
-    /* 왼쪽 정보 블록 */
-    .about-overlay .panel{
-      position: absolute;
-      left: 20px;
-      top: 82px; /* 네비 아래 */
-      width: 210px;
-
-      opacity: 0;
-      transform: translateY(-6px);
-      transition: opacity 260ms ease, transform 260ms ease;
-    }
-
-    .about-overlay.is-open{
-      pointer-events: auto;
-    }
-    .about-overlay.is-open .dim{
-      opacity: 1;
-    }
-    .about-overlay.is-open .panel{
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .about-portrait{
-      width: 86px;     /* 스크린샷처럼 작게 */
-      height: 110px;   /* ID 느낌 */
-      object-fit: cover;
-      display:block;
-      margin-bottom: 18px;
-      filter: contrast(1.02) saturate(0.98);
-    }
-
-    .about-info{
-      font-family: 'Life','Regular';
-      font-size: 14px;
-      line-height: 1.55;
-      color: #000;
-    }
-
-    .about-info a{
-      color: #000;
-      text-decoration: none;
-    }
-    .about-info a:hover{ opacity: 0.6; }
-
-    /* 닫기: 바깥 클릭/ESC 가능 + X는 숨겨도 되고 */
-    .about-close{
-      position:absolute;
-      right:0;
-      top:-34px;
-      border:0;
-      background:transparent;
-      font-family:'Life','Regular';
-      font-size: 20px;
-      cursor:pointer;
-      line-height:1;
-      opacity:0.7;
-    }
-    .about-close:hover{ opacity:1; }
-
-    /* 모바일: 패널 조금 아래로 */
-    @media (max-width: 520px){
-      .about-overlay .panel{ left: 16px; top: 78px; }
-    }
-body.about-open .work-unit{
-  filter: blur(2px);
-  opacity: 0.6;
-  transition: filter 0.3s ease, opacity 0.3s ease;
-}
-
-.work-unit{
-  transition: filter 0.3s ease, opacity 0.3s ease;
+    max-height: 40vh;       /* 화면 높이에 맞춰 텍스트 높이 제한 */
+    overflow: hidden;       /* 넘치는 텍스트 숨김 */
 }
 </style>
 </head>
 
 <body>
-<!-- --- 상단 네비게이션 --- -->
-  <header class="top-nav">
-    <div class="nav-left">Jiwon Kim</div>
+
+<header class="top-nav">
+    <div class="nav-left">
+        <a href="index.html">Jiwon Kim</a>
+    </div>
     <div class="nav-right">
-      <!-- ✅ href를 about.html이 아니라 버튼처럼 -->
-      <a href="#" id="aboutBtn">About</a>
-      <a href="#" id="overviewBtn">Overview</a>
+        <a href="#">About</a>
+        <a href="#">Overview</a>
     </div>
-  </header>
-
-  <!-- ✅ About Overlay -->
-  <div class="about-overlay" id="aboutOverlay" aria-hidden="true">
-    <div class="dim" id="aboutDim"></div>
-
-    <div class="panel" role="dialog" aria-modal="true" aria-label="About panel">
-      <button class="about-close" id="aboutClose" aria-label="Close"></button>
-
-      <img src="jiwon.jpg" alt="portrait" class="about-portrait">
-
-      <div class="about-info">
-        (31) 6 20 61 47 99<br>
-        (82) 10 7628 8209<br>
-        <a href="mailto:jiwongim992@gmail.com">jiwongim992@gmail.com</a><br>
-        <a href="https://www.instagram.com/_jiwonkm?igsh=ZGZqeTR3c25naGk0&utm_source=qr" target="_blank" rel="noopener">instagram</a>
-      </div>
-    </div>
-  </div>
+</header>
 
 <div class="detail-container">
-  <div class="center-wrap">
-    <div class="image-wrapper">
+        <div class="image-wrapper">
 
-        <!-- 이미지 대신 비디오 -->
-        <video autoplay muted loop playsinline>
-            <source src="video2.mp4" type="video/mp4">
-        </video>
+            <video autoplay muted loop playsinline>
+                <source src="Sequence 02.mp4" type="video/mp4">
+            </video>
 
-        <div class="counter" id="counter">1 of 1</div>
+            <div class="counter" id="counter">1 of 1</div>
 
-         <div class="text-center">
-            <div class="title"> </div>
+            <div class="text-center">
+                <div class="title"></div>
 
-            <div class="description">
-            This project is about the sorrow that rises in the moment you lose someone you love. The text silkscreened onto the window reflects my personal experience of losing my grandmother. When water falls onto the words, the letters blur, flow, and slowly disappear. The falling letters visually express emotions quietly collapsing — like moments I can no longer hold onto after losing someone I love.
+                <div class="description">
+                    Raining is a window installation that visualizes the sadness that appears when losing someone you love.<br>
+The text printed on the window with silkscreen reflects a personal experience of losing my grandmother. Because the text is printed directly on the glass, so when it rains, the letters blur, the paint flows, and it slowly disappears. The letters slowly blur as the paint begins to run and fade away.<br>
+The letters that fall off the paint visually express the feeling of falling apart by myself, like a moment when I can no longer hold onto a loved one after losing it.
+                </div>
             </div>
 
         </div>
     </div>
 </div>
-    <script>
-        // About overlay
-    const aboutBtn = document.getElementById('aboutBtn');
-    const aboutOverlay = document.getElementById('aboutOverlay');
-    const aboutDim = document.getElementById('aboutDim');
-    const aboutClose = document.getElementById('aboutClose');
 
-    function openAbout(){
-  aboutOverlay.classList.add('is-open');
-  document.body.classList.add('about-open');
-  aboutOverlay.setAttribute('aria-hidden', 'false');
-}
+<script>
+const images = [
+    "Sequence 02.mp4"
+];
 
-function closeAbout(){
-  aboutOverlay.classList.remove('is-open');
-  document.body.classList.remove('about-open');
-  aboutOverlay.setAttribute('aria-hidden', 'true');
-}
+let currentIndex = 0;
 
-   aboutBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  if (aboutOverlay.classList.contains('is-open')){
-    closeAbout();
-  } else {
-    openAbout();
-  }
-});
-
-    aboutDim.addEventListener('click', closeAbout);
-    aboutClose.addEventListener('click', closeAbout);
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && aboutOverlay.classList.contains('is-open')) {
-        closeAbout();
-      }
-    });
-
-    // Overview 버튼은 그냥 닫기처럼(원하면 다른 기능 연결 가능)
-    document.getElementById('overviewBtn').addEventListener('click', (e) => {
-      e.preventDefault();
-      closeAbout();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    </script>
+const counter = document.getElementById("counter");
+</script>
 
 </body>
 </html>

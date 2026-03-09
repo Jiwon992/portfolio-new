@@ -128,87 +128,7 @@
     opacity: 0.6;
   }
 
-  /* ABOUT + OVERVIEW 공통 */
-  .about-overlay,
-  .overview-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 1500;
-    pointer-events: none;
-  }
 
-  .about-overlay .dim,
-  .overview-overlay .dim {
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0);
-    opacity: 0;
-    transition: opacity 220ms ease;
-  }
-
-  .about-overlay.is-open,
-  .overview-overlay.is-open {
-    pointer-events: auto;
-  }
-
-  .about-overlay.is-open .dim,
-  .overview-overlay.is-open .dim {
-    opacity: 1;
-  }
-
-  /* ABOUT */
-  .about-overlay .panel {
-    position: absolute;
-    left: 20px;
-    top: 82px;
-    width: 210px;
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: opacity 260ms ease, transform 260ms ease;
-  }
-
-  .about-overlay.is-open .panel {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .about-portrait {
-    width: 86px;
-    height: 110px;
-    object-fit: cover;
-    display:block;
-    margin-bottom: 18px;
-    filter: contrast(1.02) saturate(0.98);
-  }
-
-  .about-info {
-    font-family: 'Life','Regular';
-    font-size: 14px;
-    line-height: 1.55;
-    color: #000;
-  }
-
-  .about-info a {
-    color: #000;
-    text-decoration: none;
-  }
-
-  .about-info a:hover {
-    opacity: 0.6;
-  }
-
-  .about-close {
-    position:absolute;
-    right:0;
-    top:-34px;
-    border:0;
-    background:transparent;
-    font-family:'Life','Regular';
-    font-size: 20px;
-    cursor:pointer;
-    line-height:1;
-    opacity:0.7;
-  }
 
   .about-close:hover {
     opacity:1;
@@ -337,9 +257,10 @@
 </head>
 
 <body>
-
-  <header class="top-nav">
-    <div class="nav-left">Jiwon Kim</div>
+<header class="top-nav">
+    <div class="nav-left">
+        <a href="index.html">Jiwon Kim</a>
+    </div>
     <div class="nav-right">
       <a href="#" id="aboutBtn">About</a>
       <a href="#" id="overviewBtn">Overview</a>

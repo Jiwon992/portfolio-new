@@ -58,18 +58,18 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: column; /* 세로 정렬 */
+    flex-direction: column;
     align-items: center;
 }
 
 .image-wrapper {
-    width: 732px; /* 메인 작업 이미지 폭과 동일 */
+    width: 732px;
 }
 
 .image-wrapper img {
     width: 100%;
-    max-height: 500px; /* 화면 높이에 맞추기 */
-    object-fit: contain; /* 비율 유지 */
+    max-height: 500px;
+    object-fit: contain;
 }
 
 /* 1 of 10 텍스트 */
@@ -79,16 +79,17 @@
     text-align: left;
     color: gray;
 }
+
 /* description 박스 */
 .text-box {
     width: 586px;
     height: auto;
-    margin: 30px auto 0 auto;   /* 가운데 정렬 */
+    margin: 30px auto 0 auto;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;    /* 세로 가운데 */
-    align-items: center;        /* 가로 가운데 */
+    justify-content: flex-start;
+    align-items: center;
     margin-top: 20px;
 }
 
@@ -105,92 +106,87 @@
     color: black;
     font-size: 14px;
     margin-top: 10px;
-    max-height: 40vh;       /* 화면 높이에 맞춰 텍스트 높이 제한 */
-    overflow: hidden;       /* 넘치는 텍스트 숨김 */
+    max-height: 40vh;
+    overflow: hidden;
 }
-/* =========================
-       ✅ ABOUT OVERLAY (왼쪽 블록)
-       ========================= */
-    .about-overlay{
-      position: fixed;
-      inset: 0;
-      z-index: 1500;
-      pointer-events: none;
-    }
 
-    /* 배경은 거의 변화 없음(원하면 아주 살짝만) */
-    .about-overlay .dim{
-      position:absolute;
-      inset:0;
-      background: rgba(255,255,255,0);
-      opacity: 0;
-      transition: opacity 220ms ease;
-    }
+/* ABOUT OVERLAY */
+.about-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  pointer-events: none;
+}
 
-    /* 왼쪽 정보 블록 */
-    .about-overlay .panel{
-      position: absolute;
-      left: 20px;
-      top: 82px; /* 네비 아래 */
-      width: 210px;
+.about-overlay .dim{
+  position:absolute;
+  inset:0;
+  background: rgba(255,255,255,0);
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
 
-      opacity: 0;
-      transform: translateY(-6px);
-      transition: opacity 260ms ease, transform 260ms ease;
-    }
+.about-overlay .panel{
+  position: absolute;
+  left: 20px;
+  top: 82px;
+  width: 210px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 260ms ease, transform 260ms ease;
+}
 
-    .about-overlay.is-open{
-      pointer-events: auto;
-    }
-    .about-overlay.is-open .dim{
-      opacity: 1;
-    }
-    .about-overlay.is-open .panel{
-      opacity: 1;
-      transform: translateY(0);
-    }
+.about-overlay.is-open{
+  pointer-events: auto;
+}
+.about-overlay.is-open .dim{
+  opacity: 1;
+}
+.about-overlay.is-open .panel{
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .about-portrait{
-      width: 86px;     /* 스크린샷처럼 작게 */
-      height: 110px;   /* ID 느낌 */
-      object-fit: cover;
-      display:block;
-      margin-bottom: 18px;
-      filter: contrast(1.02) saturate(0.98);
-    }
+.about-portrait{
+  width: 86px;
+  height: 110px;
+  object-fit: cover;
+  display:block;
+  margin-bottom: 18px;
+  filter: contrast(1.02) saturate(0.98);
+}
 
-    .about-info{
-      font-family: 'Life','Regular';
-      font-size: 14px;
-      line-height: 1.55;
-      color: #000;
-    }
+.about-info{
+  font-family: 'Life','Regular';
+  font-size: 14px;
+  line-height: 1.55;
+  color: #000;
+}
 
-    .about-info a{
-      color: #000;
-      text-decoration: none;
-    }
-    .about-info a:hover{ opacity: 0.6; }
+.about-info a{
+  color: #000;
+  text-decoration: none;
+}
+.about-info a:hover{ opacity: 0.6; }
 
-    /* 닫기: 바깥 클릭/ESC 가능 + X는 숨겨도 되고 */
-    .about-close{
-      position:absolute;
-      right:0;
-      top:-34px;
-      border:0;
-      background:transparent;
-      font-family:'Life','Regular';
-      font-size: 20px;
-      cursor:pointer;
-      line-height:1;
-      opacity:0.7;
-    }
-    .about-close:hover{ opacity:1; }
+.about-close{
+  position:absolute;
+  right:0;
+  top:-34px;
+  border:0;
+  background:transparent;
+  font-family:'Life','Regular';
+  font-size: 20px;
+  cursor:pointer;
+  line-height:1;
+  opacity:0.7;
+}
+.about-close:hover{ opacity:1; }
 
-    /* 모바일: 패널 조금 아래로 */
-    @media (max-width: 520px){
-      .about-overlay .panel{ left: 16px; top: 78px; }
-    }
+@media (max-width: 520px){
+  .about-overlay .panel{ left: 16px; top: 78px; }
+}
+
 body.about-open .work-unit{
   filter: blur(2px);
   opacity: 0.6;
@@ -205,56 +201,58 @@ body.about-open .work-unit{
 
 <body>
 
-<!-- --- 상단 네비게이션 --- -->
+<!-- 상단 네비게이션 -->
 <header class="top-nav">
     <div class="nav-left">
         <a href="index.html" style="text-decoration:none; color:black;">
             Jiwon Kim
         </a>
-    <div class="nav-right">
-      <!-- ✅ href를 about.html이 아니라 버튼처럼 -->
-      <a href="#" id="aboutBtn">About</a>
-      <a href="#" id="overviewBtn">Overview</a>
     </div>
-  </header>
 
-  <!-- ✅ About Overlay -->
-  <div class="about-overlay" id="aboutOverlay" aria-hidden="true">
+    <div class="nav-right">
+        <a href="#" id="aboutBtn">About</a>
+    </div>
+</header>
+
+<!-- About Overlay -->
+<div class="about-overlay" id="aboutOverlay" aria-hidden="true">
     <div class="dim" id="aboutDim"></div>
 
     <div class="panel" role="dialog" aria-modal="true" aria-label="About panel">
-      <button class="about-close" id="aboutClose" aria-label="Close"></button>
+        <button class="about-close" id="aboutClose" aria-label="Close"></button>
 
-      <img src="jiwon.jpg" alt="portrait" class="about-portrait">
+        <img src="jiwon.jpg" alt="portrait" class="about-portrait">
 
-      <div class="about-info">
-        (31) 6 20 61 47 99<br>
-        (82) 10 7628 8209<br>
-        <a href="mailto:jiwongim992@gmail.com">jiwongim992@gmail.com</a><br>
-        <a href="https://www.instagram.com/_jiwonkm?igsh=ZGZqeTR3c25naGk0&utm_source=qr" target="_blank" rel="noopener">instagram</a>
-      </div>
+        <div class="about-info">
+            (31) 6 20 61 47 99<br>
+            (82) 10 7628 8209<br>
+            <a href="mailto:jiwongim992@gmail.com">jiwongim992@gmail.com</a><br>
+            <a href="https://www.instagram.com/_jiwonkm?igsh=ZGZqeTR3c25naGk0&utm_source=qr" target="_blank" rel="noopener">instagram</a>
+        </div>
     </div>
-  </div>
+</div>
+
 <div class="detail-container">
     <div class="image-wrapper">
         <img id="slideImage" src="10-1-2-3-min.png">
         <div class="counter" id="counter">1 of 7</div>
-         <div class="text-center">
+        <div class="text-center">
             <div class="title"> </div>
-            <div class="description">  Perspective Transition is a zine that explores the difference between how we see ourselves and how others see us.<br>
-To explore this contrast, we asked people to choose the most attractive part of our faces and highlight it by folding or tearing our portraits. The zine also includes short interviews where participants explain which part they found most attractive and why. The font used in the zine appears only in adjectives and each letter is created by folding and rearranging shapes, reflecting the idea of changing perspectives. Through these visual and textual elements, the zine shows how our understanding of ourselves can shift when we see ourselves through the eyes of others.
-
+            <div class="description">
+                Perspective Transition is a zine that explores the difference between how we see ourselves and how others see us.<br>
+                To explore this contrast, we asked people to choose the most attractive part of our faces and highlight it by folding or tearing our portraits. The zine also includes short interviews where participants explain which part they found most attractive and why. The font used in the zine appears only in adjectives and each letter is created by folding and rearranging shapes, reflecting the idea of changing perspectives. Through these visual and textual elements, the zine shows how our understanding of ourselves can shift when we see ourselves through the eyes of others.
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
-      // About overlay
-    const aboutBtn = document.getElementById('aboutBtn');
-    const aboutOverlay = document.getElementById('aboutOverlay');
-    const aboutDim = document.getElementById('aboutDim');
-    const aboutClose = document.getElementById('aboutClose');
+const aboutBtn = document.getElementById('aboutBtn');
+const aboutOverlay = document.getElementById('aboutOverlay');
+const aboutDim = document.getElementById('aboutDim');
+const aboutClose = document.getElementById('aboutClose');
 
-    function openAbout(){
+function openAbout(){
   aboutOverlay.classList.add('is-open');
   document.body.classList.add('about-open');
   aboutOverlay.setAttribute('aria-hidden', 'false');
@@ -266,7 +264,7 @@ function closeAbout(){
   aboutOverlay.setAttribute('aria-hidden', 'true');
 }
 
-   aboutBtn.addEventListener('click', (e) => {
+aboutBtn.addEventListener('click', (e) => {
   e.preventDefault();
 
   if (aboutOverlay.classList.contains('is-open')){
@@ -276,30 +274,23 @@ function closeAbout(){
   }
 });
 
-    aboutDim.addEventListener('click', closeAbout);
-    aboutClose.addEventListener('click', closeAbout);
+aboutDim.addEventListener('click', closeAbout);
+aboutClose.addEventListener('click', closeAbout);
 
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && aboutOverlay.classList.contains('is-open')) {
-        closeAbout();
-      }
-    });
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && aboutOverlay.classList.contains('is-open')) {
+    closeAbout();
+  }
+});
 
-    // Overview 버튼은 그냥 닫기처럼(원하면 다른 기능 연결 가능)
-    document.getElementById('overviewBtn').addEventListener('click', (e) => {
-      e.preventDefault();
-      closeAbout();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
 const images = [
     "10-1-2-3-min.png",
     "PU5A3176-2-min.png",
     "PU5A3176-6-min.jpeg",
-  "PU5A3176-7-min.png",
+    "PU5A3176-7-min.png",
     "PU5A31827.jpg",
     "PU5A318210.jpg",
-   "jiwon final-2-min.png",
-    
+    "jiwon final-2-min.png",
 ];
 
 let currentIndex = 0;
@@ -320,6 +311,3 @@ slideImage.addEventListener("click", () => {
 
 </body>
 </html>
-
-
-

@@ -94,7 +94,7 @@
 
 /* 타이틀 */
 .text-center .title {
-    font-family: 'Life','Regular';
+    font-family: 'Life','Italic';
     font-size: 20px;
     margin-top:20px;
 }
@@ -103,9 +103,8 @@
 .text-center .description {
     font-family: 'Life','Regular';
     color: black;
-    font-size: 13px;
+    font-size: 15px;
     margin-top: 10px;
-        margin-bottom: 10px;
     max-height: 40vh;       /* 화면 높이에 맞춰 텍스트 높이 제한 */
     overflow: hidden;       /* 넘치는 텍스트 숨김 */
 }
@@ -206,42 +205,99 @@ body.about-open .work-unit{
 
 <body>
 
-<header class="top-nav">
-    <div class="nav-left">
-        <a href="index.html" style="text-decoration:none; color:black;">
-            Jiwon Kim
-        </a>
-    </div>
+<!-- --- 상단 네비게이션 --- -->
+  <header class="top-nav">
+    <div class="nav-left">Jiwon Kim</div>
     <div class="nav-right">
-        <a href="#">About</a>
-        <a href="#">Overview</a>
+      <!-- ✅ href를 about.html이 아니라 버튼처럼 -->
+      <a href="#" id="aboutBtn">About</a>
+      <a href="#" id="overviewBtn">Overview</a>
     </div>
-</header>
+  </header>
 
+  <!-- ✅ About Overlay -->
+  <div class="about-overlay" id="aboutOverlay" aria-hidden="true">
+    <div class="dim" id="aboutDim"></div>
+
+    <div class="panel" role="dialog" aria-modal="true" aria-label="About panel">
+      <button class="about-close" id="aboutClose" aria-label="Close"></button>
+
+      <img src="jiwon.jpg" alt="portrait" class="about-portrait">
+
+      <div class="about-info">
+        (31) 6 20 61 47 99<br>
+        (82) 10 7628 8209<br>
+        <a href="mailto:jiwongim992@gmail.com">jiwongim992@gmail.com</a><br>
+        <a href="https://www.instagram.com/_jiwonkm?igsh=ZGZqeTR3c25naGk0&utm_source=qr" target="_blank" rel="noopener">instagram</a>
+      </div>
+    </div>
+  </div>
 <div class="detail-container">
     <div class="image-wrapper">
-        <img id="slideImage" src="fake news-4-min.png">
-        <div class="counter" id="counter">1 of 10</div>
+        <img id="slideImage" src="10-1-2-3-min.png">
+        <div class="counter" id="counter">1 of 7</div>
          <div class="text-center">
             <div class="title"> </div>
-            <div class="description">  Fake News on Facebook is a publication based on a dataset of 390 fake news posts collected from Facebook. The book groups posts by political leaning - left, right, and mainstream sources and shows each post with a color that represents its political position. Information below each post shows where the data comes from.<br>Some posts have been deleted, so users can no longer see the original content. However, some information such as the source and date still remains. In these cases, the original title is replaced with the word “Facebook.”<br>
-Fake news is often deleted after it has already spread online. Even if the post disappears, the opinions or beliefs it created may still remain. This book presents the dataset in a repeated layout where only the title and color change, allowing readers to see how false information appears, spreads, and disappears
- 
+            <div class="description">  Perspective Transition is a zine that explores the difference between how we see ourselves and how others see us.<br>
+To explore this contrast, we asked people to choose the most attractive part of our faces and highlight it by folding or tearing our portraits. The zine also includes short interviews where participants explain which part they found most attractive and why.<br>
+The font used in the zine appears only in adjectives. Each letter is created by folding and rearranging a regular alphabet, reflecting the idea of changing perspectives.
+Through these visual and textual elements, the zine shows how our understanding of ourselves can shift when we see ourselves through the eyes of others.
+
     </div>
 </div>
 
 <script>
+      // About overlay
+    const aboutBtn = document.getElementById('aboutBtn');
+    const aboutOverlay = document.getElementById('aboutOverlay');
+    const aboutDim = document.getElementById('aboutDim');
+    const aboutClose = document.getElementById('aboutClose');
+
+    function openAbout(){
+  aboutOverlay.classList.add('is-open');
+  document.body.classList.add('about-open');
+  aboutOverlay.setAttribute('aria-hidden', 'false');
+}
+
+function closeAbout(){
+  aboutOverlay.classList.remove('is-open');
+  document.body.classList.remove('about-open');
+  aboutOverlay.setAttribute('aria-hidden', 'true');
+}
+
+   aboutBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  if (aboutOverlay.classList.contains('is-open')){
+    closeAbout();
+  } else {
+    openAbout();
+  }
+});
+
+    aboutDim.addEventListener('click', closeAbout);
+    aboutClose.addEventListener('click', closeAbout);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && aboutOverlay.classList.contains('is-open')) {
+        closeAbout();
+      }
+    });
+
+    // Overview 버튼은 그냥 닫기처럼(원하면 다른 기능 연결 가능)
+    document.getElementById('overviewBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      closeAbout();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 const images = [
-    "fake news-4-min.png",
-    "PU5A3257-3-min.png",
-    "PU5A3260-2-min.png",
-    "PU5A3263-2-min.png",
-    "PU5A3272-min.png",
-    "PU5A3274-min.png",
-    "PU5A32789-min.png",
-    "PU5A328035-min.png",
-    "PU5A3294-min.png",
-    "PU5A32856-min.png"
+    "10-1-2-3-min.png",
+    "PU5A3176-2-min.png",
+    "PU5A3176-6-min.jpeg",
+  "PU5A3176-7-min.png",
+    "PU5A31827.jpg",
+    "PU5A318210.jpg",
+   "jiwon final-2-min.png",
     
 ];
 
@@ -263,5 +319,6 @@ slideImage.addEventListener("click", () => {
 
 </body>
 </html>
+
 
 

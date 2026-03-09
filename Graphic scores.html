@@ -158,49 +158,7 @@ The final book is placed in the ArtEZ library, where visitors are invited to exp
 </div>
 
 <script>
-      // About overlay
-    const aboutBtn = document.getElementById('aboutBtn');
-    const aboutOverlay = document.getElementById('aboutOverlay');
-    const aboutDim = document.getElementById('aboutDim');
-    const aboutClose = document.getElementById('aboutClose');
-
-    function openAbout(){
-  aboutOverlay.classList.add('is-open');
-  document.body.classList.add('about-open');
-  aboutOverlay.setAttribute('aria-hidden', 'false');
-}
-
-function closeAbout(){
-  aboutOverlay.classList.remove('is-open');
-  document.body.classList.remove('about-open');
-  aboutOverlay.setAttribute('aria-hidden', 'true');
-}
-
-   aboutBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  if (aboutOverlay.classList.contains('is-open')){
-    closeAbout();
-  } else {
-    openAbout();
-  }
-});
-
-    aboutDim.addEventListener('click', closeAbout);
-    aboutClose.addEventListener('click', closeAbout);
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && aboutOverlay.classList.contains('is-open')) {
-        closeAbout();
-      }
-    });
-
-    // Overview 버튼은 그냥 닫기처럼(원하면 다른 기능 연결 가능)
-    document.getElementById('overviewBtn').addEventListener('click', (e) => {
-      e.preventDefault();
-      closeAbout();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+     
     
 const images = [
     "graphic score 1-min.png",

@@ -20,6 +20,7 @@
         font-weight: normal;
         font-style: italic;
     }
+
 * { box-sizing: border-box; margin:0; padding:0; }
 
 /* 상단 네비 (통일) */
@@ -51,7 +52,7 @@
 
 /* ===== MAIN PLAYER (큰 영상 1개) ===== */
 .player-wrapper{
-  width: 732px;              /* 기존 이미지 폭과 동일(통일) */
+  width: 732px;
 }
 
 .main-player{
@@ -59,7 +60,7 @@
   aspect-ratio:16/9;
   background:#000;
   display:block;
-  cursor:pointer;            /* 클릭하면 확대 */
+  border:0;
 }
 
 /* 작은 썸네일 3개 */
@@ -79,7 +80,7 @@
   object-fit:cover;
 }
 
-/* 선택된 썸네일 표시(너무 과하지 않게) */
+/* 선택된 썸네일 표시 */
 .thumb.is-active{
   outline: 2px solid #000;
   outline-offset: 2px;
@@ -94,85 +95,24 @@
   text-align:left;
 }
 
-/* description (통일) */
-.text-center .title { font-family:'Life','Regular'; font-size:20px; margin-top:20px; }
+/* description */
+.text-center .title { 
+  font-family:'Life','Regular'; 
+  font-size:20px; 
+  margin-top:20px; 
+}
+
 .text-center .description {
   font-family:'Life','Regular';
   color:black;
-  font-size:15px;
+  font-size:14px;
   margin-top:10px;
   max-height:40vh;
   overflow:hidden;
 }
 
-/* ===== 아래: 시퀀스 (필름스트립) ===== */
-.extra-gallery {
-  width:732px;
-  margin-top:30px;
-  margin-bottom:100px;
-}
-
-.sequence-label{
-  font-family:'Life','Italic';
-  color:gray;
-  margin-bottom:10px;
-  text-align:left;
-}
-
-.sequence-strip{
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-  padding-bottom:10px;
-  -webkit-overflow-scrolling: touch;
-  border-top: 1px solid #eee;
-  padding-top: 12px;
-}
-
-.sequence-strip img{
-  height:110px;              /* 필름스트립 크기 */
-  width:auto;
-  display:block;
-  cursor:pointer;
-  background:#f2f2f2;
-}
-
-/* ===== LIGHTBOX (기존과 같은 UX + video/img 공용) ===== */
-.lightbox {
-  position:fixed;
-  inset:0;
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:2000;
-  transition: opacity 0.4s ease;
-  background: rgba(255,255,255,0.95);
-}
-
-.lightbox img, .lightbox video{
-  max-width:95vw;
-  max-height:95vh;
-  object-fit:contain;
-  cursor:pointer;
-  background:#000;
-  display:none;
-}
-
-.lightbox-btn {
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:40px;
-  color:black;
-  cursor:pointer;
-  user-select:none;
-  padding:20px;
-}
-.lightbox-prev { left:20px; }
-.lightbox-next { right:20px; }
-
 @media (max-width:760px){
-  .player-wrapper, .extra-gallery{ width:90%; }
+  .player-wrapper{ width:90%; }
 }
 </style>
 </head>
@@ -180,230 +120,78 @@
 <body>
 
 <header class="top-nav">
-  <div class="nav-left">
-    <a href="index.html" style="text-decoration:none; color:black;">Jiwon Kim</a>
-
-  </div>
+    <div class="nav-left">
+        <a href="index.html" style="text-decoration:none; color:black;">
+            Jiwon Kim
+        </a>
 </header>
 
 <div class="detail-container">
 
-  <!-- ===== 메인 플레이어 + 썸네일 ===== -->
   <div class="player-wrapper">
 
-    <!-- 메인 플레이어: 클릭하면 확대 -->
-    <video id="mainPlayer" class="main-player" muted playsinline autoplay loop preload="metadata"></video>
+    <!-- 메인 플레이어 -->
+   <iframe
+id="mainPlayer"
+class="main-player"
+src="https://drive.google.com/file/d/1zjNzFiCJ0NEas-NLc9gKInIjWIqp0XhY/preview?autoplay=1"
+allow="autoplay"
+allowfullscreen>
+</iframe>
 
     <!-- 썸네일 3개 -->
     <div class="thumb-row" id="thumbRow">
-      <!-- ✅ poster는 있으면 좋고 없어도 됨(없으면 첫 프레임) -->
       <div>
-        <video class="thumb lbItem" data-kind="video"
-               data-src="Sequence 01_1.mp4"
-               poster="thumb1.jpg"
-               muted playsinline autoplay loop preload="metadata"></video>
+        <img
+          class="thumb is-active"
+          src="video2.jpg"
+          data-video="https://drive.google.com/file/d/1zjNzFiCJ0NEas-NLc9gKInIjWIqp0XhY/preview"
+          alt="Video thumbnail 1">
         <div class="thumb-title">Video Title 01</div>
       </div>
 
       <div>
-        <video class="thumb lbItem" data-kind="video"
-               data-src="Sequence 02.mp4"
-               poster="thumb2.jpg"
-               muted playsinline autoplay loop preload="metadata"></video>
-        <div class="thumb-title">Video Title 02</div>
+        <img
+          class="thumb"
+          src="video2.jpg"
+          data-video="https://drive.google.com/file/d/1tjNPXmcql63hro3JwtH-Dn2BGcq7BgLp/preview"
+          alt="Video thumbnail 2">
+        <div class="thumb-title">21.Nov.2025</div>
       </div>
 
       <div>
-        <video class="thumb lbItem" data-kind="video"
-               data-src="Sequence 03.mp4"
-               poster="thumb3.jpg"
-               muted playsinline autoplay loop preload="metadata"></video>
+        <img
+          class="thumb"
+          src="thumb3.jpg"
+          data-video="https://drive.google.com/file/d/1Q2-83VlkgWfB7uuyZ9IOqmqXUUTJUKmZ/preview"
+          alt="Video thumbnail 3">
         <div class="thumb-title">Video Title 03</div>
       </div>
     </div>
 
-    <!-- description 하나 -->
+    <!-- description -->
     <div class="text-center">
       <div class="title"></div>
       <div class="description">
-       Graphic Scores in the Library is a visual score that translates the everyday sounds of the ArtEZ University library into graphic forms. Each shape represents a different acoustic element, such as rhythm, resonance, and intensity. The elements of the score are screen-printed using Puff Ink, allowing viewers to physically touch and feel the texture of the sound. This way, the library’s sounds are experienced not only visually but also tactilely, offering a new way to engage with the space.
-The final book is physically placed in the ArtEZ library, inviting visitors to explore familiar sounds through both visual and tactile perception. The work demonstrates how sound shapes the atmosphere of a space and how visual representation can expand into a multisensory experience.
-      </div>
+      Navigation is a video project that documents the process of discovering new spaces by following the movements of other people. In this project, I followed strangers in public spaces and traced their journeys, such as where they took the bus, where they got off, and where they walked.
+The project was developed over three months. Each video is a one take recording that begins at Arnhem Central Station in the Netherlands and follows one person until they reach their destination. Although every video starts from the same place, the route and destination become completely different depending on who I follow. The project shows that simply following people can become a form of navigation.
+The narration in the video is based on blog entries that record my thoughts from before I came to the Netherlands, right after I arrived, and now after living here for three years. When I first arrived, I followed people’s actions and words in order to adapt to the unfamiliar environment. Over time, however, I began trying to find my own way instead of simply copying others. Now, after three years, the project reflects how I have gradually come to understand what my own navigation means.
+
     </div>
 
-  </div>
-
-  <!-- ===== 아래: 시퀀스 ===== -->
-  <section class="extra-gallery">
-    <div class="sequence-label"></div>
-    <div class="sequence-strip" id="sequenceStrip">
-      <!-- ✅ 여기에 이미지들 넣기 -->
-      <img class="seqItem lbItem" data-kind="img" src="seq_01.png" alt="">
-      <img class="seqItem lbItem" data-kind="img" src="seq_02.png" alt="">
-      <img class="seqItem lbItem" data-kind="img" src="seq_03.png" alt="">
-      <img class="seqItem lbItem" data-kind="img" src="seq_04.png" alt="">
-      <img class="seqItem lbItem" data-kind="img" src="seq_05.png" alt="">
-      <img class="seqItem lbItem" data-kind="img" src="seq_06.png" alt="">
-    </div>
-  </section>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox-btn lightbox-prev">&#10094;</div>
-
-    <img id="lightboxImg" alt="">
-    <video id="lightboxVideo" controls playsinline></video>
-
-    <div class="lightbox-btn lightbox-next">&#10095;</div>
   </div>
 
 </div>
 
 <script>
-/* ====== VIDEO SELECT (thumb -> main) ====== */
 const mainPlayer = document.getElementById("mainPlayer");
-const thumbs = Array.from(document.querySelectorAll(".thumb"));
-
-function setActiveThumb(activeEl){
-  thumbs.forEach(t => t.classList.remove("is-active"));
-  activeEl.classList.add("is-active");
-}
-
-function setMainVideo(src){
-  mainPlayer.src = src;
-  const p = mainPlayer.play();
-  if (p && typeof p.catch === "function") p.catch(()=>{});
-}
-
-window.addEventListener("load", () => {
-  // 초기: 첫번째 영상
-  const first = thumbs[0];
-  setActiveThumb(first);
-  setMainVideo(first.dataset.src);
-  // 썸네일들도 자동재생 시도(작은 프리뷰)
-  thumbs.forEach(v => v.play().catch(()=>{}));
-});
+const thumbs = document.querySelectorAll(".thumb");
 
 thumbs.forEach(thumb => {
-  thumb.addEventListener("click", (e) => {
-    e.stopPropagation();
-    setActiveThumb(thumb);
-    setMainVideo(thumb.dataset.src);
-  });
-});
-
-/* ====== LIGHTBOX (기존 UX + prev/next + ESC) ====== */
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
-const lightboxVideo = document.getElementById("lightboxVideo");
-const prevBtn = document.querySelector(".lightbox-prev");
-const nextBtn = document.querySelector(".lightbox-next");
-
-// 라이트박스 아이템 목록: (1) 현재 선택된 3개의 영상 + (2) 시퀀스 이미지들
-// => 영상/이미지 모두 좌우로 넘길 수 있게
-function getLbItems(){
-  return Array.from(document.querySelectorAll(".lbItem"));
-}
-let lbItems = [];
-let lbIndex = 0;
-
-function showLbAt(index){
-  lbItems = getLbItems();
-  lbIndex = (index + lbItems.length) % lbItems.length;
-
-  const el = lbItems[lbIndex];
-  const kind = el.dataset.kind;
-
-  // reset
-  lightboxImg.style.display = "none";
-  lightboxImg.removeAttribute("src");
-
-  lightboxVideo.pause();
-  lightboxVideo.style.display = "none";
-  lightboxVideo.removeAttribute("src");
-  lightboxVideo.load();
-
-  if(kind === "img"){
-    lightboxImg.src = el.src;
-    lightboxImg.style.display = "block";
-  } else {
-    // thumb는 data-src를 쓰고 있음
-    const src = el.dataset.src || el.currentSrc || el.src;
-    lightboxVideo.src = src;
-    lightboxVideo.style.display = "block";
-    lightboxVideo.play().catch(()=>{});
-  }
-
-  lightbox.style.display = "flex";
-  lightbox.style.opacity = 0;
-  setTimeout(() => { lightbox.style.opacity = 1; }, 10);
-}
-
-function openLbFromElement(el){
-  lbItems = getLbItems();
-  const idx = lbItems.indexOf(el);
-  if(idx >= 0) showLbAt(idx);
-}
-
-function closeLb(){
-  lightbox.style.opacity = 0;
-  setTimeout(() => {
-    lightbox.style.display = "none";
-    lightboxVideo.pause();
-    lightboxVideo.removeAttribute("src");
-    lightboxVideo.load();
-    lightboxImg.removeAttribute("src");
-    // 메인/썸네일 재생 유지 시도
-    mainPlayer.play().catch(()=>{});
-    thumbs.forEach(v => v.play().catch(()=>{}));
-  }, 300);
-}
-
-function showNext(){ showLbAt(lbIndex + 1); }
-function showPrev(){ showLbAt(lbIndex - 1); }
-
-prevBtn.addEventListener("click", (e)=>{ e.stopPropagation(); showPrev(); });
-nextBtn.addEventListener("click", (e)=>{ e.stopPropagation(); showNext(); });
-lightbox.addEventListener("click", closeLb);
-
-document.addEventListener("keydown", (e)=>{
-  if(lightbox.style.display === "flex"){
-    if(e.key === "Escape") closeLb();
-    if(e.key === "ArrowRight") showNext();
-    if(e.key === "ArrowLeft") showPrev();
-  }
-});
-
-/* 메인 플레이어 클릭 -> 라이트박스에서 크게 */
-mainPlayer.addEventListener("click", (e)=>{
-  e.stopPropagation();
-  // 메인은 "현재 선택된 영상"을 보여주므로, active thumb를 기준으로 열어줌
-  const active = thumbs.find(t => t.classList.contains("is-active")) || thumbs[0];
-  openLbFromElement(active);
-});
-
-/* 썸네일/시퀀스 클릭 -> 라이트박스 */
-document.querySelectorAll(".lbItem").forEach(el=>{
-  el.addEventListener("click", (e)=>{
-    // thumb는 이미 main 교체도 되므로, 라이트박스까지 열고 싶으면 아래 유지
-    // 만약 "thumb 클릭은 메인 교체만" 원하면 이 부분은 thumbs 클릭에서만 처리하고 여기선 제거하면 됨.
-    // 지금은: thumb 클릭 -> 메인교체 + (원하면) 더블클릭으로 확대 추천
-  });
-});
-
-// 시퀀스 이미지는 클릭하면 라이트박스 열기
-document.querySelectorAll(".seqItem").forEach(img=>{
-  img.addEventListener("click", (e)=>{
-    e.stopPropagation();
-    openLbFromElement(img);
-  });
-});
-
-/* ✅ 옵션: 썸네일은 '더블클릭' 했을 때만 확대 (보통 이게 UX 좋음) */
-thumbs.forEach(t=>{
-  t.addEventListener("dblclick", (e)=>{
-    e.stopPropagation();
-    openLbFromElement(t);
+  thumb.addEventListener("click", () => {
+    thumbs.forEach(t => t.classList.remove("is-active"));
+    thumb.classList.add("is-active");
+mainPlayer.src = thumb.dataset.video + "?autoplay=1";
   });
 });
 </script>

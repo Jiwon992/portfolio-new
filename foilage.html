@@ -5,7 +5,7 @@
 <title>Fake news on facebook</title>
 
 <style>
-      @font-face {
+       @font-face {
         font-family: 'Life';
         src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
         src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
@@ -20,7 +20,6 @@
         font-weight: normal;
         font-style: italic;
     }
-
 * { box-sizing: border-box; margin:0; padding:0; }
 
 /* 상단 네비 */
@@ -69,7 +68,7 @@
 }
 
 /* description */
-.text-center .title { font-family:'LifeEF','Italic'; font-size:20px; margin-top:20px; }
+.text-center .title { font-family:'Life','Regular'; font-size:20px; margin-top:20px; }
 .text-center .description {
     font-family:'Life','Regular';
     color:black;
@@ -153,21 +152,116 @@
 }
 .lightbox-prev { left:20px; }
 .lightbox-next { right:20px; }
+/* =========================
+       ✅ ABOUT OVERLAY (왼쪽 블록)
+       ========================= */
+    .about-overlay{
+      position: fixed;
+      inset: 0;
+      z-index: 1500;
+      pointer-events: none;
+    }
 
+    /* 배경은 거의 변화 없음(원하면 아주 살짝만) */
+    .about-overlay .dim{
+      position:absolute;
+      inset:0;
+      background: rgba(255,255,255,0);
+      opacity: 0;
+      transition: opacity 220ms ease;
+    }
+
+    /* 왼쪽 정보 블록 */
+    .about-overlay .panel{
+      position: absolute;
+      left: 20px;
+      top: 82px; /* 네비 아래 */
+      width: 210px;
+
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: opacity 260ms ease, transform 260ms ease;
+    }
+
+    .about-overlay.is-open{
+      pointer-events: auto;
+    }
+    .about-overlay.is-open .dim{
+      opacity: 1;
+    }
+    .about-overlay.is-open .panel{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .about-portrait{
+      width: 86px;     /* 스크린샷처럼 작게 */
+      height: 110px;   /* ID 느낌 */
+      object-fit: cover;
+      display:block;
+      margin-bottom: 18px;
+      filter: contrast(1.02) saturate(0.98);
+    }
+
+    .about-info{
+      font-family: 'Life','Regular';
+      font-size: 14px;
+      line-height: 1.55;
+      color: #000;
+    }
+
+    .about-info a{
+      color: #000;
+      text-decoration: none;
+    }
+    .about-info a:hover{ opacity: 0.6; }
+
+    /* 닫기: 바깥 클릭/ESC 가능 + X는 숨겨도 되고 */
+    .about-close{
+      position:absolute;
+      right:0;
+      top:-34px;
+      border:0;
+      background:transparent;
+      font-family:'Life','Regular';
+      font-size: 20px;
+      cursor:pointer;
+      line-height:1;
+      opacity:0.7;
+    }
+    .about-close:hover{ opacity:1; }
+
+    /* 모바일: 패널 조금 아래로 */
+    @media (max-width: 520px){
+      .about-overlay .panel{ left: 16px; top: 78px; }
+    }
+body.about-open .work-unit{
+  filter: blur(2px);
+  opacity: 0.6;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.work-unit{
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
 </style>
 </head>
 
 <body>
 
+<!-- --- 상단 네비게이션 --- -->
 <header class="top-nav">
     <div class="nav-left">
-        <a href="index.html" style="text-decoration:none; color:black;">Jiwon Kim</a>
-    </div>
-</header>
+        <a href="index.html" style="text-decoration:none; color:black;">
+            Jiwon Kim
+
+  </header>
+
+
 
 <div class="detail-container">
     <div class="image-wrapper">
-        <img id="slideImage" src="foliage image 0-min.png"1>
+        <img id="slideImage" src="foliage image 0-min.png">
         <div class="counter" id="counter">1 of 11</div>
         <div class="text-center">
             <div class="title"></div>
@@ -180,20 +274,20 @@
             <div class="grid-gallery" id="gridGallery">
                 <!-- page 1 -->
                 <div class="grid-page">
-                    <img src="1.png">
-                    <img src="_MG_7378 copy-2-min.png">
-                    <img src="_MG_7522 copy-2-2-min.png">
-                     <img src="_MG_7499 copy-2-min.png">
+                    <img src="1.jpg">
+                    <img src="gridimage2.jpeg">
+                    <img src="error1.jpeg">
+                     <img src="error2.jpeg">
                     <img src="IMG_4465 copy-2-2-min.png">
                                    <img src="IMG_4514 copy-2-min.png">
                 </div>
                 <!-- page 2 -->
                 <div class="grid-page">
-                         <img src="IMG_4477 copy-2-2-min.png">
-                     <img src="IMG_3231 copy-2-min.png">
-                     <img src="_MG_7347-2-2.png">
+                         <img src="Mar4.jpg">
+                     <img src="IMG_3231 copy-2-min.jpg">
+                     <img src="gridimage10.jpeg">
                    <img src="IMG_3204-2-2-min.png">
-                    <img src="3 copy 2-2.png">
+                    <img src="3 copy 2-2.jpg">
                     <img src="IMG_4604 copy-2-2.png">
     
                 </div>
@@ -211,6 +305,7 @@
 </div>
 
 <script>
+    
 /* ====== MAIN IMAGE SLIDER ====== */
 const images = [ "foliage image 0-min.png","foliage image 1-min.png","foliage image 2-min.png", "foliage image 3-min.png", "foliage image 4-min copy.png", "foliage image 6-min.png", "foliage image 7-min.png", "foliage image 8-min.png", "foliage image 9-min.png", "foliage 10-min.png", "foliage image 11-min.png", ];
 let currentIndex = 0;
@@ -308,6 +403,7 @@ document.addEventListener("keydown", e=>{
         if(e.key==="ArrowLeft") showPrev();
     }
 });
+
 </script>
 
 </body>

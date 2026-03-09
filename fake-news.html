@@ -282,127 +282,52 @@
   </div>
 
 <script>
-  const aboutBtn = document.getElementById('aboutBtn');
-  const aboutOverlay = document.getElementById('aboutOverlay');
-  const aboutDim = document.getElementById('aboutDim');
-  const aboutClose = document.getElementById('aboutClose');
+     // About overlay
+    const aboutBtn = document.getElementById('aboutBtn');
+    const aboutOverlay = document.getElementById('aboutOverlay');
+    const aboutDim = document.getElementById('aboutDim');
+    const aboutClose = document.getElementById('aboutClose');
 
-  const overviewBtn = document.getElementById('overviewBtn');
-  const overviewOverlay = document.getElementById('overviewOverlay');
-  const overviewPanel = overviewOverlay.querySelector('.panel');
+    function openAbout(){
+  aboutOverlay.classList.add('is-open');
+  document.body.classList.add('about-open');
+  aboutOverlay.setAttribute('aria-hidden', 'false');
+}
 
-  const previewImage = document.getElementById('overviewPreviewImage');
-  const previewTitle = document.getElementById('overviewPreviewTitle');
-  const previewDate = document.getElementById('overviewPreviewDate');
-  const overviewLinks = document.querySelectorAll('.overview-link');
+function closeAbout(){
+  aboutOverlay.classList.remove('is-open');
+  document.body.classList.remove('about-open');
+  aboutOverlay.setAttribute('aria-hidden', 'true');
+}
 
-  const defaultPreview = {
-    image: 'PU5A92361-11-min.png',
-    title: 'Fake news on facebook',
-    date: 'publication, 2025'
-  };
+   aboutBtn.addEventListener('click', (e) => {
+  e.preventDefault();
 
-  function setPreview(image, title, date) {
-    previewImage.src = image;
-    previewTitle.textContent = title;
-    previewDate.textContent = date;
-  }
-
-  function resetPreview() {
-    setPreview(defaultPreview.image, defaultPreview.title, defaultPreview.date);
-  }
-
-  function updateBodyState() {
-    const isAnyOpen =
-      aboutOverlay.classList.contains('is-open') ||
-      overviewOverlay.classList.contains('is-open');
-
-    document.body.classList.toggle('overlay-open', isAnyOpen);
-  }
-
-  function openAbout() {
-    closeOverview();
-    aboutOverlay.classList.add('is-open');
-    aboutOverlay.setAttribute('aria-hidden', 'false');
-    updateBodyState();
-  }
-
-  function closeAbout() {
-    aboutOverlay.classList.remove('is-open');
-    aboutOverlay.setAttribute('aria-hidden', 'true');
-    updateBodyState();
-  }
-
-  function openOverview() {
+  if (aboutOverlay.classList.contains('is-open')){
     closeAbout();
-    overviewOverlay.classList.add('is-open');
-    overviewOverlay.setAttribute('aria-hidden', 'false');
-    resetPreview();
-    updateBodyState();
+  } else {
+    openAbout();
   }
+});
 
-  function closeOverview() {
-    overviewOverlay.classList.remove('is-open');
-    overviewOverlay.setAttribute('aria-hidden', 'true');
-    resetPreview();
-    updateBodyState();
-  }
+    aboutDim.addEventListener('click', closeAbout);
+    aboutClose.addEventListener('click', closeAbout);
 
-  aboutBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (aboutOverlay.classList.contains('is-open')) {
-      closeAbout();
-    } else {
-      openAbout();
-    }
-  });
-
-  overviewBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (overviewOverlay.classList.contains('is-open')) {
-      closeOverview();
-    } else {
-      openOverview();
-    }
-  });
-
-  aboutDim.addEventListener('click', closeAbout);
-  aboutClose.addEventListener('click', closeAbout);
-
-  overviewOverlay.addEventListener('click', (e) => {
-    if (e.target.closest('.overview-link')) return;
-    closeOverview();
-  });
-
-  overviewPanel.addEventListener('click', (e) => {
-    if (e.target.closest('.overview-link')) return;
-    closeOverview();
-  });
-
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeAbout();
-      closeOverview();
-    }
-  });
-
-  overviewLinks.forEach(link => {
-    link.addEventListener('mouseenter', () => {
-      setPreview(
-        link.dataset.image,
-        link.dataset.title,
-        link.dataset.date
-      );
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && aboutOverlay.classList.contains('is-open')) {
+        closeAbout();
+      }
     });
-  });
 
-  const images = [
-
-    "fake news-4-min.png",
+    // Overview 버튼은 그냥 닫기처럼(원하면 다른 기능 연결 가능)
+    document.getElementById('overviewBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      closeAbout();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+const images = [
+  "fake news-4-min.png",
     "PU5A3257-3-min.png",
     "PU5A3260-2-min.png",
     "PU5A3263-2-min.png",
@@ -411,23 +336,25 @@
     "PU5A32789-min.png",
     "PU5A328035-min.png",
     "PU5A3294-min.png",
-    "PU5A32856-min.png"
-  ];
+    "PU5A32856-min.png",
+    
+];
 
-  let currentIndex = 0;
+let currentIndex = 0;
 
-  const slideImage = document.getElementById("slideImage");
-  const counter = document.getElementById("counter");
+const slideImage = document.getElementById("slideImage");
+const counter = document.getElementById("counter");
 
-  slideImage.addEventListener("click", () => {
+slideImage.addEventListener("click", () => {
     currentIndex++;
     if (currentIndex >= images.length) {
-      currentIndex = 0;
+        currentIndex = 0;
     }
 
     slideImage.src = images[currentIndex];
     counter.textContent = `${currentIndex + 1} of ${images.length}`;
-  });
+});
+</script>
 </script>
 
 </body>

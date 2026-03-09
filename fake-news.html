@@ -5,29 +5,44 @@
 <title>Fake news on facebook</title>
 
 <style>
-       @font-face {
-        font-family: 'Life';
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
-        font-weight: normal;
-        font-style: normal;
-    }
+  @font-face {
+    font-family: 'Life';
+    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
+    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'),
+         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'),
+         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
 
-    @font-face {
-        font-family: 'Life';
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.ttf?v=162763466313126598491770164188');
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.eot?%23iefix&v=36830789672214481861770164188') format('embedded-opentype'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff?v=164715903325973277161770164188') format('woff'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff2?v=157444114806194521391770164188') format('woff2');
-        font-weight: normal;
-        font-style: italic;
-    }
-* {
+  @font-face {
+    font-family: 'Life';
+    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.ttf?v=162763466313126598491770164188');
+    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.eot?%23iefix&v=36830789672214481861770164188') format('embedded-opentype'),
+         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff?v=164715903325973277161770164188') format('woff'),
+         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff2?v=157444114806194521391770164188') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
+  }
 
-/* 상단 네비게이션 */
-.top-nav {
+  body {
+    font-family:'Life','Regular';
+    background: white;
+    color: black;
+  }
+
+  a, a:visited, a:hover, a:active {
+    color: black;
+    text-decoration-color: black;
+  }
+
+  .top-nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -39,72 +54,245 @@
     font-family:'Life','Regular';
     font-size: 20px;
     background: white;
-    z-index: 1000;
-}
+    z-index: 2000;
+  }
 
-.nav-right {
+  .nav-right {
     display: flex;
     gap: 20px;
-}
+  }
 
-.nav-right a {
+  .nav-right a {
     text-decoration: none;
     color: black;
-}
+  }
 
-/* 슬라이드 영역 */
-.detail-container {
+  .detail-container {
     margin-top: 120px;
     width: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: column; /* 세로 정렬 */
+    flex-direction: column;
     align-items: center;
-}
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
 
-.image-wrapper {
-    width: 732px; /* 메인 작업 이미지 폭과 동일 */
-}
+  .image-wrapper {
+    width: 732px;
+  }
 
-.image-wrapper img {
+  .image-wrapper img {
     width: 100%;
-    max-height: 500px; /* 화면 높이에 맞추기 */
-    object-fit: contain; /* 비율 유지 */
-}
+    max-height: 500px;
+    object-fit: contain;
+    cursor: pointer;
+  }
 
-/* 1 of 10 텍스트 */
-.counter {
+  .counter {
     margin-top: 10px;
     font-family: 'Life','Italic';
     text-align: left;
     color: gray;
-}
-/* description 박스 */
-.text-box {
+  }
+
+  .text-box {
     width: 586px;
     height: auto;
-    margin: 30px auto 0 auto;   /* 가운데 정렬 */
+    margin: 30px auto 0 auto;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;    /* 세로 가운데 */
-    align-items: center;        /* 가로 가운데 */
+    justify-content: flex-start;
+    align-items: center;
     margin-top: 20px;
-}
+  }
 
-/* 타이틀 */
-.text-center .title {
-    font-family: 'Life','Italic';
+  .text-center .title {
+    font-family: 'Life','Regular';
     font-size: 20px;
     margin-top:20px;
-}
+  }
 
-/* 설명 */
-.text-center .description {
+  .text-center .description {
     font-family: 'Life','Regular';
     color: black;
-    font-size: 15px;
+    font-size: 13px;
     margin-top: 10px;
+
+    max-height: 40vh;
+    overflow: hidden;
+  }
+
+  body.overlay-open .detail-container {
+    filter: blur(2px);
+    opacity: 0.6;
+  }
+
+  /* ABOUT + OVERVIEW 공통 */
+  .about-overlay,
+  .overview-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    pointer-events: none;
+  }
+
+  .about-overlay .dim,
+  .overview-overlay .dim {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0);
+    opacity: 0;
+    transition: opacity 220ms ease;
+  }
+
+  .about-overlay.is-open,
+  .overview-overlay.is-open {
+    pointer-events: auto;
+  }
+
+  .about-overlay.is-open .dim,
+  .overview-overlay.is-open .dim {
+    opacity: 1;
+  }
+
+  /* ABOUT */
+  .about-overlay .panel {
+    position: absolute;
+    left: 20px;
+    top: 82px;
+    width: 210px;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 260ms ease, transform 260ms ease;
+  }
+
+  .about-overlay.is-open .panel {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .about-portrait {
+    width: 86px;
+    height: 110px;
+    object-fit: cover;
+    display:block;
+    margin-bottom: 18px;
+    filter: contrast(1.02) saturate(0.98);
+  }
+
+  .about-info {
+    font-family: 'Life','Regular';
+    font-size: 14px;
+    line-height: 1.55;
+    color: #000;
+  }
+
+  .about-info a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .about-info a:hover {
+    opacity: 0.6;
+  }
+
+  .about-close {
+    position:absolute;
+    right:0;
+    top:-34px;
+    border:0;
+    background:transparent;
+    font-family:'Life','Regular';
+    font-size: 20px;
+    cursor:pointer;
+    line-height:1;
+    opacity:0.7;
+  }
+
+  .about-close:hover {
+    opacity:1;
+  }
+
+  /* OVERVIEW */
+  .overview-overlay .panel {
+    position: absolute;
+    inset: 0;
+    padding: 66px 20px 20px 20px;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 260ms ease, transform 260ms ease;
+  }
+
+  .overview-overlay.is-open .panel {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .overview-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 24px;
+    align-items: start;
+    height: 100%;
+  }
+
+  .overview-list {
+    padding-top: 2px;
+  }
+
+  .overview-link {
+    display: block;
+    font-size: 14px;
+    line-height: 1.2;
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-bottom: 6px;
+    width: fit-content;
+  }
+
+  .overview-link:hover {
+    opacity: 0.65;
+  }
+
+  .overview-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 20px;
+  }
+
+  .overview-preview img {
+    width: 220px;
+    max-width: 100%;
+    display: block;
+  }
+
+  .overview-caption {
+    display: block;
+    margin-top: 12px;
+    text-align: right;
+  }
+
+  .overview-caption .cap-title {
+    font-family: 'Life','Italic';
+    font-size: 14px;
+    color: #000;
+  }
+
+  .overview-caption .cap-date {
+    font-size: 14px;
+    color: grey;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 980px) {
+    .overview-layout {
+      grid-template-columns: 1fr;
+      gap: 24px;
+
+        margin-bottom: 10px;
     max-height: 40vh;       /* 화면 높이에 맞춰 텍스트 높이 제한 */
     overflow: hidden;       /* 넘치는 텍스트 숨김 */
 }
@@ -116,112 +304,54 @@
       inset: 0;
       z-index: 1500;
       pointer-events: none;
+
     }
 
-    /* 배경은 거의 변화 없음(원하면 아주 살짝만) */
-    .about-overlay .dim{
-      position:absolute;
-      inset:0;
-      background: rgba(255,255,255,0);
-      opacity: 0;
-      transition: opacity 220ms ease;
+    .overview-preview {
+      padding-top: 0;
+      padding-right: 0;
+      align-items: flex-start;
     }
 
-    /* 왼쪽 정보 블록 */
-    .about-overlay .panel{
-      position: absolute;
-      left: 20px;
-      top: 82px; /* 네비 아래 */
-      width: 210px;
-
-      opacity: 0;
-      transform: translateY(-6px);
-      transition: opacity 260ms ease, transform 260ms ease;
+    .overview-preview img {
+      width: 100%;
+      max-width: 100%;
     }
 
-    .about-overlay.is-open{
-      pointer-events: auto;
+    .overview-caption {
+      text-align: left;
     }
-    .about-overlay.is-open .dim{
-      opacity: 1;
-    }
-    .about-overlay.is-open .panel{
-      opacity: 1;
-      transform: translateY(0);
+  }
+
+  @media (max-width: 520px) {
+    .about-overlay .panel {
+      left: 16px;
+      top: 78px;
     }
 
-    .about-portrait{
-      width: 86px;     /* 스크린샷처럼 작게 */
-      height: 110px;   /* ID 느낌 */
-      object-fit: cover;
-      display:block;
-      margin-bottom: 18px;
-      filter: contrast(1.02) saturate(0.98);
+    .overview-overlay .panel {
+      padding: 72px 16px 16px 16px;
     }
-
-    .about-info{
-      font-family: 'Life','Regular';
-      font-size: 14px;
-      line-height: 1.55;
-      color: #000;
-    }
-
-    .about-info a{
-      color: #000;
-      text-decoration: none;
-    }
-    .about-info a:hover{ opacity: 0.6; }
-
-    /* 닫기: 바깥 클릭/ESC 가능 + X는 숨겨도 되고 */
-    .about-close{
-      position:absolute;
-      right:0;
-      top:-34px;
-      border:0;
-      background:transparent;
-      font-family:'Life','Regular';
-      font-size: 20px;
-      cursor:pointer;
-      line-height:1;
-      opacity:0.7;
-    }
-    .about-close:hover{ opacity:1; }
-
-    /* 모바일: 패널 조금 아래로 */
-    @media (max-width: 520px){
-      .about-overlay .panel{ left: 16px; top: 78px; }
-    }
-body.about-open .work-unit{
-  filter: blur(2px);
-  opacity: 0.6;
-  transition: filter 0.3s ease, opacity 0.3s ease;
-}
-
-.work-unit{
-  transition: filter 0.3s ease, opacity 0.3s ease;
-}
+  }
 </style>
 </head>
 
 <body>
 
-<!-- --- 상단 네비게이션 --- -->
   <header class="top-nav">
     <div class="nav-left">Jiwon Kim</div>
     <div class="nav-right">
-      <!-- ✅ href를 about.html이 아니라 버튼처럼 -->
       <a href="#" id="aboutBtn">About</a>
       <a href="#" id="overviewBtn">Overview</a>
     </div>
   </header>
 
-  <!-- ✅ About Overlay -->
+  <!-- ABOUT -->
   <div class="about-overlay" id="aboutOverlay" aria-hidden="true">
     <div class="dim" id="aboutDim"></div>
 
     <div class="panel" role="dialog" aria-modal="true" aria-label="About panel">
       <button class="about-close" id="aboutClose" aria-label="Close"></button>
-
       <img src="jiwon.jpg" alt="portrait" class="about-portrait">
 
       <div class="about-info">
@@ -232,93 +362,238 @@ body.about-open .work-unit{
       </div>
     </div>
   </div>
+
+  <!-- OVERVIEW -->
+  <div class="overview-overlay" id="overviewOverlay" aria-hidden="true">
+    <div class="dim" id="overviewDim"></div>
+
+    <div class="panel" role="dialog" aria-modal="true" aria-label="Overview panel">
+      <div class="overview-layout">
+
+        <div class="overview-list">
+          <a class="overview-link" href="fake-news.html"
+             data-image="PU5A92361-11-min.png"
+             data-title="Fake news on facebook"
+             data-date="publication, 2025">Fake news on Facebook 2025</a>
+
+          <a class="overview-link" href="foilage.html"
+             data-image="foliagebigimage.png"
+             data-title="Foliege"
+             data-date="photo series, 2025">Foliage 2025</a>
+
+          <a class="overview-link" href="the lovers.html"
+             data-image="12-2.jpg"
+             data-title="The Lovers"
+             data-date="publication, 2025">The Lovers 2025</a>
+
+          <a class="overview-link" href="perspective transition.html"
+             data-image="7M4A2297-2-3.jpg"
+             data-title="Perspective Transition"
+             data-date="publication, 2025">Perspective Transition 2025</a>
+
+          <a class="overview-link" href="Graphic scores.html"
+             data-image="Untitled-1-10-min.png"
+             data-title="Graphic Scores in the Library"
+             data-date="publication, 2024">Graphic Score in the library 2024</a>
+
+          <a class="overview-link" href="video.html"
+             data-image="IMG_7359-3-2-2.jpg"
+             data-title="Navigation"
+             data-date="video, 2025">Navigation 2025</a>
+
+          <a class="overview-link" href="window.html"
+             data-image="IMG_7321-4.jpg"
+             data-title="Raining"
+             data-date="Installation, 2025">Raining 2025</a>
+
+          <a class="overview-link" href="meditation.html"
+             data-image="IMG_9776.jpg"
+             data-title="Meditation"
+             data-date="2025">Meditation 2025</a>
+        </div>
+
+        <div class="overview-preview">
+          <img id="overviewPreviewImage" src="PU5A92361-11-min.png" alt="Project preview">
+          <div class="overview-caption">
+            <div class="cap-title" id="overviewPreviewTitle">Fake news on facebook</div>
+            <div class="cap-date" id="overviewPreviewDate">publication, 2025</div>
+          </div>
+        </div>
+
+      </div>
+
+<header class="top-nav">
+    <div class="nav-left">
+        <a href="index.html" style="text-decoration:none; color:black;">
+            Jiwon Kim
+        </a>
+    </div>
+    <div class="nav-right">
+        <a href="#">About</a>
+        <a href="#">Overview</a>
+    </div>
+</header>
+
 <div class="detail-container">
     <div class="image-wrapper">
-        <img id="slideImage" src="10-1-2-3-min.png">
-        <div class="counter" id="counter">1 of 7</div>
+        <img id="slideImage" src="fake news-4-min.png">
+        <div class="counter" id="counter">1 of 10</div>
          <div class="text-center">
             <div class="title"> </div>
-            <div class="description">  Perspective Transition is a zine that explores the difference between how we see ourselves and how others see us.<br>
-To explore this contrast, we asked people to choose the most attractive part of our faces and highlight it by folding or tearing our portraits. The zine also includes short interviews where participants explain which part they found most attractive and why.<br>
-The font used in the zine appears only in adjectives. Each letter is created by folding and rearranging a regular alphabet, reflecting the idea of changing perspectives.
-Through these visual and textual elements, the zine shows how our understanding of ourselves can shift when we see ourselves through the eyes of others.
-
+            <div class="description"> Fake News on Facebook is a publication that collects and organizes fake news data posted on Facebook. All of these data have no factual content and are divided into left, right, and mainstream media based on political orientation. Each post represents a political orientation through the color of the paper, and the information at the bottom of the page shows the source of that data. Some posts have been deleted so that users can no longer check their content, but metadata such as when or where they wrote it remains. In this case, instead of the title of the original post, it is simply marked as "Facebook." <br>
+              Fake news is often deleted after it has already become widespread. However, the public opinion or perception that has formed as a result does not disappear easily. Therefore, the record of deleted posts is also an important clue to how false information appears, spreads, and then disappears. The book presents the data by changing only the title and color of each post while repeatedly using the same layout, showing how fake news from different political orientations appears within a single structure.
+      </div>
     </div>
-</div>
+  </div>
 
 <script>
-      // About overlay
-    const aboutBtn = document.getElementById('aboutBtn');
-    const aboutOverlay = document.getElementById('aboutOverlay');
-    const aboutDim = document.getElementById('aboutDim');
-    const aboutClose = document.getElementById('aboutClose');
+  const aboutBtn = document.getElementById('aboutBtn');
+  const aboutOverlay = document.getElementById('aboutOverlay');
+  const aboutDim = document.getElementById('aboutDim');
+  const aboutClose = document.getElementById('aboutClose');
 
-    function openAbout(){
-  aboutOverlay.classList.add('is-open');
-  document.body.classList.add('about-open');
-  aboutOverlay.setAttribute('aria-hidden', 'false');
-}
+  const overviewBtn = document.getElementById('overviewBtn');
+  const overviewOverlay = document.getElementById('overviewOverlay');
+  const overviewPanel = overviewOverlay.querySelector('.panel');
 
-function closeAbout(){
-  aboutOverlay.classList.remove('is-open');
-  document.body.classList.remove('about-open');
-  aboutOverlay.setAttribute('aria-hidden', 'true');
-}
+  const previewImage = document.getElementById('overviewPreviewImage');
+  const previewTitle = document.getElementById('overviewPreviewTitle');
+  const previewDate = document.getElementById('overviewPreviewDate');
+  const overviewLinks = document.querySelectorAll('.overview-link');
 
-   aboutBtn.addEventListener('click', (e) => {
-  e.preventDefault();
+  const defaultPreview = {
+    image: 'PU5A92361-11-min.png',
+    title: 'Fake news on facebook',
+    date: 'publication, 2025'
+  };
 
-  if (aboutOverlay.classList.contains('is-open')){
-    closeAbout();
-  } else {
-    openAbout();
+  function setPreview(image, title, date) {
+    previewImage.src = image;
+    previewTitle.textContent = title;
+    previewDate.textContent = date;
   }
-});
 
-    aboutDim.addEventListener('click', closeAbout);
-    aboutClose.addEventListener('click', closeAbout);
+  function resetPreview() {
+    setPreview(defaultPreview.image, defaultPreview.title, defaultPreview.date);
+  }
 
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && aboutOverlay.classList.contains('is-open')) {
-        closeAbout();
-      }
-    });
+  function updateBodyState() {
+    const isAnyOpen =
+      aboutOverlay.classList.contains('is-open') ||
+      overviewOverlay.classList.contains('is-open');
 
-    // Overview 버튼은 그냥 닫기처럼(원하면 다른 기능 연결 가능)
-    document.getElementById('overviewBtn').addEventListener('click', (e) => {
-      e.preventDefault();
+    document.body.classList.toggle('overlay-open', isAnyOpen);
+  }
+
+  function openAbout() {
+    closeOverview();
+    aboutOverlay.classList.add('is-open');
+    aboutOverlay.setAttribute('aria-hidden', 'false');
+    updateBodyState();
+  }
+
+  function closeAbout() {
+    aboutOverlay.classList.remove('is-open');
+    aboutOverlay.setAttribute('aria-hidden', 'true');
+    updateBodyState();
+  }
+
+  function openOverview() {
+    closeAbout();
+    overviewOverlay.classList.add('is-open');
+    overviewOverlay.setAttribute('aria-hidden', 'false');
+    resetPreview();
+    updateBodyState();
+  }
+
+  function closeOverview() {
+    overviewOverlay.classList.remove('is-open');
+    overviewOverlay.setAttribute('aria-hidden', 'true');
+    resetPreview();
+    updateBodyState();
+  }
+
+  aboutBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (aboutOverlay.classList.contains('is-open')) {
       closeAbout();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      openAbout();
+    }
+  });
+
+  overviewBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (overviewOverlay.classList.contains('is-open')) {
+      closeOverview();
+    } else {
+      openOverview();
+    }
+  });
+
+  aboutDim.addEventListener('click', closeAbout);
+  aboutClose.addEventListener('click', closeAbout);
+
+  overviewOverlay.addEventListener('click', (e) => {
+    if (e.target.closest('.overview-link')) return;
+    closeOverview();
+  });
+
+  overviewPanel.addEventListener('click', (e) => {
+    if (e.target.closest('.overview-link')) return;
+    closeOverview();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAbout();
+      closeOverview();
+    }
+  });
+
+  overviewLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      setPreview(
+        link.dataset.image,
+        link.dataset.title,
+        link.dataset.date
+      );
     });
-const images = [
-    "10-1-2-3-min.png",
-    "PU5A3176-2-min.png",
-    "PU5A3176-6-min.jpeg",
-  "PU5A3176-7-min.png",
-    "PU5A31827.jpg",
-    "PU5A318210.jpg",
-   "jiwon final-2-min.png",
-    
-];
+  });
 
-let currentIndex = 0;
+  const images = [
 
-const slideImage = document.getElementById("slideImage");
-const counter = document.getElementById("counter");
+    "fake news-4-min.png",
+    "PU5A3257-3-min.png",
+    "PU5A3260-2-min.png",
+    "PU5A3263-2-min.png",
+    "PU5A3272-min.png",
+    "PU5A3274-min.png",
+    "PU5A32789-min.png",
+    "PU5A328035-min.png",
+    "PU5A3294-min.png",
+    "PU5A32856-min.png"
+  ];
 
-slideImage.addEventListener("click", () => {
+  let currentIndex = 0;
+
+  const slideImage = document.getElementById("slideImage");
+  const counter = document.getElementById("counter");
+
+  slideImage.addEventListener("click", () => {
     currentIndex++;
     if (currentIndex >= images.length) {
-        currentIndex = 0;
+      currentIndex = 0;
     }
 
     slideImage.src = images[currentIndex];
     counter.textContent = `${currentIndex + 1} of ${images.length}`;
-});
+  });
 </script>
 
 </body>
 </html>
-
-
-

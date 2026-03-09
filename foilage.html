@@ -249,16 +249,12 @@ body.about-open .work-unit{
 
 <body>
 
+<!-- --- 상단 네비게이션 --- -->
 <header class="top-nav">
     <div class="nav-left">
         <a href="index.html" style="text-decoration:none; color:black;">
             Jiwon Kim
-        </a>
-    <div class="nav-right">
-      <!-- ✅ href를 about.html이 아니라 버튼처럼 -->
-      <a href="#" id="aboutBtn">About</a>
-      <a href="#" id="overviewBtn">Overview</a>
-    </div>
+
   </header>
 
   <!-- ✅ About Overlay -->
@@ -423,50 +419,7 @@ document.addEventListener("keydown", e=>{
         if(e.key==="ArrowLeft") showPrev();
     }
 });
- // About overlay
-    const aboutBtn = document.getElementById('aboutBtn');
-    const aboutOverlay = document.getElementById('aboutOverlay');
-    const aboutDim = document.getElementById('aboutDim');
-    const aboutClose = document.getElementById('aboutClose');
-
-    function openAbout(){
-  aboutOverlay.classList.add('is-open');
-  document.body.classList.add('about-open');
-  aboutOverlay.setAttribute('aria-hidden', 'false');
-}
-
-function closeAbout(){
-  aboutOverlay.classList.remove('is-open');
-  document.body.classList.remove('about-open');
-  aboutOverlay.setAttribute('aria-hidden', 'true');
-}
-
-   aboutBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  if (aboutOverlay.classList.contains('is-open')){
-    closeAbout();
-  } else {
-    openAbout();
-  }
-});
-
-    aboutDim.addEventListener('click', closeAbout);
-    aboutClose.addEventListener('click', closeAbout);
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && aboutOverlay.classList.contains('is-open')) {
-        closeAbout();
-      }
-    });
-
-    // Overview 버튼은 그냥 닫기처럼(원하면 다른 기능 연결 가능)
-    document.getElementById('overviewBtn').addEventListener('click', (e) => {
-      e.preventDefault();
-      closeAbout();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    </script>
+ 
 </script>
 
 </body>

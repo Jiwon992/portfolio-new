@@ -119,6 +119,48 @@
     }
 
 
+.work-unit:last-of-type{
+  margin-bottom: 10px;
+}
+.page{
+  transition: filter 0.3s ease, opacity 0.3s ease;
+  padding-bottom: 50px;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  img.work {
+    filter: grayscale(0%);
+  }
+}
+
+@media (max-width: 768px){
+
+  .work-unit{
+    width: 94vw;
+    margin: 120px auto 0;
+  }
+
+  img.work{
+    max-width: 100%;
+    max-height: none;
+    width: 100%;
+    height: auto;
+  }
+
+  .des{
+    font-size: 16px;
+  }
+
+  .date{
+    font-size: 16px;
+  }
+
+}
+@media (max-width:768px){
+  .work-unit{
+    margin: 90px auto 0;
+  }
+}
   </style>
 </head>
 
@@ -133,6 +175,16 @@
   </header>
 
   <div class="page">
+      <figure class="work-unit">
+      <div class="work-inner">
+        <a href="perspective transition.html">
+          <img src="7M4A2297-2-3.jpg" class="work">
+        </a>
+        <figcaption class="des">Perspective Transition</figcaption>
+        <figcaption class="date">publication, 2025</figcaption>
+      </div>
+    </figure>
+    
     <figure class="work-unit">
       <div class="work-inner">
         <a href="fake-news.html">
@@ -163,15 +215,6 @@
       </div>
     </figure>
 
-    <figure class="work-unit">
-      <div class="work-inner">
-        <a href="perspective transition.html">
-          <img src="7M4A2297-2-3.jpg" class="work">
-        </a>
-        <figcaption class="des">Perspective Transition</figcaption>
-        <figcaption class="date">publication, 2025</figcaption>
-      </div>
-    </figure>
 
     <figure class="work-unit">
       <div class="work-inner">
@@ -193,7 +236,6 @@
         <figcaption class="date">Installation, 2025</figcaption>
       </div>
     </figure>
-  </div>
 
     <figure class="work-unit">
       <div class="work-inner">

@@ -1,118 +1,206 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Video Project</title>
 
 <style>
-     @font-face {
-        font-family: 'Life';
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
-        font-weight: normal;
-        font-style: normal;
-    }
+@font-face {
+    font-family: 'Life';
+    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
+    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'),
+         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'),
+         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 
-    @font-face {
-        font-family: 'Life';
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.ttf?v=162763466313126598491770164188');
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.eot?%23iefix&v=36830789672214481861770164188') format('embedded-opentype'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff?v=164715903325973277161770164188') format('woff'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff2?v=157444114806194521391770164188') format('woff2');
-        font-weight: normal;
-        font-style: italic;
-    }
+@font-face {
+    font-family: 'Life';
+    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.ttf?v=162763466313126598491770164188');
+    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.eot?%23iefix&v=36830789672214481861770164188') format('embedded-opentype'),
+         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff?v=164715903325973277161770164188') format('woff'),
+         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff2?v=157444114806194521391770164188') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+}
 
-* { box-sizing: border-box; margin:0; padding:0; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-/* 상단 네비 (통일) */
+body {
+    color: #000;
+    background: #fff;
+}
+
+/* 상단 네비게이션 */
 .top-nav {
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  padding:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-family:'Life','Regular';
-  font-size:20px;
-  background:white;
-  z-index:1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Life', serif;
+    font-size: 20px;
+    background: #fff;
+    z-index: 1000;
 }
-.nav-right { display:flex; gap:20px; }
-.nav-right a { text-decoration:none; color:black; }
 
-/* detail-container (통일) */
+.nav-left a {
+    text-decoration: none;
+    color: black;
+}
+
+/* 전체 컨테이너 */
 .detail-container {
-  margin-top:120px;
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+    margin-top: 120px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* ===== MAIN PLAYER (큰 영상 1개) ===== */
-.player-wrapper{
-  width: 732px;
+/* 영상 + 썸네일 전체 박스
+   전체가 732 x 500을 넘지 않도록 고정 */
+.video-gallery {
+    width: 732px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-.main-player{
-  width:100%;
-  aspect-ratio:16/9;
-  background:#000;
-  display:block;
-  border:0;
+/* 메인 영상 */
+.main-video-wrapper {
+    width: 732px;
+    height: 380px;
+    flex-shrink: 0;
 }
 
-/* 작은 썸네일 3개 */
-.thumb-row{
-  margin-top:14px;
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:12px;
+.main-video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    background: #000;
 }
 
-.thumb{
-  width:100%;
-  aspect-ratio:16/9;
-  background:#000;
-  display:block;
-  cursor:pointer;
-  object-fit:cover;
+/* 썸네일 영역 */
+.thumbnail-row {
+    width: 732px;
+    height: 120px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 0;
+    flex-shrink: 0;
 }
 
-/* 선택된 썸네일 표시 */
-.thumb.is-active{
-  outline: 2px solid #000;
-  outline-offset: 2px;
+/* 썸네일 아이템 */
+.thumbnail-item {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    cursor: pointer;
+    overflow: hidden;
+
 }
 
-/* 각 썸네일 타이틀 */
-.thumb-title{
-  margin-top:8px;
-  font-family:'Life','Italic';
-  color:#111;
-  font-size:14px;
-  text-align:left;
+.thumbnail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* description */
-.text-center .title { 
-  font-family:'Life','Regular'; 
-  font-size:20px; 
-  margin-top:20px; 
+.thumbnail-item:hover .thumbnail-image {
+    opacity: 0.88;
+    transform: scale(1.02);
 }
 
-.text-center .description {
-  font-family:'Life','Regular';
-  color:black;
-  font-size:14px;
-  margin-top:10px;
-  max-height:40vh;
-  overflow:hidden;
+.thumbnail-item.active {
+    outline: 2px solid #000;
+    outline-offset: -2px;
 }
 
-@media (max-width:760px){
-  .player-wrapper{ width:90%; }
+/* 썸네일 내부 텍스트 오버레이 */
+.thumbnail-meta {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 8px 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    background: linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0));
+    color: #fff;
+    font-family: 'Life', serif;
+    font-size: 13px;
+}
+
+.thumbnail-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.thumbnail-date {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* 본문 텍스트 */
+.text-box {
+    width: 732px;
+    margin-top: 26px;
+}
+
+.project-description {
+    font-family: 'Life', serif;
+    font-size: 15px;
+    line-height: 1.45;
+    color: black;
+}
+
+/* 작은 화면에서는 비율 유지 */
+@media (max-width: 760px) {
+    .video-gallery {
+        width: 90vw;
+        height: calc(90vw * 0.68306); /* 500 / 732 비율 */
+    }
+
+    .main-video-wrapper {
+        width: 100%;
+        height: 76%;
+    }
+
+    .thumbnail-row {
+        width: 100%;
+        height: 24%;
+        gap: 4px;
+    }
+
+    .thumbnail-item {
+        height: 100%;
+    }
+
+    .text-box {
+        width: 90vw;
+    }
+
+    .thumbnail-meta {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
 }
 </style>
 </head>
@@ -121,77 +209,101 @@
 
 <header class="top-nav">
     <div class="nav-left">
-        <a href="index.html" style="text-decoration:none; color:black;">
-            Jiwon Kim
-        </a>
+        <a href="index.html">Jiwon Kim</a>
+    </div>
 </header>
 
 <div class="detail-container">
 
-  <div class="player-wrapper">
+    <!-- 전체 732 x 500 안에 고정 -->
+    <div class="video-gallery">
+        <!-- 메인 영상 -->
+        <div class="main-video-wrapper">
+            <iframe
+                id="mainVideo"
+                src="https://drive.google.com/file/d/1zjNzFiCJ0NEas-NLc9gKInIjWIqp0XhY/preview"
+                allow="autoplay">
+            </iframe>
+        </div>
 
-    <!-- 메인 플레이어 -->
-<iframe
-id="mainPlayer"
-class="main-player"
-src="https://drive.google.com/file/d/1AFC9wQrlsV_AlQNY2yYrRVdgXMlwQc8j/preview?autoplay=1"
-allow="autoplay"
-allowfullscreen>
-</iframe>
-
-    <!-- 썸네일 3개 -->
-    <div class="thumb-row" id="thumbRow">
-      <div>
-        <img
-          class="thumb is-active"
-          src="video2.jpg"
-          data-video="https://drive.google.com/file/d/1zjNzFiCJ0NEas-NLc9gKInIjWIqp0XhY/preview"
-          alt="Video thumbnail 1">
-        <div class="thumb-title">Video Title 01</div>
-      </div>
-
-      <div>
-    <img
-class="thumb"
-src="thumb3.jpg"
-data-video="https://drive.google.com/file/d/1AFC9wQrlsV_AlQNY2yYrRVdgXMlwQc8j/preview"
-alt="Video thumbnail 3">
-
-      <div>
-        <img
-          class="thumb"
-          src="thumb3.jpg"
-          data-video="https://drive.google.com/file/d/1Q2-83VlkgWfB7uuyZ9IOqmqXUUTJUKmZ/preview"
-          alt="Video thumbnail 3">
-        <div class="thumb-title">Video Title 03</div>
-      </div>
+        <!-- 썸네일 3개 -->
+        <div class="thumbnail-row" id="thumbnailRow"></div>
     </div>
 
-    <!-- description -->
-    <div class="text-center">
-      <div class="title"></div>
-      <div class="description">
-      Navigation is a video project that documents the process of discovering new spaces by following the movements of other people. In this project, I followed strangers in public spaces and traced their journeys, such as where they took the bus, where they got off, and where they walked.
-The project was developed over three months. Each video is a one take recording that begins at Arnhem Central Station in the Netherlands and follows one person until they reach their destination. Although every video starts from the same place, the route and destination become completely different depending on who I follow. The project shows that simply following people can become a form of navigation.
-The narration in the video is based on blog entries that record my thoughts from before I came to the Netherlands, right after I arrived, and now after living here for three years. When I first arrived, I followed people’s actions and words in order to adapt to the unfamiliar environment. Over time, however, I began trying to find my own way instead of simply copying others. Now, after three years, the project reflects how I have gradually come to understand what my own navigation means.
-
+    <!-- 설명 -->
+    <div class="text-box">
+        <div class="project-description" id="projectDescription"></div>
     </div>
-
-  </div>
 
 </div>
 
 <script>
-const mainPlayer = document.getElementById("mainPlayer");
-const thumbs = document.querySelectorAll(".thumb");
+const videos = [
+    {
+        title: "Video Title 01",
+        date: "21.Nov.2025",
+        videoUrl: "https://drive.google.com/file/d/1zjNzFiCJ0NEas-NLc9gKInIjWIqp0XhY/preview",
+        thumbnail: "thumbnail1.jpg",
+        description: `For graphic design students, the space in front of the printer is often one of the most stressful places, especially during deadlines. This work started from the idea of temporarily transforming this space into a moment of meditation.
 
-thumbs.forEach(thumb => {
-  thumb.addEventListener("click", () => {
-    thumbs.forEach(t => t.classList.remove("is-active"));
-    thumb.classList.add("is-active");
-mainPlayer.src = thumb.dataset.video + "?autoplay=1";
-  });
-});
+Meditation is usually thought to require a quiet environment, but I wondered whether meditation is really impossible in a noisy space. Because paper is the most common material around the printer, I created a paper ASMR video and installed it next to the printer. I recorded the reactions of people passing by to explore whether a place usually filled with noise and stress can become a moment of meditation and how the sounds we normally perceive as noise can be experienced in a different way.`
+    },
+    {
+        title: "Video Title 02",
+        date: "21.Nov.2025",
+        videoUrl: "https://drive.google.com/file/d/1zjNzFiCJ0NEas-NLc9gKInIjWIqp0XhY/preview",
+        thumbnail: "thumbnail2.jpg",
+        description: `This is the description for the second video project. Replace this text with your actual project explanation. You can write about the concept, location, process, or meaning of the work.`
+    },
+    {
+        title: "Video Title 03",
+        date: "21.Nov.2025",
+        videoUrl: "https://drive.google.com/file/d/16rHilNrcrYPaVFHrSnd54JUDIie2rrch/preview",
+        thumbnail: "thumbnail3.jpg",
+        description: `This is the description for the third video project. Replace this text with your real text. You can also make each description different so that when users click a thumbnail, the project information updates together with the video.`
+    }
+];
+
+const mainVideo = document.getElementById("mainVideo");
+const thumbnailRow = document.getElementById("thumbnailRow");
+const projectDescription = document.getElementById("projectDescription");
+
+let currentIndex = 0;
+
+function renderThumbnails() {
+    thumbnailRow.innerHTML = "";
+
+    videos.forEach((video, index) => {
+        const item = document.createElement("div");
+        item.className = "thumbnail-item";
+        if (index === currentIndex) {
+            item.classList.add("active");
+        }
+
+        item.innerHTML = `
+            <img class="thumbnail-image" src="${video.thumbnail}" alt="${video.title}">
+            <div class="thumbnail-meta">
+                <div class="thumbnail-title">${video.title}</div>
+                <div class="thumbnail-date">${video.date}</div>
+            </div>
+        `;
+
+        item.addEventListener("click", () => {
+            changeVideo(index);
+        });
+
+        thumbnailRow.appendChild(item);
+    });
+}
+
+function changeVideo(index) {
+    currentIndex = index;
+    mainVideo.src = videos[index].videoUrl;
+    projectDescription.innerHTML = videos[index].description.replace(/\n/g, "<br><br>");
+    renderThumbnails();
+}
+
+changeVideo(0);
 </script>
 
 </body>

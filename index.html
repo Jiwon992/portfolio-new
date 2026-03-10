@@ -134,26 +134,22 @@
 }
 @media (max-width:768px){
 
-  /* 상단 메뉴 숨기기 */
+  /* 메뉴 숨김 */
   .nav-right{
     display:none;
   }
 
-  /* 이름만 작게 유지 */
+  /* 상단 이름만 중앙 */
   .top-nav{
     justify-content:center;
     padding:12px 0;
     font-size:18px;
   }
 
-  .nav-left{
-    letter-spacing:1px;
-  }
-
-  /* 작품 영역 */
+  /* 이미지 영역 */
   .work-unit{
     width:100%;
-    margin:70px 0 0 0;
+    margin:18px 0 0 0;
     padding:0;
   }
 
@@ -163,12 +159,19 @@
 
   /* 이미지 화면 꽉 */
   img.work{
-    width:100vw;
+    width:100%;
     height:auto;
     max-width:none;
     max-height:none;
-    display:block;
+    filter:none;
   }
+
+  /* 캡션 */
+  figcaption{
+    padding:8px 12px 0 12px;
+  }
+
+}
   </style>
 </head>
 

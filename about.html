@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>About</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+@font-face{
+  font-family:'Life';
+  src:url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
+  src:url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'),
+      url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'),
+      url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+body{
+  font-family:'Life','Regular';
+  color:#000;
+  background:#fff;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* ===== NAV (메인과 동일) ===== */
+.top-nav{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  font-family:'Life','Regular';
+  font-size: 20px;
+  background: white;
+}
+
+.nav-right{
+  display:flex;
+  gap:20px;
+}
+
+.nav-right a{
+  text-decoration:none;
+  white-space:nowrap;
+  color:black;   /* 스크린샷처럼 링크 파란색이면 */
+}
+
+/* ===== CONTENT ===== */
+.about-wrap{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.about-row{
+  display:flex;
+  align-items:flex-end;   /* 텍스트 아래 맞춤 */
+  gap:20px;
+}
+/* 사진 */
+.about-photo{
+  width: 130px;             /* 스크린샷 비슷 */
+  height: auto;
+  display:block;
+  
+}
+
+/* 텍스트 */
+.about-text{
+  font-size: 14px;
+  align-items: flex-end;
+  line-height:1.4;
+
+}
+
+/* 그룹 사이 간격 (국가/번호/메일/인스타) */
+.about-group{
+  margin-top: 7px;
+}
+
+.about-text a{
+  color:#000;
+  text-decoration:none;
+  align-items: flex-end;
+  
+}
+.about-text a:hover{ opacity:0.6; }
+
+.email{
+  margin-top:6px;
+}
+
+/* 모바일 */
+@media (max-width: 520px){
+  .about-row{
+    flex-direction: column;
+    gap: 14px;
+    padding-left: 20px;
+  }
+  .about-photo{ width: 160px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="top-nav">
+  <div class="nav-left">JIWON KIM</div>
+  <div class="nav-right">
+    <a href="index.html">Works</a>
+    <a href="about.html">About</a>
+    
+  </div>
+</header>
+
+<div class="about-wrap">
+  <div class="about-row">
+
+    <img src="지원.jpg" alt="Jiwon Kim portrait" class="about-photo">
+
+    <div class="about-text">
+      Amsterdam, Netherlands<br>
+      Seoul, South Korea
+
+      <div class="about-group">
+        (31) 6 20 61 47 99<br>
+        (82) 10 7628 8209<br>
+
+        <div class="email">
+        <a href="mailto:jiwongim992@gmail.com">jiwongim992@gmail.com</a><br>
+        <a href="https://www.instagram.com/follownazar/" target="_blank" rel="noopener">instagram</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

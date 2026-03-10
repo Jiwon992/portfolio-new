@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video Project</title>
+<title>Fake news on facebook</title>
 
 <style>
 @font-face {
@@ -32,11 +31,6 @@
     padding: 0;
 }
 
-body {
-    color: #000;
-    background: #fff;
-}
-
 /* 상단 네비게이션 */
 .top-nav {
     position: fixed;
@@ -47,9 +41,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Life', serif;
+    font-family: 'Life','Regular';
     font-size: 20px;
-    background: #fff;
     z-index: 1000;
 }
 
@@ -58,7 +51,7 @@ body {
     color: black;
 }
 
-/* 전체 컨테이너 */
+/* 전체 영역 */
 .detail-container {
     margin-top: 120px;
     width: 100%;
@@ -67,139 +60,101 @@ body {
     align-items: center;
 }
 
-/* 영상 + 썸네일 전체 박스
-   전체가 732 x 500을 넘지 않도록 고정 */
-.video-gallery {
+/* 영상 + 카운터 + 설명을 한 폭으로 묶음 */
+.content-wrap {
+    width: 732px;
+}
+
+/* 영상 */
+.image-wrapper {
+    position: relative;
     width: 732px;
     height: 500px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
 }
 
-/* 메인 영상 */
-.main-video-wrapper {
+.image-wrapper iframe {
     width: 732px;
-    height: 380px;
-    flex-shrink: 0;
-}
-
-.main-video-wrapper iframe {
-    width: 100%;
-    height: 100%;
+    height: 500px;
     border: none;
     display: block;
-    background: #000;
+    background: black;
 }
 
-/* 썸네일 영역 */
-.thumbnail-row {
-    width: 732px;
-    height: 120px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    margin-top: 0;
-    flex-shrink: 0;
-}
-
-/* 썸네일 아이템 */
-.thumbnail-item {
-    position: relative;
-    width: 100%;
-    height: 120px;
-    cursor: pointer;
-    overflow: hidden;
-
-}
-
-.thumbnail-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.thumbnail-item:hover .thumbnail-image {
-    opacity: 0.88;
-    transform: scale(1.02);
-}
-
-.thumbnail-item.active {
-    outline: 2px solid #000;
-    outline-offset: -2px;
-}
-
-/* 썸네일 내부 텍스트 오버레이 */
-.thumbnail-meta {
+.next-button {
     position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 8px 10px;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.55);
+    color: white;
     display: flex;
-    justify-content: space-between;
-    gap: 8px;
-    background: linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0));
-    color: #fff;
-    font-family: 'Life', serif;
-    font-size: 13px;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    user-select: none;
+
+    /* 기본 상태 숨김 */
+    opacity: 0;
+    transition: opacity 0.25s ease, background 0.2s ease;
 }
 
-.thumbnail-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+/* 영상에 hover 하면 나타남 */
+.image-wrapper:hover .next-button {
+    opacity: 1;
 }
 
-.thumbnail-date {
-    flex-shrink: 0;
-    white-space: nowrap;
+.next-button:hover {
+    background: rgba(0,0,0,0.75);
 }
 
-/* 본문 텍스트 */
-.text-box {
-    width: 732px;
-    margin-top: 26px;
+/* 카운터 */
+.counter {
+    margin-top: 12px;
+    font-family: 'Life','Italic';
+    text-align: left;
+    color: #6f6f6f;
+    font-size: 14px;
 }
 
-.project-description {
-    font-family: 'Life', serif;
-    font-size: 15px;
-    line-height: 1.45;
+/* 타이틀 */
+.text-center .title {
+    font-family: 'Life','Regular';
+    font-size: 20px;
+    margin-top:20px;
+}
+
+/* 설명 */
+.text-center .description {
+    font-family: 'Life','Regular';
     color: black;
+    font-size: 14px;
+    margin-top: 10px;
+    max-height: 40vh;       /* 화면 높이에 맞춰 텍스트 높이 제한 */
+    overflow: hidden;       /* 넘치는 텍스트 숨김 */
 }
 
-/* 작은 화면에서는 비율 유지 */
-@media (max-width: 760px) {
-    .video-gallery {
+/* 모바일 */
+@media (max-width: 800px) {
+    .content-wrap {
         width: 90vw;
-        height: calc(90vw * 0.68306); /* 500 / 732 비율 */
     }
 
-    .main-video-wrapper {
+    .image-wrapper {
+        width: 90vw;
+        height: calc(90vw * 500 / 732);
+    }
+
+    .image-wrapper iframe {
         width: 100%;
-        height: 76%;
-    }
-
-    .thumbnail-row {
-        width: 100%;
-        height: 24%;
-        gap: 4px;
-    }
-
-    .thumbnail-item {
         height: 100%;
     }
 
-    .text-box {
-        width: 90vw;
-    }
-
-    .thumbnail-meta {
-        font-size: 11px;
-        padding: 6px 8px;
+    .description {
+        width: 100%;
     }
 }
 </style>
@@ -214,96 +169,57 @@ body {
 </header>
 
 <div class="detail-container">
+    <div class="content-wrap">
 
-    <!-- 전체 732 x 500 안에 고정 -->
-    <div class="video-gallery">
-        <!-- 메인 영상 -->
-        <div class="main-video-wrapper">
+        <div class="image-wrapper">
             <iframe
                 id="mainVideo"
                 src="https://drive.google.com/file/d/1zjNzFiCJ0NEas-NLc9gKInIjWIqp0XhY/preview"
                 allow="autoplay">
             </iframe>
+
+            <div class="next-button" id="nextBtn">></div>
         </div>
 
-        <!-- 썸네일 3개 -->
-        <div class="thumbnail-row" id="thumbnailRow"></div>
-    </div>
+        <div class="counter" id="counter">1 of 3</div>
+ <div class="text-center">
+        <div class="title"></div>
 
-    <!-- 설명 -->
-    <div class="text-box">
-        <div class="project-description" id="projectDescription"></div>
-    </div>
+        <div class="description">
+        Navigation is a video project that records the process of discovering new places by following the movements of others. In the video I follow strangers in public places and move along their journeys, such as where they take the bus, get off, and walk. Each video is filmed in one take starting from Arnhem Central Station in the Netherlands and following one person until they reach their destination. Although every video begins at the same place, the route and destination change depending on who I follow. The work explores how following others can become another way of navigating and how unexpected encounters can lead to new paths. The narration is based on blog posts I wrote over the three years I have lived in the Netherlands, reflecting how I gradually moved from following others to finding my own path.
 
+
+        </div>
+
+    </div>
 </div>
 
 <script>
 const videos = [
-    {
-        title: "Video Title 01",
-        date: "21.Nov.2025",
-        videoUrl: "https://drive.google.com/file/d/1zjNzFiCJ0NEas-NLc9gKInIjWIqp0XhY/preview",
-        thumbnail: "thumbnail1.jpg",
-        description: `For graphic design students, the space in front of the printer is often one of the most stressful places, especially during deadlines. This work started from the idea of temporarily transforming this space into a moment of meditation.
-
-Meditation is usually thought to require a quiet environment, but I wondered whether meditation is really impossible in a noisy space. Because paper is the most common material around the printer, I created a paper ASMR video and installed it next to the printer. I recorded the reactions of people passing by to explore whether a place usually filled with noise and stress can become a moment of meditation and how the sounds we normally perceive as noise can be experienced in a different way.`
-    },
-    {
-        title: "Video Title 02",
-        date: "21.Nov.2025",
-        videoUrl: "https://drive.google.com/file/d/1zjNzFiCJ0NEas-NLc9gKInIjWIqp0XhY/preview",
-        thumbnail: "thumbnail2.jpg",
-        description: `This is the description for the second video project. Replace this text with your actual project explanation. You can write about the concept, location, process, or meaning of the work.`
-    },
-    {
-        title: "Video Title 03",
-        date: "21.Nov.2025",
-        videoUrl: "https://drive.google.com/file/d/16rHilNrcrYPaVFHrSnd54JUDIie2rrch/preview",
-        thumbnail: "thumbnail3.jpg",
-        description: `This is the description for the third video project. Replace this text with your real text. You can also make each description different so that when users click a thumbnail, the project information updates together with the video.`
-    }
+    "https://drive.google.com/file/d/1zjNzFiCJ0NEas-NLc9gKInIjWIqp0XhY/preview",
+    "https://drive.google.com/file/d/1AFC9wQrlsV_AlQNY2yYrRVdgXMlwQc8j/preview",
+    "https://drive.google.com/file/d/16rHilNrcrYPaVFHrSnd54JUDIie2rrch/preview"
 ];
-
-const mainVideo = document.getElementById("mainVideo");
-const thumbnailRow = document.getElementById("thumbnailRow");
-const projectDescription = document.getElementById("projectDescription");
 
 let currentIndex = 0;
 
-function renderThumbnails() {
-    thumbnailRow.innerHTML = "";
+const mainVideo = document.getElementById("mainVideo");
+const counter = document.getElementById("counter");
+const nextBtn = document.getElementById("nextBtn");
 
-    videos.forEach((video, index) => {
-        const item = document.createElement("div");
-        item.className = "thumbnail-item";
-        if (index === currentIndex) {
-            item.classList.add("active");
-        }
-
-        item.innerHTML = `
-            <img class="thumbnail-image" src="${video.thumbnail}" alt="${video.title}">
-            <div class="thumbnail-meta">
-                <div class="thumbnail-title">${video.title}</div>
-                <div class="thumbnail-date">${video.date}</div>
-            </div>
-        `;
-
-        item.addEventListener("click", () => {
-            changeVideo(index);
-        });
-
-        thumbnailRow.appendChild(item);
-    });
+function updateVideo() {
+    mainVideo.src = videos[currentIndex];
+    counter.textContent = (currentIndex + 1) + " of " + videos.length;
 }
 
-function changeVideo(index) {
-    currentIndex = index;
-    mainVideo.src = videos[index].videoUrl;
-    projectDescription.innerHTML = videos[index].description.replace(/\n/g, "<br><br>");
-    renderThumbnails();
+function nextVideo() {
+    currentIndex = (currentIndex + 1) % videos.length;
+    updateVideo();
 }
 
-changeVideo(0);
+nextBtn.addEventListener("click", nextVideo);
+
+updateVideo();
 </script>
 
 </body>

@@ -76,6 +76,7 @@
 .image-wrapper video {
     width: 732px;
    height: 500px; /* 화면 높이에 맞추기 */
+   object-fit: cover;
 }
 
 /* 카운터 */
@@ -121,15 +122,17 @@
 <header class="top-nav">
     <div class="nav-left">
         <a href="index.html" style="text-decoration:none; color:black;">
-         JIWON KIM
+            JIWON KIM
         </a>
+
+    </div>
 </header>
 
 <div class="detail-container">
         <div class="image-wrapper">
 
             <video autoplay muted loop playsinline>
-                <source src="Sequence 03_1.mp4" type="video/mp4">
+                <source src="window.mp4" type="video/mp4">
             </video>
 
             <div class="counter" id="counter">1 of 1</div>
@@ -150,7 +153,7 @@ The letters that fall off the paint visually express the feeling of falling apar
 
 <script>
 const images = [
-    "Sequence 03_1.mp4"
+    "window.mp4"
 ];
 
 let currentIndex = 0;

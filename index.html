@@ -134,28 +134,41 @@
 }
 @media (max-width:768px){
 
+  /* 상단 메뉴 숨기기 */
+  .nav-right{
+    display:none;
+  }
+
+  /* 이름만 작게 유지 */
+  .top-nav{
+    justify-content:center;
+    padding:12px 0;
+    font-size:18px;
+  }
+
+  .nav-left{
+    letter-spacing:1px;
+  }
+
+  /* 작품 영역 */
   .work-unit{
-    width: 100%;
-    margin: 80px auto 0;
-    padding: 0 12px;
+    width:100%;
+    margin:70px 0 0 0;
+    padding:0;
   }
 
   .work-inner{
-    width: 100%;
+    width:100%;
   }
 
+  /* 이미지 화면 꽉 */
   img.work{
-    width: 100%;
-    height: auto;
-    max-width: none;
-    max-height: none;
+    width:100vw;
+    height:auto;
+    max-width:none;
+    max-height:none;
+    display:block;
   }
-
-  figcaption{
-    margin-left: 2px;
-  }
-
-}
   </style>
 </head>
 

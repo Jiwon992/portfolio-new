@@ -67,7 +67,9 @@
     display: flex;
     gap: 20px;
   }
-
+.nav-left{
+    font-size: 25px;
+}
   .nav-right a,
   .nav-left a {
     text-decoration: none;
@@ -114,7 +116,14 @@
     margin-top: 10px;
     max-height: 40vh;
     overflow: hidden;
+    
   }
+  @media (max-width: 768px) {
+    .nav-left a {
+        font-size: 36px;
+        padding: 10px 15px;
+    }
+}
 </style>
 </head>
 

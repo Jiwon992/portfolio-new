@@ -6,38 +6,40 @@
 
 <style>
   @font-face {
-  font-family: "Newfont";
-  src: url(./font/Bodoni-72.ttc#0) format("truetype");
-  font-style: normal;
-  font-weight: 500;
-}
+    font-family: "Newfont";
+    src: url(./font/Bodoni-72.ttc#0) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
 
-@font-face {
-  font-family: "Newfont1";
-  src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
-  font-style: normal;
-  font-weight: 500;
-}
-@font-face {
-  font-family: "Newfont3";
-  src: url(./font/Garamond.ttf) format("truetype");
-  font-style: normal;
-  font-weight: 500;
-}
-@font-face {
-  font-family: "Newfont4";
-  src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
-  font-style: normal;
-  font-weight: 500;
-}
-* {
+  @font-face {
+    font-family: "Newfont1";
+    src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Newfont3";
+    src: url(./font/Garamond.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Newfont4";
+    src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
+  }
 
-/* 상단 네비게이션 */
-.top-nav {
+  .top-nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -47,50 +49,54 @@
     justify-content: space-between;
     align-items: center;
     font-family: 'Newfont4';
-    font-size: 20px;
     background: white;
     z-index: 1000;
-}
-.nav-left{
-    font-size: 25px;
-}
-.nav-right a,
-.nav-left a {
+  }
+
+  .nav-left a {
     text-decoration: none;
     color: black;
-}
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    line-height: 1;
+    padding: 6px 10px;
+  }
 
-/* 슬라이드 영역 */
-.detail-container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 90px 20px 30px 20px;
-}
+  .nav-right a {
+    text-decoration: none;
+    color: black;
+  }
 
-.image-wrapper {
+  .detail-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 90px 20px 30px 20px;
+  }
+
+  .image-wrapper {
     width: 732px;
-      cursor:pointer;
-}
+    cursor: pointer;
+  }
 
-.image-wrapper img {
+  .image-wrapper img {
     width: 100%;
     max-height: 500px;
     object-fit: contain;
-      cursor:pointer;
-}
+    cursor: pointer;
+  }
 
-/* 1 of 10 텍스트 */
-.counter {
+  .counter {
     margin-top: 10px;
     font-family: 'Newfont4';
     text-align: left;
     color: gray;
-}
+  }
 
-/* description 박스 */
-.text-box {
+  .text-box {
     width: 586px;
     height: auto;
     margin: 30px auto 0 auto;
@@ -100,157 +106,164 @@
     justify-content: flex-start;
     align-items: center;
     margin-top: 20px;
-}
+  }
 
-/* 타이틀 */
-.text-center .title {
+  .text-center .title {
     font-family: 'Newfont4';
     font-size: 20px;
-    margin-top:20px;
-}
+    margin-top: 20px;
+  }
 
-/* 설명 */
-.text-center .description {
+  .text-center .description {
     font-family: 'Newfont4';
     color: black;
     font-size: 14px;
     margin-top: 10px;
     max-height: 40vh;
     overflow: hidden;
-}
+  }
 
-/* ABOUT OVERLAY */
-.about-overlay{
-  position: fixed;
-  inset: 0;
-  z-index: 1500;
-  pointer-events: none;
-}
+  .about-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    pointer-events: none;
+  }
 
-.about-overlay .dim{
-  position:absolute;
-  inset:0;
-  background: rgba(255,255,255,0);
-  opacity: 0;
-  transition: opacity 220ms ease;
-}
+  .about-overlay .dim {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0);
+    opacity: 0;
+    transition: opacity 220ms ease;
+  }
 
-.about-overlay .panel{
-  position: absolute;
-  left: 20px;
-  top: 82px;
-  width: 210px;
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: opacity 260ms ease, transform 260ms ease;
-}
+  .about-overlay .panel {
+    position: absolute;
+    left: 20px;
+    top: 82px;
+    width: 210px;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 260ms ease, transform 260ms ease;
+  }
 
-.about-overlay.is-open{
-  pointer-events: auto;
-}
-.about-overlay.is-open .dim{
-  opacity: 1;
-}
-.about-overlay.is-open .panel{
-  opacity: 1;
-  transform: translateY(0);
-}
+  .about-overlay.is-open {
+    pointer-events: auto;
+  }
 
-.about-portrait{
-  width: 86px;
-  height: 110px;
-  object-fit: cover;
-  display:block;
-  margin-bottom: 18px;
-  filter: contrast(1.02) saturate(0.98);
-}
+  .about-overlay.is-open .dim {
+    opacity: 1;
+  }
 
-.about-info{
-  font-family: 'Life','Regular';
-  font-size: 14px;
-  line-height: 1.55;
-  color: #000;
-}
+  .about-overlay.is-open .panel {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-.about-info a{
-  color: #000;
-  text-decoration: none;
-}
-.about-info a:hover{ opacity: 0.6; }
+  .about-portrait {
+    width: 86px;
+    height: 110px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 18px;
+    filter: contrast(1.02) saturate(0.98);
+  }
 
-.about-close{
-  position:absolute;
-  right:0;
-  top:-34px;
-  border:0;
-  background:transparent;
-  font-family:'Life','Regular';
-  font-size: 20px;
-  cursor:pointer;
-  line-height:1;
-  opacity:0.7;
-}
-.about-close:hover{ opacity:1; }
+  .about-info {
+    font-family: 'Life','Regular';
+    font-size: 14px;
+    line-height: 1.55;
+    color: #000;
+  }
 
-@media (max-width: 520px){
-  .about-overlay .panel{ left: 16px; top: 78px; }
-}
+  .about-info a {
+    color: #000;
+    text-decoration: none;
+  }
 
-body.about-open .work-unit{
-  filter: blur(2px);
-  opacity: 0.6;
-  transition: filter 0.3s ease, opacity 0.3s ease;
-}
+  .about-info a:hover {
+    opacity: 0.6;
+  }
 
-.work-unit{
-  transition: filter 0.3s ease, opacity 0.3s ease;
-}
-  @media (max-width: 768px) {
-    .nav-left a {
-        font-size: 100px;
-        padding: 10px 15px;
+  .about-close {
+    position: absolute;
+    right: 0;
+    top: -34px;
+    border: 0;
+    background: transparent;
+    font-family: 'Life','Regular';
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+  }
+
+  .about-close:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 520px) {
+    .about-overlay .panel {
+      left: 16px;
+      top: 78px;
     }
-}
+  }
+
+  body.about-open .work-unit {
+    filter: blur(2px);
+    opacity: 0.6;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+
+  .work-unit {
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    .top-nav {
+      padding: 16px 18px;
+    }
+
+    .nav-left a {
+      font-size: 48px;
+      padding: 8px 14px;
+    }
+  }
 </style>
 </head>
 
 <body>
 
-<!-- 상단 네비게이션 -->
 <header class="top-nav">
-    <div class="nav-left">
-        <a href="#" onclick="history.back(); return false;">←</a>
-    </div>
+  <div class="nav-left">
+    <a href="#" onclick="history.back(); return false;">←</a>
+  </div>
+  <div class="nav-right"></div>
 </header>
-
-  <div class="nav-right">
-</div>
-</header>
-
 
 <div class="detail-container">
-    <div class="image-wrapper">
-        <img id="slideImage" src="10-1-2-3-min.png">
-        <div class="counter" id="counter">1 of 7</div>
-        <div class="text-center">
-            <div class="description">
-                Perspective Transition is a zine that explores the difference between how we see ourselves and how others see us.<br>
-                To explore this contrast, we asked people to choose the most attractive part of our faces and highlight it by folding or tearing our portraits. The zine also includes short interviews where participants explain which part they found most attractive and why. The font used in the zine appears only in adjectives and each letter is created by folding and rearranging shapes, reflecting the idea of changing perspectives. Through these visual and textual elements, the zine shows how our understanding of ourselves can shift when we see ourselves through the eyes of others.
-            </div>
-        </div>
+  <div class="image-wrapper">
+    <img id="slideImage" src="10-1-2-3-min.png">
+    <div class="counter" id="counter">1 of 7</div>
+    <div class="text-center">
+      <div class="description">
+        Perspective Transition is a zine that explores the difference between how we see ourselves and how others see us.<br>
+        To explore this contrast, we asked people to choose the most attractive part of our faces and highlight it by folding or tearing our portraits. The zine also includes short interviews where participants explain which part they found most attractive and why. The font used in the zine appears only in adjectives and each letter is created by folding and rearranging shapes, reflecting the idea of changing perspectives. Through these visual and textual elements, the zine shows how our understanding of ourselves can shift when we see ourselves through the eyes of others.
+      </div>
     </div>
+  </div>
 </div>
 
 <script>
-
 const images = [
-    "10-1-2-3-min.png",
-    "PU5A3176-2-min.png",
-    "PU5A3176-6-min.jpeg",
-    "PU5A3176-7-min.png",
-    "PU5A31827.jpg",
-    "PU5A318210.jpg",
-    "jiwon final-2-min.png",
+  "10-1-2-3-min.png",
+  "PU5A3176-2-min.png",
+  "PU5A3176-6-min.jpeg",
+  "PU5A3176-7-min.png",
+  "PU5A31827.jpg",
+  "PU5A318210.jpg",
+  "jiwon final-2-min.png",
 ];
 
 let currentIndex = 0;
@@ -259,13 +272,13 @@ const slideImage = document.getElementById("slideImage");
 const counter = document.getElementById("counter");
 
 slideImage.addEventListener("click", () => {
-    currentIndex++;
-    if (currentIndex >= images.length) {
-        currentIndex = 0;
-    }
+  currentIndex++;
+  if (currentIndex >= images.length) {
+    currentIndex = 0;
+  }
 
-    slideImage.src = images[currentIndex];
-    counter.textContent = `${currentIndex + 1} of ${images.length}`;
+  slideImage.src = images[currentIndex];
+  counter.textContent = `${currentIndex + 1} of ${images.length}`;
 });
 </script>
 

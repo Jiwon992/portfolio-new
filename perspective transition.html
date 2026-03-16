@@ -5,21 +5,31 @@
 <title>perspective transition</title>
 
 <style>
-       @font-face {
-        font-family: 'Life';
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
-        font-weight: normal;
-        font-style: normal;
-    }
+  @font-face {
+  font-family: "Newfont";
+  src: url(./font/Bodoni-72.ttc#0) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
 
-    @font-face {
-        font-family: 'Life';
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.ttf?v=162763466313126598491770164188');
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.eot?%23iefix&v=36830789672214481861770164188') format('embedded-opentype'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff?v=164715903325973277161770164188') format('woff'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff2?v=157444114806194521391770164188') format('woff2');
-        font-weight: normal;
-        font-style: italic;
-    }
+@font-face {
+  font-family: "Newfont1";
+  src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Newfont3";
+  src: url(./font/Garamond.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Newfont4";
+  src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
 * {
     box-sizing: border-box;
     margin: 0;
@@ -36,46 +46,43 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family:'Life','Regular';
+    font-family: 'Newfont4';
     font-size: 20px;
     background: white;
     z-index: 1000;
 }
 
-.nav-right {
-    display: flex;
-    gap: 20px;
-}
-
-.nav-right a {
+.nav-right a,
+.nav-left a {
     text-decoration: none;
     color: black;
 }
 
 /* 슬라이드 영역 */
 .detail-container {
-    margin-top: 120px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 90px 20px 30px 20px;
 }
 
 .image-wrapper {
     width: 732px;
+      cursor:pointer;
 }
 
 .image-wrapper img {
     width: 100%;
     max-height: 500px;
     object-fit: contain;
+      cursor:pointer;
 }
 
 /* 1 of 10 텍스트 */
 .counter {
     margin-top: 10px;
-    font-family: 'Life','Italic';
+    font-family: 'Newfont4';
     text-align: left;
     color: gray;
 }
@@ -95,14 +102,14 @@
 
 /* 타이틀 */
 .text-center .title {
-    font-family: 'Life','Italic';
+    font-family: 'Newfont4';
     font-size: 20px;
     margin-top:20px;
 }
 
 /* 설명 */
 .text-center .description {
-    font-family: 'Life','Regular';
+    font-family: 'Newfont4';
     color: black;
     font-size: 14px;
     margin-top: 10px;
@@ -204,7 +211,7 @@ body.about-open .work-unit{
 <!-- 상단 네비게이션 -->
 <header class="top-nav">
     <div class="nav-left">
-        <a href="#" onclick="history.back(); return false;">← Back</a>
+        <a href="#" onclick="history.back(); return false;">←</a>
     </div>
 </header>
 
@@ -218,7 +225,6 @@ body.about-open .work-unit{
         <img id="slideImage" src="10-1-2-3-min.png">
         <div class="counter" id="counter">1 of 7</div>
         <div class="text-center">
-            <div class="title"> </div>
             <div class="description">
                 Perspective Transition is a zine that explores the difference between how we see ourselves and how others see us.<br>
                 To explore this contrast, we asked people to choose the most attractive part of our faces and highlight it by folding or tearing our portraits. The zine also includes short interviews where participants explain which part they found most attractive and why. The font used in the zine appears only in adjectives and each letter is created by folding and rearranging shapes, reflecting the idea of changing perspectives. Through these visual and textual elements, the zine shows how our understanding of ourselves can shift when we see ourselves through the eyes of others.

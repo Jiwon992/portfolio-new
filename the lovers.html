@@ -30,7 +30,13 @@
   font-style: normal;
   font-weight: 500;
 }
+
 * { box-sizing: border-box; margin:0; padding:0; }
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
 
 /* 상단 네비 */
 .top-nav {
@@ -55,7 +61,6 @@
     size: 20px;
 }
 
-/* detail-container */
 .detail-container {
     margin-top:120px;
     width:100%;
@@ -64,43 +69,29 @@
     align-items:center;
 }
 
-
-
-.click-note{
-  position: fixed;
-  left: 50%;
-  top: 20px;
-  transform: translateX(-50%);
-  font-family: 'Newfont4';
-  font-size: 20px;
-  color: blue;
-  line-height: 1.1;
-  white-space: nowrap;
-  opacity: 1;
-  transition: opacity 0.35s ease;
-  z-index: 1001;
-  pointer-events: none;
+.image-wrapper {
+    width:min(732px, calc(100vw - 32px));
+    margin:0 auto;
 }
 
-/* 메인 이미지 */
-.image-wrapper { width:732px; }
 .image-wrapper img {
     width:100%;
     max-height:500px;
     object-fit:contain;
     cursor:pointer;
+    display:block;
 }
-
-/* counter */
 .counter {
-    margin-top:10px;
+    margin-top: 10px;
     font-family: 'Newfont4';
-    text-align:left;
-    color:gray;
+    text-align: left;
+    color: gray;
 }
 
-/* description */
-.text-center .title {     font-family: 'Newfont4';; font-size:20px; margin-top:20px; }
+.text-center {
+    width:100%;
+}
+
 .text-center .description {
     font-family: 'Newfont4';
     color:black;
@@ -108,11 +99,13 @@
     margin-top:10px;
     max-height:40vh;
     overflow:hidden;
+    width:100%;
 }
 
-/* ===== GRID GALLERY ===== */
+
+
 .extra-gallery {
-    width:732px;
+    width:min(732px, calc(100vw - 32px));
     margin-top:30px;
     margin-bottom:100px;
 }
@@ -133,8 +126,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
-    gap: 15px;          /* 내부 이미지 간격 */
-    padding-right: 15px; /* 페이지 오른쪽 여유 */
+    gap: 15px;
+    padding-right: 15px;
     box-sizing: border-box;
 }
 
@@ -146,12 +139,20 @@
 
 /* 반응형 */
 @media (max-width:760px) {
-    .extra-gallery { width:90%; }
     .grid-page { grid-template-columns: repeat(2,1fr); }
 }
 
 @media (max-width:500px) {
     .grid-page { grid-template-columns:1fr; }
+
+    .image-wrapper {
+        padding-top: 100px;
+        padding-bottom: 24px;
+    }
+
+    .text-center .description {
+        font-size: 13px;
+    }
 }
 
 /* LIGHTBOX */
@@ -184,6 +185,7 @@
 }
 .lightbox-prev { left:20px; }
 .lightbox-next { right:20px; }
+
 .cursor-down,
 .cursor-down * {
   cursor: s-resize !important;
@@ -204,11 +206,12 @@
         <a href="#" onclick="history.back(); return false;">←</a>
     </div>
 </header>
+
 <div class="detail-container">
 
     <div class="image-wrapper">
         <img id="slideImage" src="Scan 7-min.jpg">
-        <div class="counter" id="counter">1 of 10</div>
+        <div class="counter" id="counter">1 of 9</div>
         <div class="text-center">
             <div class="description">The Lovers is a reinterpreted magazine by Another Magazine. The Lovers explores the theme of love from multiple perspectives and consists of three sections: Art Lovers, Pop Culture & Lovers, and Fashion Lovers and each section explores the meaning and form of love through different areas of art, pop culture, and fashion. Throughout the magazine, personal ads of graphic design students looking for partners are embedded between the pages. These ads are organized in a form that rips some pages of the magazine, allowing the reader to physically experience the magazine and discover love-seeking messages.</div>
         </div>
@@ -255,6 +258,8 @@ let currentIndex = 0;
 const slideImage = document.getElementById("slideImage");
 const counter = document.getElementById("counter");
 
+counter.textContent = `${currentIndex + 1} of ${images.length}`;
+
 slideImage.addEventListener("click", () => {
     currentIndex = (currentIndex + 1) % images.length;
     slideImage.src = images[currentIndex];
@@ -271,7 +276,7 @@ const slideSpeed = 3000;
 /* 첫 페이지 복제 (무한루프용) */
 const firstClone = pages[0].cloneNode(true);
 gridGallery.appendChild(firstClone);
-pages = document.querySelectorAll(".grid-page");  // 페이지 다시 선택
+pages = document.querySelectorAll(".grid-page");
 const totalPages = pages.length;
 
 function updateSlide() {
@@ -346,8 +351,8 @@ document.addEventListener("keydown", e=>{
         if(e.key==="ArrowLeft") showPrev();
     }
 });
-function updateCursorDirection() {
 
+function updateCursorDirection() {
   const scrollTop = window.scrollY;
   const atBottom = window.innerHeight + scrollTop >= document.body.scrollHeight - 10;
 
@@ -360,15 +365,11 @@ function updateCursorDirection() {
   else {
     document.body.style.cursor = "s-resize";
   }
-
 }
 
 window.addEventListener("scroll", updateCursorDirection);
 window.addEventListener("load", updateCursorDirection);
- 
 </script>
 
 </body>
 </html>
-
-

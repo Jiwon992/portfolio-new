@@ -52,7 +52,9 @@
     z-index: 1000;
 }
 
-
+.nav-left{
+    font-size: 25px;
+}
 
 .nav-right a,
 .nav-left a {
@@ -116,7 +118,12 @@
     max-height: 40vh;       /* 화면 높이에 맞춰 텍스트 높이 제한 */
     overflow: hidden;       /* 넘치는 텍스트 숨김 */
 }
-
+  @media (max-width: 768px) {
+    .nav-left a {
+        font-size: 36px;
+        padding: 10px 15px;
+    }
+}
 </style>
 </head>
 

@@ -3,36 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <title>window</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-@font-face {
-    font-family: 'Life';
-    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
-    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'),
-         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'),
-         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
-    font-weight: normal;
+  @font-face {
+    font-family: "Newfont";
+    src: url(./font/Bodoni-72.ttc#0) format("truetype");
     font-style: normal;
-}
+    font-weight: 500;
+  }
 
-@font-face {
-    font-family: 'Life';
-    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.ttf?v=162763466313126598491770164188');
-    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.eot?%23iefix&v=36830789672214481861770164188') format('embedded-opentype'),
-         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff?v=164715903325973277161770164188') format('woff'),
-         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff2?v=157444114806194521391770164188') format('woff2');
-    font-weight: normal;
-    font-style: italic;
-}
+  @font-face {
+    font-family: "Newfont1";
+    src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
 
-* {
+  @font-face {
+    font-family: "Newfont3";
+    src: url(./font/Garamond.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Newfont4";
+    src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
+  }
 
-/* 상단 네비게이션 */
-.top-nav {
+  html, body {
+    height: 100%;
+  }
+
+  /* 상단 네비게이션 */
+  .top-nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -41,120 +54,152 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Life','Regular';
+    font-family: 'Newfont4';
     font-size: 20px;
     background: white;
     z-index: 1000;
-}
+  }
 
-.nav-right {
+  .nav-right {
     display: flex;
     gap: 20px;
-}
+  }
 
-.nav-right a,
-.nav-left a {
+  .nav-right a,
+  .nav-left a {
     text-decoration: none;
     color: black;
-}
+  }
 
-.detail-container {
-    margin-top: 120px;
+  /* 바깥 위치만 중앙 정렬 */
+  .detail-container {
+    min-height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: column; /* 세로 정렬 */
     align-items: center;
+    padding: 90px 20px 30px 20px;
+  }
+
+  /* 이 wrapper가 전체 포지션만 담당 */
+ .content-wrap {
+  width: 732px;
+  transform: translateY(-22px);
 }
 
-
-.image-wrapper {
+  /* 여기부터는 당신 원래 코드 유지 */
+  .image-wrapper {
     width: 732px;
     height: 500px;
-}
+  }
 
-.image-wrapper video {
+  .image-wrapper video {
     width: 732px;
-   height: 500px; /* 화면 높이에 맞추기 */
-   object-fit: cover;
-}
+    height: 500px;
+    object-fit: cover;
+  }
 
-/* 카운터 */
-.counter {
+  /* 카운터 */
+  .counter {
     margin-top: 10px;
-    font-family: 'Life','Italic';
+    font-family: 'Newfont4';
     text-align: left;
     color: gray;
-}
+  }
 
-.text-box {
+  .text-box {
     width: 586px;
     height: auto;
-    margin: 30px auto 0 auto;   /* 가운데 정렬 */
+    margin: 30px auto 0 auto;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;    /* 세로 가운데 */
-    align-items: center;        /* 가로 가운데 */
+    justify-content: flex-start;
+    align-items: center;
     margin-top: 20px;
-}
+  }
 
-/* 타이틀 */
-.text-center .title {
-    font-family: 'Life','Regular';
+  /* 타이틀 */
+  .text-center .title {
+    font-family: 'Newfont4';
     font-size: 20px;
-    margin-top:20px;
-}
+    margin-top: 20px;
+  }
 
-/* 설명 */
-.text-center .description {
-    font-family: 'Life','Regular';
+  /* 설명 */
+  .text-center .description {
+    font-family: 'Newfont4';
     color: black;
     font-size: 14px;
     margin-top: 10px;
-    max-height: 40vh;       /* 화면 높이에 맞춰 텍스트 높이 제한 */
-    overflow: hidden;       /* 넘치는 텍스트 숨김 */
-}
+    max-height: 40vh;
+    overflow: hidden;
+  }
+
+  /* 모바일만 예외적으로 풀기 */
+  @media (max-width: 800px) {
+    .detail-container {
+      min-height: auto;
+      align-items: flex-start;
+      padding: 90px 16px 30px 16px;
+    }
+
+    .content-wrap,
+    .image-wrapper,
+    .image-wrapper video {
+      width: 100%;
+    }
+
+    .image-wrapper {
+      height: auto;
+    }
+
+    .image-wrapper video {
+      height: auto;
+      max-height: none;
+      object-fit: contain;
+    }
+
+    .text-center .description {
+      font-size: 14px;
+    }
+  }
 </style>
 </head>
 
 <body>
 <header class="top-nav">
-    <div class="nav-left">
-        <a href="#" onclick="history.back(); return false;">← Back</a>
-    </div>
+  <div class="nav-left">
+    <a href="#" onclick="history.back(); return false;">←</a>
+  </div>
 </header>
 
 <div class="detail-container">
-        <div class="image-wrapper">
+  <div class="content-wrap">
+    <div class="image-wrapper">
+      <video autoplay muted loop playsinline>
+        <source src="window.mp4" type="video/mp4">
+      </video>
 
-            <video autoplay muted loop playsinline>
-                <source src="window.mp4" type="video/mp4">
-            </video>
+      <div class="counter" id="counter">1 of 1</div>
 
-            <div class="counter" id="counter">1 of 1</div>
-
-            <div class="text-center">
-                <div class="title"></div>
-
-                <div class="description">
-                    Raining is a window installation that visualizes the sadness that appears when losing someone I love.
-The text printed on the window with silkscreen reflects a personal experience of losing my grandmother. Because the text is printed directly on the glass, so when it rains, the letters blur, flows, and it slowly disappears. 
-The letters that fall off the paint visually express the feeling of falling apart by myself, like a moment when I can no longer hold onto a loved one after losing it.
-                </div>
-            </div>
-
+      <div class="text-center">
+        <div class="description">
+          Raining is a window installation that visualizes the sadness that appears when losing someone I love.
+          The text printed on the window with silkscreen reflects a personal experience of losing my grandmother. Because the text is printed directly on the glass, so when it rains, the letters blur, flows, and it slowly disappears.
+          The letters that fall off the paint visually express the feeling of falling apart by myself, like a moment when I can no longer hold onto a loved one after losing it.
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <script>
 const images = [
-    "window.mp4"
+  "window.mp4"
 ];
 
 let currentIndex = 0;
-
 const counter = document.getElementById("counter");
 </script>
 

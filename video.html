@@ -2,27 +2,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Navigation</title>
+
+<title>video</title>
+
+
 
 <style>
-@font-face {
-    font-family: 'Life';
-    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
-    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'),
-         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'),
-         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+ @font-face {
+  font-family: "Newfont";
+  src: url(./font/Bodoni-72.ttc#0) format("truetype");
+  font-style: normal;
+  font-weight: 500;
 }
 
 @font-face {
-    font-family: 'Life';
-    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.ttf?v=162763466313126598491770164188');
-    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.eot?%23iefix&v=36830789672214481861770164188') format('embedded-opentype'),
-         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff?v=164715903325973277161770164188') format('woff'),
-         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff2?v=157444114806194521391770164188') format('woff2');
-    font-weight: normal;
-    font-style: italic;
+  font-family: "Newfont1";
+  src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Newfont3";
+  src: url(./font/Garamond.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Newfont4";
+  src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
 }
 
 * {
@@ -41,7 +50,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Life','Regular';
+    font-family: 'Newfont4';
     font-size: 20px;
     z-index: 1000;
 }
@@ -53,11 +62,11 @@
 
 /* 전체 영역 */
 .detail-container {
-    margin-top: 120px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 90px 20px 30px 20px;
 }
 
 /* 영상 + 카운터 + 설명을 한 폭으로 묶음 */
@@ -114,21 +123,21 @@
 /* 카운터 */
 .counter {
     margin-top: 10px;
-    font-family: 'Life','Italic';
+    font-family: 'Newfont4';
     text-align: left;
     color: gray;
 }
 
 /* 타이틀 */
 .text-center .title {
-    font-family: 'Life','Regular';
+    font-family: 'Newfont4';
     font-size: 20px;
     margin-top:20px;
 }
 
 /* 설명 */
 .text-center .description {
-    font-family: 'Life','Regular';
+    font-family: 'Newfont4';
     color: black;
     font-size: 14px;
     margin-top: 10px;
@@ -163,10 +172,9 @@
 
 <header class="top-nav">
     <div class="nav-left">
-        <a href="#" onclick="history.back(); return false;">← Back</a>
+        <a href="#" onclick="history.back(); return false;">←</a>
     </div>
 </header>
-
 <div class="detail-container">
     <div class="content-wrap">
 
@@ -182,8 +190,6 @@
 
         <div class="counter" id="counter">1 of 3</div>
  <div class="text-center">
-        <div class="title"></div>
-
         <div class="description">
         Navigation is a video project that records the process of discovering new places by following the movements of others. In the video I follow strangers in public places and move along their journeys, such as where they take the bus, get off, and walk. Each video is filmed in one take starting from Arnhem Central Station in the Netherlands and following one person until they reach their destination. Although every video begins at the same place, the route and destination change depending on who I follow. The work explores how following others can become another way of navigating and how unexpected encounters can lead to new paths. The narration is based on blog posts I wrote over the three years I have lived in the Netherlands, reflecting how I gradually moved from following others to finding my own path.
 

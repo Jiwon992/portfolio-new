@@ -2,10 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Meditaiton</title>
-
+<title>Fake news on facebook</title>
 <style>
-   @font-face {
+  @font-face {
   font-family: "Newfont";
   src: url(./font/Bodoni-72.ttc#0) format("truetype");
   font-style: normal;
@@ -30,7 +29,6 @@
   font-style: normal;
   font-weight: 500;
 }
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -49,17 +47,19 @@
     align-items: center;
     font-family: 'Newfont4';
     font-size: 20px;
+    background: white;
     z-index: 1000;
 }
 .nav-left{
     font-size: 25px;
 }
+.nav-right a,
 .nav-left a {
     text-decoration: none;
     color: black;
 }
 
-/* 전체 영역 */
+/* 슬라이드 영역 */
 .detail-container {
   min-height: 100vh;
   display: flex;
@@ -67,63 +67,36 @@
   align-items: center;
   padding: 90px 20px 30px 20px;
 }
-/* 영상 + 카운터 + 설명을 한 폭으로 묶음 */
-.content-wrap {
-    width: 732px;
-}
 
-/* 영상 */
 .image-wrapper {
-    position: relative;
     width: 732px;
-    height: 500px;
+          cursor:pointer; /* 메인 작업 이미지 폭과 동일 */
 }
 
-.image-wrapper iframe {
-    width: 732px;
-    height: 500px;
-    border: none;
-    display: block;
-    background: black;
+.image-wrapper img {
+    width: 100%;
+    max-height: 500px; /* 화면 높이에 맞추기 */
+    object-fit: contain;
+          cursor:pointer; /* 비율 유지 */
 }
 
-.next-button {
-    position: absolute;
-    right: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.55);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    cursor: pointer;
-    user-select: none;
-
-    /* 기본 상태 숨김 */
-    opacity: 0;
-    transition: opacity 0.25s ease, background 0.2s ease;
-}
-
-/* 영상에 hover 하면 나타남 */
-.image-wrapper:hover .next-button {
-    opacity: 1;
-}
-
-.next-button:hover {
-    background: rgba(0,0,0,0.75);
-}
-
-/* 카운터 */
 .counter {
     margin-top: 10px;
     font-family: 'Newfont4';
     text-align: left;
     color: gray;
+}
+/* description 박스 */
+.text-box {
+    width: 586px;
+    height: auto;
+    margin: 30px auto 0 auto;   /* 가운데 정렬 */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;    /* 세로 가운데 */
+    align-items: center;        /* 가로 가운데 */
+    margin-top: 20px;
 }
 
 /* 타이틀 */
@@ -142,27 +115,6 @@
     max-height: 40vh;       /* 화면 높이에 맞춰 텍스트 높이 제한 */
     overflow: hidden;       /* 넘치는 텍스트 숨김 */
 }
-
-/* 모바일 */
-@media (max-width: 800px) {
-    .content-wrap {
-        width: 90vw;
-    }
-
-    .image-wrapper {
-        width: 90vw;
-        height: calc(90vw * 500 / 732);
-    }
-
-    .image-wrapper iframe {
-        width: 100%;
-        height: 100%;
-    }
-
-    .description {
-        width: 100%;
-    }
-} 
   @media (max-width: 768px) {
     .nav-left a {
         font-size: 36px;
@@ -179,59 +131,53 @@
         <a href="#" onclick="history.back(); return false;">←</a>
     </div>
 </header>
+
 <div class="detail-container">
-    <div class="content-wrap">
-
-        <div class="image-wrapper">
-            <iframe
-                id="mainVideo"
-                src="https://drive.google.com/file/d/1HrZx33UrUbTQWz3c_76N6Bmk4ojvx0Os/preview"
-                allow="autoplay">
-            </iframe>
-
-        </div>
-
-        <div class="counter" id="counter">1 of 1</div>
- <div class="text-center">
+<div class="image-wrapper">
+    <img id="slideImage" src="fake news-4-min.png">
+    <div class="counter" id="counter">1 of 10</div>
+    <div class="text-center">
         <div class="description">
-      For graphic design students, the space in front of the printer is often one of the most stressful places, especially during deadlines. This work started from the idea of temporarily transforming this space into a moment of meditation.
 
-Meditation is usually thought to require a quiet environment, but I wondered whether meditation is really impossible in a noisy space. Because paper is the most common material around the printer, I created a paper ASMR video and installed it next to the printer. I recorded the reactions of people passing by to explore whether a place usually filled with noise and stress can become a moment of meditation and and how the sounds we normally perceive as noise can be experienced in a different way.
+ Fake News on Facebook is a publication that collects and organizes fake news posted on Facebook. The posts contain no factual content and are categorized as left, right, or mainstream media based on political orientation. Some posts have been deleted, leaving only metadata such as when or where they were written.
 
-
+<br>
+Fake news is often removed after it has already spread widely, but the public perception it creates does not disappear easily. This publication functions not only as a collection of fake news, but also as a data archive that reveals how information is created, circulated, and removed in online spaces. By showing both the remaining data and the traces of deleted posts, the work invites readers to reconsider the reliability of the information we encounter and its influence.
         </div>
-
-
-
-
-
+    </div>
+</div>
 <script>
-
-
-const videos = [
-    "https://drive.google.com/file/d/1HrZx33UrUbTQWz3c_76N6Bmk4ojvx0Os/preview",
+const images = [
+    "fake news-4-min.png",
+    "PU5A3257-3-min.png",
+    "PU5A3260-2-min.png",
+    "PU5A3263-2-min.png",
+    "PU5A3272-min.png",
+    "PU5A3274-min.png",
+    "PU5A32789-min.png",
+    "PU5A328035-min.png",
+    "PU5A3294-min.png",
+    "PU5A32856-min.png"
+    
 ];
 
 let currentIndex = 0;
 
-const mainVideo = document.getElementById("mainVideo");
+const slideImage = document.getElementById("slideImage");
 const counter = document.getElementById("counter");
-const nextBtn = document.getElementById("nextBtn");
 
-function updateVideo() {
-    mainVideo.src = videos[currentIndex];
-    counter.textContent = (currentIndex + 1) + " of " + videos.length;
-}
+slideImage.addEventListener("click", () => {
+    currentIndex++;
+    if (currentIndex >= images.length) {
+        currentIndex = 0;
+    }
 
-function nextVideo() {
-    currentIndex = (currentIndex + 1) % videos.length;
-    updateVideo();
-}
-
-nextBtn.addEventListener("click", nextVideo);
-
-updateVideo();
+    slideImage.src = images[currentIndex];
+    counter.textContent = `${currentIndex + 1} of ${images.length}`;
+});
 </script>
 
 </body>
 </html>
+
+

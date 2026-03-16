@@ -53,16 +53,17 @@ html, body {
     background:white;
     z-index:1000;
 }
-.nav-left{
-    font-size: 25px;
-}
-.nav-right a,
-.nav-left a {
+
+ .nav-left a {
     text-decoration: none;
     color: black;
-    size: 20px;
-}
-
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    line-height: 1;
+    padding: 6px 10px;
+  }
 .detail-container {
     margin-top:120px;
     width:100%;
@@ -203,11 +204,11 @@ body.about-open .work-unit{
   transition: filter 0.3s ease, opacity 0.3s ease;
 }
   @media (max-width: 768px) {
+  
     .nav-left a {
-        font-size: 36px;
-        padding: 10px 15px;
+      font-size: 148px;
     }
-}
+  }
 </style>
 </head>
 

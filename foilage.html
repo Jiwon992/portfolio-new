@@ -54,7 +54,6 @@
     color: black;
 }
 
-/* detail-container */
 .detail-container {
     margin-top:120px;
     width:100%;
@@ -63,25 +62,29 @@
     align-items:center;
 }
 
-/* 메인 이미지 */
-.image-wrapper { width:732px; }
+.image-wrapper {
+    width:min(732px, calc(100vw - 32px));
+    margin:0 auto;
+}
+
 .image-wrapper img {
     width:100%;
     max-height:500px;
     object-fit:contain;
     cursor:pointer;
+    display:block;
 }
-
-/* counter */
 .counter {
-    margin-top:10px;
+    margin-top: 10px;
     font-family: 'Newfont4';
-    text-align:left;
-    color:gray;
+    text-align: left;
+    color: gray;
 }
 
-/* description */
-.text-center .title { font-family:'Newfont4'; font-size:20px; margin-top:20px; }
+.text-center {
+    width:100%;
+}
+
 .text-center .description {
     font-family: 'Newfont4';
     color:black;
@@ -89,11 +92,13 @@
     margin-top:10px;
     max-height:40vh;
     overflow:hidden;
+    width:100%;
 }
 
-/* ===== GRID GALLERY ===== */
+
+
 .extra-gallery {
-    width:732px;
+    width:min(732px, calc(100vw - 32px));
     margin-top:30px;
     margin-bottom:100px;
 }

@@ -7,110 +7,182 @@
   <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
   <style>
-@font-face {
-  font-family: 'Newfont';
-  src: url(MejanTimesNewRoman.ttf) format("ttf");
+  @font-face {
+  font-family: "Newfont";
+  src: url(./font/Bodoni-72.ttc#0) format("truetype");
   font-style: normal;
   font-weight: 500;
 }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body{
-      font-family: 'Newfont';
-      background: #fff;
-      color: #000;
-    }
+@font-face {
+  font-family: "Newfont1";
+  src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Newfont3";
+  src: url(./font/Garamond.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Newfont4";
+  src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
 
-   .top-nav{
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.top-nav{
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   padding: 20px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 2000;
-  font-family: 'Newfont';
+  font-family: 'Newfont4';
+  font-size: 23px;
+
+
+}
+
+.nav-left{
+  position: relative;
+  z-index: 2;
+}
+
+.nav-right{
+  display: flex;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+    font-size: 23px;
+}
+
+.nav-right a{
+  text-decoration: none;
+  white-space: nowrap;
+  color: black;
+    font-size: 23px;
+}
+
+.click-note{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Newfont4';
   font-size: 20px;
-  background: white;
+  color: blue;
+  line-height: 1.1;
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.35s ease;
+  z-index: 1;
+  pointer-events: none;
 }
 
-    .nav-right{
-      display: flex;
-      gap: 20px;
-    }
-
-    .nav-right a{
-      text-decoration: none;
-      white-space: nowrap;
-      color: black;
-    }
-
-    .page{
-      transition: filter 0.3s ease, opacity 0.3s ease;
-    }
-
-    .work-unit{
-      width: 732px;
-      margin: 150px auto 0;
-      opacity: 0;
-      transition: opacity 0.3s ease-out, filter 0.3s ease;
-      justify-content: center;
-    }
-
-    .work-unit.reveal-visible{ opacity: 1; }
-
-    .work-inner{
-      display: inline-block;
-      margin: 0 auto;
-    }
-
-    img.work{
-      display: block;
-      max-width: 100%;
-      max-height: 530px;
-      width: auto;
-      height: auto;
-      filter: grayscale(100%);
-      transition: filter 0.8s ease;
-    }
-
-    .work-unit:hover img.work{ filter: grayscale(0%); }
-
-    figcaption{
-      position: static;
-      display: block;
-      text-align: left;
-    }
-
-    .des{
-      margin-top: 10px;
-      font-family: 'Newfont';
-      color: #000;
-    }
-
-    .date{
-      margin-top: 4px;
-      font-family: 'Newfont';
-      color: grey;
-    }
-
-    .work-inner.window-only{ display:block; width:100%; }
-    .work-inner.window-only .media-center{ display:flex; justify-content:center; }
-    .work-inner.window-only figcaption{ text-align:left; }
-
-    body.overlay-open .page{
-      filter: blur(2px);
-      opacity: 0.6;
-    }
-
-
-.work-unit:last-of-type{
-  margin-bottom: 10px;
+.click-note.hide{
+  opacity: 0;
 }
+
 .page{
   transition: filter 0.3s ease, opacity 0.3s ease;
   padding-bottom: 50px;
+}
+
+.work-unit{
+  width: 732px;
+  margin: 150px auto 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-out, filter 0.3s ease;
+  justify-content: center;
+}
+
+.work-unit.reveal-visible{
+  opacity: 1;
+}
+
+.work-inner{
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.first-work-wrap{
+  width: 732px;
+  margin: 150px auto 0;
+  position: relative;
+}
+
+.first-work-unit{
+  width: 100%;
+  margin: 0;
+}
+
+img.work{
+  display: block;
+  max-width: 100%;
+  max-height: 530px;
+  width: auto;
+  height: auto;
+  filter: grayscale(100%);
+  transition: filter 0.8s ease;
+}
+
+.work-unit:hover img.work{
+  filter: grayscale(0%);
+}
+
+figcaption{
+  position: static;
+  display: block;
+  text-align: left;
+  line-height: 1.1;
+}
+
+.des{
+  font-family: 'Newfont4';
+  color: #000;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.date{
+  margin-top: 6px;
+  font-family: 'Newfont4';
+  color: grey;
+}
+
+.work-inner.window-only{
+  display:block;
+  width:100%;
+}
+
+.work-inner.window-only .media-center{
+  display:flex;
+  justify-content:center;
+}
+
+.work-inner.window-only figcaption{
+  text-align:left;
+}
+
+body.overlay-open .page{
+  filter: blur(2px);
+  opacity: 0.6;
+}
+
+.work-unit:last-of-type{
+  margin-bottom: 10px;
 }
 
 @media (hover: none) and (pointer: coarse) {
@@ -118,32 +190,46 @@
     filter: grayscale(0%);
   }
 }
-    @media (max-width:700px){
 
-  /* 메뉴 숨김 */
+@media (max-width:800px){
+
   .nav-right{
     display:none;
   }
 
-  /* 상단 이름만 중앙 */
   .top-nav{
     justify-content:center;
     padding:12px 0;
     font-size:18px;
   }
 
-  /* 이미지 영역 */
+  .nav-left{
+    position: relative;
+    z-index: 2;
+  }
+
+  .click-note{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+  }
+
   .work-unit{
     width:100%;
     margin:18px 0 0 0;
     padding:0;
   }
 
+  .first-work-wrap{
+    width:100%;
+    margin:18px 0 0 0;
+  }
+
   .work-inner{
     width:100%;
   }
 
-  /* 이미지 화면 꽉 */
   img.work{
     width:100%;
     height:auto;
@@ -152,11 +238,9 @@
     filter:none;
   }
 
-  /* 캡션 */
   figcaption{
     padding:8px 12px 0 12px;
   }
-
 }
   </style>
 </head>
@@ -165,22 +249,25 @@
 
   <header class="top-nav">
     <div class="nav-left">Jiwon Kim</div>
+    <div class="click-note" id="clickNote">click images to view more</div>
     <div class="nav-right">
-        <a href="index.html">Works</a>
+      <a href="index.html">Works</a>
       <a href="about.html">About</a>
     </div>
   </header>
 
   <div class="page">
-      <figure class="work-unit">
-      <div class="work-inner">
-        <a href="perspective transition.html">
-          <img src="7M4A2297-2-3.jpg" class="work">
-        </a>
-        <figcaption class="des">Perspective Transition</figcaption>
-        <figcaption class="date">publication, 2025</figcaption>
-      </div>
-    </figure>
+    <div class="first-work-wrap">
+      <figure class="work-unit first-work-unit">
+        <div class="work-inner">
+          <a href="perspective transition.html">
+            <img src="7M4A2297-2-3.jpg" class="work" id="firstWorkImage">
+          </a>
+          <figcaption class="des">Perspective Transition</figcaption>
+          <figcaption class="date">publication, 2025</figcaption>
+        </div>
+      </figure>
+    </div>
     
     <figure class="work-unit">
       <div class="work-inner">
@@ -197,7 +284,7 @@
         <a href="foilage.html">
           <img src="foliagebigimage.png" class="work">
         </a>
-        <figcaption class="des">Foliege</figcaption>
+        <figcaption class="des">Foliage</figcaption>
         <figcaption class="date">photo series, 2025</figcaption>
       </div>
     </figure>
@@ -212,7 +299,6 @@
       </div>
     </figure>
 
-
     <figure class="work-unit">
       <div class="work-inner">
         <a href="Graphic scores.html">
@@ -222,6 +308,7 @@
         <figcaption class="date">publication, 2024</figcaption>
       </div>
     </figure>
+
     <figure class="work-unit">
       <div class="work-inner window-only">
         <div class="media-center">
@@ -244,7 +331,7 @@
       </div>
     </figure>
 
-     <figure class="work-unit">
+    <figure class="work-unit">
       <div class="work-inner window-only">
         <div class="media-center">
           <a href="meditation.html">
@@ -257,11 +344,11 @@
     </figure>
   </div>
 
-
-  <script>
+ <script>
 window.addEventListener('DOMContentLoaded', () => {
-  /* fade-in */
   const units = document.querySelectorAll('.work-unit');
+  const images = document.querySelectorAll('.work');
+  const clickNote = document.getElementById('clickNote');
 
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
@@ -274,7 +361,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
   units.forEach(unit => observer.observe(unit));
 
-  
+  images.forEach(img => {
+    img.addEventListener('mouseenter', () => {
+      clickNote.classList.add('hide');
+    });
+
+    img.addEventListener('mouseleave', () => {
+      clickNote.classList.remove('hide');
+    });
+  });
 });
 </script>
 

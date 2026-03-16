@@ -5,24 +5,30 @@
 <title>Meditaiton</title>
 
 <style>
-@font-face {
-    font-family: 'Life';
-    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
-    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'),
-         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'),
-         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+   @font-face {
+  font-family: "Newfont";
+  src: url(./font/Bodoni-72.ttc#0) format("truetype");
+  font-style: normal;
+  font-weight: 500;
 }
 
 @font-face {
-    font-family: 'Life';
-    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.ttf?v=162763466313126598491770164188');
-    src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.eot?%23iefix&v=36830789672214481861770164188') format('embedded-opentype'),
-         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff?v=164715903325973277161770164188') format('woff'),
-         url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff2?v=157444114806194521391770164188') format('woff2');
-    font-weight: normal;
-    font-style: italic;
+  font-family: "Newfont1";
+  src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Newfont3";
+  src: url(./font/Garamond.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Newfont4";
+  src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
 }
 
 * {
@@ -41,85 +47,120 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Life','Regular';
+    font-family: 'Newfont4';
     font-size: 20px;
-    background: white;
     z-index: 1000;
 }
 
-.nav-right {
-    display: flex;
-    gap: 20px;
-}
-
-.nav-right a,
 .nav-left a {
     text-decoration: none;
     color: black;
 }
 
-/* 슬라이드 영역 */
+/* 전체 영역 */
 .detail-container {
-    margin-top: 120px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column; /* 세로 정렬 */
-    align-items: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 90px 20px 30px 20px;
+}
+/* 영상 + 카운터 + 설명을 한 폭으로 묶음 */
+.content-wrap {
+    width: 732px;
 }
 
-
+/* 영상 */
 .image-wrapper {
+    position: relative;
     width: 732px;
     height: 500px;
 }
 
-.image-wrapper video {
-    width: 732px;
-   height: 500px; /* 화면 높이에 맞추기 */
-   object-fit: cover;
-}
 .image-wrapper iframe {
     width: 732px;
     height: 500px;
     border: none;
+    display: block;
+    background: black;
 }
+
+.next-button {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.55);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    user-select: none;
+
+    /* 기본 상태 숨김 */
+    opacity: 0;
+    transition: opacity 0.25s ease, background 0.2s ease;
+}
+
+/* 영상에 hover 하면 나타남 */
+.image-wrapper:hover .next-button {
+    opacity: 1;
+}
+
+.next-button:hover {
+    background: rgba(0,0,0,0.75);
+}
+
 /* 카운터 */
 .counter {
     margin-top: 10px;
-    font-family: 'Life','Italic';
+    font-family: 'Newfont4';
     text-align: left;
     color: gray;
 }
 
-.text-box {
-    width: 586px;
-    height: auto;
-    margin: 30px auto 0 auto;   /* 가운데 정렬 */
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;    /* 세로 가운데 */
-    align-items: center;        /* 가로 가운데 */
-    margin-top: 20px;
-}
-
 /* 타이틀 */
 .text-center .title {
-    font-family: 'Life','Regular';
+    font-family: 'Newfont4';
     font-size: 20px;
     margin-top:20px;
 }
 
 /* 설명 */
 .text-center .description {
-    font-family: 'Life','Regular';
+    font-family: 'Newfont4';
     color: black;
     font-size: 14px;
     margin-top: 10px;
     max-height: 40vh;       /* 화면 높이에 맞춰 텍스트 높이 제한 */
     overflow: hidden;       /* 넘치는 텍스트 숨김 */
 }
+
+/* 모바일 */
+@media (max-width: 800px) {
+    .content-wrap {
+        width: 90vw;
+    }
+
+    .image-wrapper {
+        width: 90vw;
+        height: calc(90vw * 500 / 732);
+    }
+
+    .image-wrapper iframe {
+        width: 100%;
+        height: 100%;
+    }
+
+    .description {
+        width: 100%;
+    }
+} 
 </style>
 </head>
 
@@ -127,38 +168,61 @@
 
 <header class="top-nav">
     <div class="nav-left">
-        <a href="#" onclick="history.back(); return false;">← Back</a>
+        <a href="#" onclick="history.back(); return false;">←</a>
     </div>
 </header>
-
 <div class="detail-container">
-       <div class="image-wrapper">
-    <iframe
-        src="https://drive.google.com/file/d/1HrZx33UrUbTQWz3c_76N6Bmk4ojvx0Os/preview"
-        width="732"
-        height="500"
-        allow="autoplay">
-    </iframe>
+    <div class="content-wrap">
 
-    <div class="counter" id="counter">1 of 1</div>
+        <div class="image-wrapper">
+            <iframe
+                id="mainVideo"
+                src="https://drive.google.com/file/d/1HrZx33UrUbTQWz3c_76N6Bmk4ojvx0Os/preview"
+                allow="autoplay">
+            </iframe>
 
-    <div class="text-center">
-        <div class="title"></div>
+        </div>
 
+        <div class="counter" id="counter">1 of 1</div>
+ <div class="text-center">
         <div class="description">
-For graphic design students, the space in front of the printer is often one of the most stressful places, especially during deadlines. This work started from the idea of temporarily transforming this space into a moment of meditation.
+      For graphic design students, the space in front of the printer is often one of the most stressful places, especially during deadlines. This work started from the idea of temporarily transforming this space into a moment of meditation.
 
 Meditation is usually thought to require a quiet environment, but I wondered whether meditation is really impossible in a noisy space. Because paper is the most common material around the printer, I created a paper ASMR video and installed it next to the printer. I recorded the reactions of people passing by to explore whether a place usually filled with noise and stress can become a moment of meditation and and how the sounds we normally perceive as noise can be experienced in a different way.
-</div>
+
+
+        </div>
+
+
+
+
 
 <script>
-const images = [
-    "Sequence 01_1 2.mp4"
+
+
+const videos = [
+    "https://drive.google.com/file/d/1HrZx33UrUbTQWz3c_76N6Bmk4ojvx0Os/preview",
 ];
 
 let currentIndex = 0;
 
+const mainVideo = document.getElementById("mainVideo");
 const counter = document.getElementById("counter");
+const nextBtn = document.getElementById("nextBtn");
+
+function updateVideo() {
+    mainVideo.src = videos[currentIndex];
+    counter.textContent = (currentIndex + 1) + " of " + videos.length;
+}
+
+function nextVideo() {
+    currentIndex = (currentIndex + 1) % videos.length;
+    updateVideo();
+}
+
+nextBtn.addEventListener("click", nextVideo);
+
+updateVideo();
 </script>
 
 </body>

@@ -6,108 +6,153 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-@font-face{
-  font-family:'Life';
-  src:url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
-  src:url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'),
-      url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'),
-      url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
-  font-weight: normal;
+@font-face {
+  font-family: "Newfont";
+  src: url(./font/Bodoni-72.ttc#0) format("truetype");
   font-style: normal;
+  font-weight: 500;
 }
 
-*{ box-sizing:border-box; margin:0; padding:0; }
-
-body{
-  font-family:'Life','Regular';
-  color:#000;
-  background:#fff;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+@font-face {
+  font-family: "Newfont1";
+  src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
 }
 
-/* ===== NAV (메인과 동일) ===== */
+@font-face {
+  font-family: "Newfont3";
+  src: url(./font/Garamond.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Newfont4";
+  src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: black;
+  font-family: "Newfont4";
+}
+
 .top-nav{
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   padding: 20px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000;
-  font-family:'Life','Regular';
-  font-size: 20px;
+  z-index: 2000;
+  font-family: 'Newfont4';
+  font-size: 23px;
   background: white;
 }
 
+.nav-left a{
+  text-decoration: none;
+  color: black;
+  font-family: "Newfont4";
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1;
+}
+
 .nav-right{
-  display:flex;
-  gap:20px;
+  display: flex;
+  gap: 22px;
 }
 
 .nav-right a{
-  text-decoration:none;
-  white-space:nowrap;
-  color:black;   /* 스크린샷처럼 링크 파란색이면 */
+  text-decoration: none;
+  color: black;
+  font-family: "Newfont4";
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1;
 }
 
-/* ===== CONTENT ===== */
-.about-wrap{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.about-page{
+  padding: 68px 20px 40px 20px;
 }
 
-.about-row{
-  display:flex;
-  align-items:flex-end;   /* 텍스트 아래 맞춤 */
-  gap:20px;
-}
-/* 사진 */
-.about-photo{
-  width: 130px;             /* 스크린샷 비슷 */
-  height: auto;
-  display:block;
-  
+.about-content{
+  width: 100%;
+  max-width: 780px;
 }
 
-/* 텍스트 */
-.about-text{
+.contact-block{
+  font-family: "Newfont4";
   font-size: 14px;
-  align-items: flex-end;
-  line-height:1.4;
-
+  line-height: 1.35;
+    color:gray;
 }
 
-/* 그룹 사이 간격 (국가/번호/메일/인스타) */
-.about-group{
-  margin-top: 7px;
+.contact-block .spacer{
+  height: 10px;
+  color:gray;
 }
 
-.about-text a{
-  color:#000;
-  text-decoration:none;
-  align-items: flex-end;
-  
-}
-.about-text a:hover{ opacity:0.6; }
-
-.email{
-  margin-top:6px;
+.contact-block a{
+  color:gray;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-/* 모바일 */
-@media (max-width: 520px){
-  .about-row{
-    flex-direction: column;
-    gap: 14px;
-    padding-left: 20px;
+.bio{
+  margin-top: 20px;
+  max-width: 760px;
+  font-family: "Newfont4";
+  font-size: 17px;
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+}
+
+.bio a{
+  color: grey;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 900px){
+  .top-nav{
+    padding: 20px 18px 0 18px;
   }
-  .about-photo{ width: 160px; }
+
+  .nav-left a,
+  .nav-right a{
+    font-size: 20px;
+  }
+
+  .nav-right{
+    gap: 16px;
+  }
+
+  .about-page{
+    padding: 62px 18px 32px 18px;
+  }
+
+  .contact-block{
+    font-size: 16px;
+  }
+
+  .bio{
+    margin-top: 28px;
+    font-size: 18px;
+    line-height: 1.42;
+    max-width: 100%;
+  }
 }
 </style>
 </head>
@@ -115,36 +160,44 @@ body{
 <body>
 
 <header class="top-nav">
-  <div class="nav-left">JIWON KIM</div>
+  <div class="nav-left">
+    <a href="index.html">Jiwon Kim</a>
+  </div>
+
   <div class="nav-right">
     <a href="index.html">Works</a>
     <a href="about.html">About</a>
-    
   </div>
 </header>
 
-<div class="about-wrap">
-  <div class="about-row">
+<main class="about-page">
+  <div class="about-content">
 
-    <img src="jiwon.jpg" alt="Jiwon Kim portrait" class="about-photo">
-
-    <div class="about-text">
+    <div class="contact-block">
       Amsterdam, Netherlands<br>
-      Seoul, South Korea
+      Seoul, Korea
 
-      <div class="about-group">
-        (31) 6 20 61 47 99<br>
-        (82) 10 7628 8209<br>
+      <div class="spacer"></div>
 
-        <div class="email">
-        <a href="mailto:jiwongim992@gmail.com">jiwongim992@gmail.com</a><br>
-        <a href="https://www.instagram.com/follownazar/" target="_blank" rel="noopener">instagram</a>
-        </div>
-      </div>
+      (82)10-7628-8209<br>
+      (31) 6 20 61 47 99
+
+      <div class="spacer"></div>
+
+      <a href="mailto:jiwongim992@gmail.com">jiwongim992@gmail.com</a><br>
+      <a href="https://www.instagram.com/_jiwonkm/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+
+    <div class="bio">
+   Jiwon Kim is a designer currently studying Graphic Design at ArtEZ University of the Arts in the Netherlands. Her work explores experimental graphic design through research on materiality, structure, and visual perception. 
+
+<br><br>Much of her work centers around printed matter, but she approaches the book not simply as a container of content. Through experiments with binding and printing techniques such as stitching binding, Japanese folding, and puff-ink silkscreen, she investigates how the form and structure of a medium can influence the way people read and experience information. Her work often expands beyond printed matter into objects, video, and spatial experiences.
+
+<br><br>Her practice is driven by research and experimentation, exploring how graphic design can shape the way people read, see, and experience information across different media.
     </div>
 
   </div>
-</div>
+</main>
 
 </body>
 </html>

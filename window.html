@@ -2,41 +2,53 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Fake news on facebook</title>
+<title>window</title>
+
 <style>
   @font-face {
-  font-family: "Newfont";
-  src: url(./font/Bodoni-72.ttc#0) format("truetype");
-  font-style: normal;
-  font-weight: 500;
-}
+    font-family: "Newfont";
+    src: url(./font/Bodoni-72.ttc#0) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
 
-@font-face {
-  font-family: "Newfont1";
-  src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
-  font-style: normal;
-  font-weight: 500;
-}
-@font-face {
-  font-family: "Newfont3";
-  src: url(./font/Garamond.ttf) format("truetype");
-  font-style: normal;
-  font-weight: 500;
-}
-@font-face {
-  font-family: "Newfont4";
-  src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
-  font-style: normal;
-  font-weight: 500;
-}
-* {
+  @font-face {
+    font-family: "Newfont1";
+    src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Newfont3";
+    src: url(./font/Garamond.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Newfont4";
+    src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
+  }
 
-/* 상단 네비게이션 */
-.top-nav {
+  html, body {
+    width: 100%;
+    min-height: 100%;
+  }
+
+  body {
+    background: white;
+  }
+
+  .top-nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -49,7 +61,13 @@
     font-size: 20px;
     background: white;
     z-index: 1000;
-}
+  }
+
+  .nav-right {
+    display: flex;
+    gap: 20px;
+  }
+
 
  .nav-left a {
     text-decoration: none;
@@ -62,62 +80,48 @@
     padding: 6px 10px;
   }
 
-/* 슬라이드 영역 */
-.detail-container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 90px 20px 30px 20px;
-}
+  .detail-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 90px 20px 30px 20px;
+  }
 
-.image-wrapper {
+ .image-wrapper {
     width: 732px;
-          cursor:pointer; /* 메인 작업 이미지 폭과 동일 */
 }
 
-.image-wrapper img {
+/* graphic score와 동일한 비율 프레임 */
+.media-frame {
     width: 100%;
-    max-height: 500px; /* 화면 높이에 맞추기 */
-    object-fit: contain;
-          cursor:pointer; /* 비율 유지 */
+    aspect-ratio: 732 / 500;
+    overflow: hidden;
 }
 
-.counter {
+/* 비디오를 프레임에 맞게 채움 */
+.media-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+  .counter {
     margin-top: 10px;
     font-family: 'Newfont4';
     text-align: left;
     color: gray;
-}
-/* description 박스 */
-.text-box {
-    width: 586px;
-    height: auto;
-    margin: 30px auto 0 auto;   /* 가운데 정렬 */
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;    /* 세로 가운데 */
-    align-items: center;        /* 가로 가운데 */
-    margin-top: 20px;
-}
+  }
 
-/* 타이틀 */
-.text-center .title {
-    font-family: 'Newfont4';
-    font-size: 20px;
-    margin-top:20px;
-}
-
-/* 설명 */
-.text-center .description {
+  .text-center .description {
     font-family: 'Newfont4';
     color: black;
     font-size: 14px;
     margin-top: 10px;
-    max-height: 40vh;       /* 화면 높이에 맞춰 텍스트 높이 제한 */
-    overflow: hidden;       /* 넘치는 텍스트 숨김 */
-}
+    max-height: 40vh;
+    overflow: hidden;
+    
+  }
    @media (max-width: 768px) {
   
     .nav-left a {
@@ -128,59 +132,37 @@
 </head>
 
 <body>
-
-<header class="top-nav">
+  <header class="top-nav">
     <div class="nav-left">
-        <a href="#" onclick="history.back(); return false;">←</a>
+      <a href="#" onclick="history.back(); return false;">←</a>
     </div>
-</header>
+  </header>
 
-<div class="detail-container">
-<div class="image-wrapper">
-    <img id="slideImage" src="fake news-4-min.png">
-    <div class="counter" id="counter">1 of 10</div>
-    <div class="text-center">
+  <div class="detail-container">
+    <div class="image-wrapper">
+      <div class="media-frame">
+        <video autoplay muted loop playsinline>
+          <source src="window.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="counter" id="counter">1 of 1</div>
+
+      <div class="text-center">
         <div class="description">
-
- Fake News on Facebook is a publication that collects and organizes fake news posted on Facebook. The posts contain no factual content and are categorized as left, right, or mainstream media based on political orientation. Some posts have been deleted, leaving only metadata such as when or where they were written.
-
-<br>
-Fake news is often removed after it has already spread widely, but the public perception it creates does not disappear easily. This publication functions not only as a collection of fake news, but also as a data archive that reveals how information is created, circulated, and removed in online spaces. By showing both the remaining data and the traces of deleted posts, the work invites readers to reconsider the reliability of the information we encounter and its influence.
+          Raining is a window installation that visualizes the sadness that appears when losing someone I love.
+          The text printed on the window with silkscreen reflects a personal experience of losing my grandmother.
+          Because the text is printed directly on the glass, so when it rains, the letters blur, flows, and it slowly disappears.
+          The letters that fall off the paint visually express the feeling of falling apart by myself, like a moment when I can no longer hold onto a loved one after losing it.
         </div>
+      </div>
     </div>
-</div>
-<script>
-const images = [
-    "fake news-4-min.png",
-    "PU5A3257-3-min.png",
-    "PU5A3260-2-min.png",
-    "PU5A3263-2-min.png",
-    "PU5A3272-min.png",
-    "PU5A3274-min.png",
-    "PU5A32789-min.png",
-    "PU5A328035-min.png",
-    "PU5A3294-min.png",
-    "PU5A32856-min.png"
-    
-];
+  </div>
 
-let currentIndex = 0;
-
-const slideImage = document.getElementById("slideImage");
-const counter = document.getElementById("counter");
-
-slideImage.addEventListener("click", () => {
-    currentIndex++;
-    if (currentIndex >= images.length) {
-        currentIndex = 0;
-    }
-
-    slideImage.src = images[currentIndex];
-    counter.textContent = `${currentIndex + 1} of ${images.length}`;
-});
-</script>
-
+  <script>
+    const images = ["window.mp4"];
+    let currentIndex = 0;
+    const counter = document.getElementById("counter");
+  </script>
 </body>
 </html>
-
-

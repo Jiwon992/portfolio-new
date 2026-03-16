@@ -5,21 +5,31 @@
 <title>Fake news on facebook</title>
 
 <style>
-       @font-face {
-        font-family: 'Life';
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.ttf?v=124420307790299199351770164188');
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.eot?%23iefix&v=163054127475779477521770164188') format('embedded-opentype'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff?v=66292042991132316961770164188') format('woff'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Regular.woff2?v=97767031032572429991770164188') format('woff2');
-        font-weight: normal;
-        font-style: normal;
-    }
+  @font-face {
+  font-family: "Newfont";
+  src: url(./font/Bodoni-72.ttc#0) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
 
-    @font-face {
-        font-family: 'Life';
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.ttf?v=162763466313126598491770164188');
-        src: url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.eot?%23iefix&v=36830789672214481861770164188') format('embedded-opentype'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff?v=164715903325973277161770164188') format('woff'), url('//in-other-words.co.uk/cdn/shop/t/11/assets/LifeEF-Italic.woff2?v=157444114806194521391770164188') format('woff2');
-        font-weight: normal;
-        font-style: italic;
-    }
+@font-face {
+  font-family: "Newfont1";
+  src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Newfont3";
+  src: url(./font/Garamond.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Newfont4";
+  src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
 * { box-sizing: border-box; margin:0; padding:0; }
 
 /* 상단 네비 */
@@ -32,14 +42,18 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
-    font-family:'Life','Regular';
+    font-family: 'Newfont4';
     font-size:20px;
     background:white;
     z-index:1000;
 }
 
-.nav-right { display:flex; gap:20px; }
-.nav-right a { text-decoration:none; color:black; }
+.nav-right a,
+.nav-left a {
+    text-decoration: none;
+    color: black;
+    size: 20px;
+}
 
 /* detail-container */
 .detail-container {
@@ -48,6 +62,24 @@
     display:flex;
     flex-direction:column;
     align-items:center;
+}
+
+
+
+.click-note{
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  font-family: 'Newfont4';
+  font-size: 20px;
+  color: blue;
+  line-height: 1.1;
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.35s ease;
+  z-index: 1001;
+  pointer-events: none;
 }
 
 /* 메인 이미지 */
@@ -62,15 +94,15 @@
 /* counter */
 .counter {
     margin-top:10px;
-    font-family:'Life','Italic';
+    font-family: 'Newfont4';
     text-align:left;
     color:gray;
 }
 
 /* description */
-.text-center .title { font-family:'Life','Regular'; font-size:20px; margin-top:20px; }
+.text-center .title {     font-family: 'Newfont4';; font-size:20px; margin-top:20px; }
 .text-center .description {
-    font-family:'Life','Regular';
+    font-family: 'Newfont4';
     color:black;
     font-size:14px;
     margin-top:10px;
@@ -152,7 +184,15 @@
 }
 .lightbox-prev { left:20px; }
 .lightbox-next { right:20px; }
+.cursor-down,
+.cursor-down * {
+  cursor: s-resize !important;
+}
 
+.cursor-up,
+.cursor-up * {
+  cursor: n-resize !important;
+}
 </style>
 </head>
 
@@ -161,17 +201,15 @@
 <!-- --- 상단 네비게이션 --- -->
 <header class="top-nav">
     <div class="nav-left">
-        <a href="#" onclick="history.back(); return false;">← Back</a>
+        <a href="#" onclick="history.back(); return false;">←</a>
     </div>
 </header>
-  </header>
-  
 <div class="detail-container">
+
     <div class="image-wrapper">
         <img id="slideImage" src="Scan 7-min.jpg">
-        <div class="counter" id="counter">1 of 19</div>
+        <div class="counter" id="counter">1 of 10</div>
         <div class="text-center">
-            <div class="title"></div>
             <div class="description">The Lovers is a reinterpreted magazine by Another Magazine. The Lovers explores the theme of love from multiple perspectives and consists of three sections: Art Lovers, Pop Culture & Lovers, and Fashion Lovers and each section explores the meaning and form of love through different areas of art, pop culture, and fashion. Throughout the magazine, personal ads of graphic design students looking for partners are embedded between the pages. These ads are organized in a form that rips some pages of the magazine, allowing the reader to physically experience the magazine and discover love-seeking messages.</div>
         </div>
     </div>
@@ -212,7 +250,7 @@
 
 <script>
 /* ====== MAIN IMAGE SLIDER ====== */
-const images = [ "Scan 7-min.jpg", "Scan 11-min.png", "Scan 21-min.png", "Scan 12-min.png", "Scan 14.jpg", "Scan 13.jpg", "Scan 15.jpg", "Scan 18-min.png", "Scan 19.jpg","scan5.jpg", "Scan 16.jpg", "Scan 27-min.png", "Scan 28-min.png", "Scan 31-min.png", "Scan 23-min.png", "Scan 22-min.png", "Scan 30.jpg", "Scan 32-min.png", "Scan 33.jpg", ];
+const images = [ "Scan 7-min.jpg", "Scan 11-min.png", "Scan 21-min.png", "Scan 12-min.png", "Scan 14.jpg", "Scan 15.jpg","Scan 16.jpg", "Scan 27-min.png", "Scan 32-min.png"];
 let currentIndex = 0;
 const slideImage = document.getElementById("slideImage");
 const counter = document.getElementById("counter");
@@ -308,6 +346,25 @@ document.addEventListener("keydown", e=>{
         if(e.key==="ArrowLeft") showPrev();
     }
 });
+function updateCursorDirection() {
+
+  const scrollTop = window.scrollY;
+  const atBottom = window.innerHeight + scrollTop >= document.body.scrollHeight - 10;
+
+  if (atBottom) {
+    document.body.style.cursor = "n-resize";
+  } 
+  else if (scrollTop > 80) {
+    document.body.style.cursor = "n-resize";
+  } 
+  else {
+    document.body.style.cursor = "s-resize";
+  }
+
+}
+
+window.addEventListener("scroll", updateCursorDirection);
+window.addEventListener("load", updateCursorDirection);
  
 </script>
 

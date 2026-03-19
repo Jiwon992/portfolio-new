@@ -249,7 +249,7 @@ body.about-open .work-unit{
   .text-center .description {
     font-family: 'Newfont4';
     color: black;
-    font-size: 14px;
+    font-size: 10px;
     margin-top: 10px;
     line-height: normal;
     max-height: none;
@@ -276,8 +276,9 @@ body.about-open .work-unit{
     transition: transform 0.8s ease-in-out;
   }
 
-  .grid-page {
+.grid-page {
     flex: 0 0 100%;
+    width: 100%;
     min-width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -285,7 +286,7 @@ body.about-open .work-unit{
     gap: 10px;
     padding-right: 0;
     box-sizing: border-box;
-  }
+}
 
   .grid-page img {
     width: 100%;
@@ -379,10 +380,13 @@ slideImage.addEventListener("click", () => {
 
 /* ====== GRID SLIDER (한 방향 루프) ====== */
 const gridGallery = document.getElementById("gridGallery");
+const gridWrapper = document.querySelector(".grid-gallery-wrapper");
 let pages = document.querySelectorAll(".grid-page");
 let currentPage = 0;
 let autoSlide;
 const slideSpeed = 3000;
+
+
 
 /* 첫 페이지 복제 (무한루프용) */
 const firstClone = pages[0].cloneNode(true);
@@ -392,9 +396,14 @@ const totalPages = pages.length;
 
 function updateSlide() {
     gridGallery.style.transition = "transform 0.8s ease-in-out";
-    gridGallery.style.transform = `translateX(-${currentPage * 100}%)`;
-}
 
+    if (window.innerWidth <= 800) {
+        const slideWidth = gridWrapper.clientWidth;
+        gridGallery.style.transform = `translateX(-${currentPage * slideWidth}px)`;
+    } else {
+        gridGallery.style.transform = `translateX(-${currentPage * 100}%)`;
+    }
+}
 function startAutoSlide() {
     autoSlide = setInterval(() => {
         currentPage++;
@@ -407,13 +416,28 @@ gridGallery.addEventListener("transitionend", () => {
     if (currentPage === totalPages - 1) {
         gridGallery.style.transition = "none";
         currentPage = 0;
-        gridGallery.style.transform = `translateX(0)`;
+
+        if (window.innerWidth <= 800) {
+            gridGallery.style.transform = `translateX(0px)`;
+        } else {
+            gridGallery.style.transform = `translateX(0)`;
+        }
+
         setTimeout(() => {
             gridGallery.style.transition = "transform 0.8s ease-in-out";
         }, 20);
     }
 });
-
+window.addEventListener("resize", () => {
+    if (window.innerWidth <= 800) {
+        const slideWidth = gridWrapper.clientWidth;
+        gridGallery.style.transition = "none";
+        gridGallery.style.transform = `translateX(-${currentPage * slideWidth}px)`;
+    } else {
+        gridGallery.style.transition = "none";
+        gridGallery.style.transform = `translateX(-${currentPage * 100}%)`;
+    }
+});
 startAutoSlide();
 function stopAutoSlide(){ clearInterval(autoSlide); }
 

@@ -202,12 +202,14 @@ body.about-open .work-unit{
   .top-nav {
     padding: 20px 18px 0 18px;
     font-size: 16px;
+    color: black;
   }
 
   .nav-left a {
     font-size: 16px;
     padding: 0;
     line-height: 1;
+    color: black;
   }
 
   .detail-container {
@@ -234,49 +236,61 @@ body.about-open .work-unit{
   }
 
   .counter {
-    margin-top: 8px;
-    font-size: 16px;
-    line-height: 1.1;
+    margin-top: 10px;
+    font-family: 'Newfont4';
+    text-align: left;
+    color: gray;
   }
 
   .text-center {
     width: 100%;
-    max-width: 100%;
   }
 
   .text-center .description {
-    width: 100%;
-    max-width: 560px;
+    font-family: 'Newfont4';
+    color: black;
+    font-size: 14px;
     margin-top: 10px;
-    font-size: 13px;
-    line-height: 1.42;
+    line-height: normal;
     max-height: none;
     overflow: visible;
+    width: 100%;
   }
 
   .extra-gallery {
     width: 100%;
     max-width: 100%;
-    margin-top: 24px;
+    margin-top: 30px;
     margin-bottom: 60px;
   }
 
   .grid-gallery-wrapper {
     width: 100%;
     overflow: hidden;
+    position: relative;
+  }
+
+  .grid-gallery {
+    display: flex;
+    width: 100%;
+    transition: transform 0.8s ease-in-out;
   }
 
   .grid-page {
     flex: 0 0 100%;
+    min-width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 모바일에서도 구조 유지 */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
     gap: 10px;
     padding-right: 0;
+    box-sizing: border-box;
   }
 
   .grid-page img {
     width: 100%;
     display: block;
+    cursor: pointer;
   }
 
   .lightbox-btn {

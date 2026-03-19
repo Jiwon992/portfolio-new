@@ -40,6 +40,10 @@
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   color: black;
   font-family: "Newfont4";
@@ -84,7 +88,11 @@ body {
 }
 
 .about-page{
-  padding: 68px 20px 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 .about-content{
@@ -96,16 +104,15 @@ body {
   font-family: "Newfont4";
   font-size: 14px;
   line-height: 1.35;
-    color:gray;
+  color: gray;
 }
 
 .contact-block .spacer{
   height: 10px;
-  color:gray;
 }
 
 .contact-block a{
-  color:gray;
+  color: gray;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -140,7 +147,11 @@ body {
   }
 
   .about-page{
-    padding: 62px 18px 32px 18px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
   }
 
   .contact-block{
@@ -172,30 +183,18 @@ body {
 
 <main class="about-page">
   <div class="about-content">
-
     <div class="contact-block">
-      Amsterdam, Netherlands<br>
-      Seoul, Korea
-
-      <div class="spacer"></div>
-
-      (82)10-7628-8209<br>
-      (31) 6 20 61 47 99
-
-      <div class="spacer"></div>
-
       <a href="mailto:jiwongim992@gmail.com">jiwongim992@gmail.com</a><br>
-      <a href="https://www.instagram.com/_jiwonkm/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.instagram.com/_jiwonkm/" target="_blank" rel="noopener">@_jiwonkm</a>
     </div>
 
     <div class="bio">
-   Jiwon Kim is a designer currently studying Graphic Design at ArtEZ University of the Arts in the Netherlands. Her work explores experimental graphic design through research on materiality, structure, and visual perception. 
+      Jiwon Kim is a designer currently studying Graphic Design at ArtEZ University of the Arts in the Netherlands. Her work explores experimental graphic design through research on materiality, structure, and visual perception.
 
-<br><br>Much of her work centers around printed matter, but she approaches the book not simply as a container of content. Through experiments with binding and printing techniques such as stitching binding, Japanese folding, and puff-ink silkscreen, she investigates how the form and structure of a medium can influence the way people read and experience information. Her work often expands beyond printed matter into objects, video, and spatial experiences.
+      <br><br>Much of her work centers around printed matter, but she approaches the book not simply as a container of content. Through experiments with binding and printing techniques such as stitching binding, Japanese folding, and puff-ink silkscreen, she investigates how the form and structure of a medium can influence the way people read and experience information. Her work often expands beyond printed matter into objects, video, and spatial experiences.
 
-<br><br>Her practice is driven by research and experimentation, exploring how graphic design can shape the way people read, see, and experience information across different media.
+      <br><br>Her practice is driven by research and experimentation, exploring how graphic design can shape the way people read, see, and experience information across different media.
     </div>
-
   </div>
 </main>
 

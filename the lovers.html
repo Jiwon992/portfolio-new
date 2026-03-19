@@ -142,7 +142,14 @@ html, body {
 }
 
 /* 반응형 */
+@media (max-width:760px) {
+    .extra-gallery { width:90%; }
+    .grid-page { grid-template-columns: repeat(2,1fr); }
+}
 
+@media (max-width:500px) {
+    .grid-page { grid-template-columns:1fr; }
+}
 
 /* LIGHTBOX */
 .lightbox {
@@ -197,115 +204,12 @@ body.about-open .work-unit{
 .work-unit{
   transition: filter 0.3s ease, opacity 0.3s ease;
 }
-@media (max-width: 800px) {
-
-  .top-nav {
-    padding: 20px 18px 0 18px;
-    font-size: 16px;
-    color: black;
+  @media (max-width: 768px) {
+  
+    .nav-left a {
+      font-size: 148px;
+    }
   }
-
-  .nav-left a {
-    font-size: 16px;
-    padding: 0;
-    line-height: 1;
-    color: black;
-  }
-
-  .detail-container {
-    margin-top: 0;
-    padding: 96px 18px 40px 18px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .image-wrapper {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-
-  .image-wrapper img {
-    width: 100%;
-    height: auto;
-    max-height: none;
-    object-fit: contain;
-    display: block;
-  }
-
-  .counter {
-    margin-top: 10px;
-    font-family: 'Newfont4';
-    text-align: left;
-    color: gray;
-  }
-
-  .text-center {
-    width: 100%;
-  }
-
-  .text-center .description {
-    font-family: 'Newfont4';
-    color: black;
-    font-size: 14px;
-    margin-top: 10px;
-    line-height: normal;
-    max-height: none;
-    overflow: visible;
-    width: 100%;
-  }
-
-  .extra-gallery {
-    width: 100%;
-    max-width: 100%;
-    margin-top: 30px;
-    margin-bottom: 60px;
-  }
-
-  .grid-gallery-wrapper {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .grid-gallery {
-    display: flex;
-    width: 100%;
-    transition: transform 0.8s ease-in-out;
-  }
-
-  .grid-page {
-    flex: 0 0 100%;
-    min-width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, auto);
-    gap: 10px;
-    padding-right: 0;
-    box-sizing: border-box;
-  }
-
-  .grid-page img {
-    width: 100%;
-    display: block;
-    cursor: pointer;
-  }
-
-  .lightbox-btn {
-    font-size: 28px;
-    padding: 12px;
-  }
-
-  .lightbox-prev {
-    left: 6px;
-  }
-
-  .lightbox-next {
-    right: 6px;
-  }
-}
 </style>
 </head>
 

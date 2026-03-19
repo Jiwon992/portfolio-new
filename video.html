@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
 <title>video</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
@@ -153,13 +153,31 @@
 
 /* 모바일 */
 @media (max-width: 800px) {
+    .top-nav {
+        padding: 20px 18px 0 18px;
+        font-size: 16px;
+    }
+
+    .nav-left a {
+        font-size: 16px;
+        padding: 0;
+        line-height: 1;
+    }
+
+    .detail-container {
+        min-height: auto;
+        display: block;
+        padding: 96px 18px 40px 18px;
+    }
+
     .content-wrap {
-        width: 90vw;
+        width: 100%;
+        max-width: 100%;
     }
 
     .image-wrapper {
-        width: 90vw;
-        height: calc(90vw * 500 / 732);
+        width: 100%;
+        height: calc((100vw - 36px) * 500 / 732);
     }
 
     .image-wrapper iframe {
@@ -167,16 +185,38 @@
         height: 100%;
     }
 
-    .description {
+    .counter {
+        margin-top: 10px;
+        font-family: 'Newfont4';
+        text-align: left;
+        color: gray;
+        font-size: 13px;
+    }
+
+    .text-center {
         width: 100%;
+        max-width: 520px;
+    }
+
+    .text-center .description {
+        font-family: 'Newfont4';
+        color: black;
+        font-size: 10px;
+        line-height: 1.45;
+        letter-spacing: -0.01em;
+        margin-top: 10px;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .next-button {
+        opacity: 1;
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+        right: 12px;
     }
 }
-  @media (max-width: 768px) {
-  
-    .nav-left a {
-      font-size: 148px;
-    }
-  }
 </style>
 </head>
 

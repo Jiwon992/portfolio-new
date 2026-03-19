@@ -3,204 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <title>jiwonkm</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
   <style>
   @font-face {
-  font-family: "Newfont";
-  src: url(./font/Bodoni-72.ttc#0) format("truetype");
-  font-style: normal;
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "Newfont1";
-  src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
-  font-style: normal;
-  font-weight: 500;
-}
-@font-face {
-  font-family: "Newfont3";
-  src: url(./font/Garamond.ttf) format("truetype");
-  font-style: normal;
-  font-weight: 500;
-}
-@font-face {
-  font-family: "Newfont4";
-  src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
-  font-style: normal;
-  font-weight: 500;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-.top-nav{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 2000;
-  font-family: 'Newfont4';
-  font-size: 23px;
-
-
-}
-
-.nav-left{
-  position: relative;
-  z-index: 2;
-}
-
-.nav-right{
-  display: flex;
-  gap: 20px;
-  position: relative;
-  z-index: 2;
-    font-size: 23px;
-}
-
-.nav-right a{
-  text-decoration: none;
-  white-space: nowrap;
-  color: black;
-    font-size: 23px;
-}
-
-.click-note{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Newfont4';
-  font-size: 20px;
-  color: blue;
-  line-height: 1.1;
-  white-space: nowrap;
-  opacity: 1;
-  transition: opacity 0.35s ease;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.click-note.hide{
-  opacity: 0;
-}
-
-.page{
-  transition: filter 0.3s ease, opacity 0.3s ease;
-  padding-bottom: 50px;
-}
-
-.work-unit{
-  width: 732px;
-  margin: 150px auto 0;
-  opacity: 0;
-  transition: opacity 0.3s ease-out, filter 0.3s ease;
-  justify-content: center;
-}
-
-.work-unit.reveal-visible{
-  opacity: 1;
-}
-
-.work-inner{
-  display: inline-block;
-  margin: 0 auto;
-}
-
-.first-work-wrap{
-  width: 732px;
-  margin: 150px auto 0;
-  position: relative;
-}
-
-.first-work-unit{
-  width: 100%;
-  margin: 0;
-}
-
-img.work{
-  display: block;
-  max-width: 100%;
-  max-height: 530px;
-  width: auto;
-  height: auto;
-  filter: grayscale(100%);
-  transition: filter 0.8s ease;
-}
-
-.work-unit:hover img.work{
-  filter: grayscale(0%);
-}
-
-figcaption{
-  position: static;
-  display: block;
-  text-align: left;
-  line-height: 1.1;
-}
-
-.des{
-  font-family: 'Newfont4';
-  color: #000;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.date{
-  margin-top: 6px;
-  font-family: 'Newfont4';
-  color: grey;
-}
-
-.work-inner.window-only{
-  display:block;
-  width:100%;
-}
-
-.work-inner.window-only .media-center{
-  display:flex;
-  justify-content:center;
-}
-
-.work-inner.window-only figcaption{
-  text-align:left;
-}
-
-body.overlay-open .page{
-  filter: blur(2px);
-  opacity: 0.6;
-}
-
-.work-unit:last-of-type{
-  margin-bottom: 10px;
-}
-
-@media (hover: none) and (pointer: coarse) {
-  img.work {
-    filter: grayscale(0%);
+    font-family: "Newfont";
+    src: url(./font/Bodoni-72.ttc#0) format("truetype");
+    font-style: normal;
+    font-weight: 500;
   }
-}
 
-@media (max-width:800px){
+  @font-face {
+    font-family: "Newfont1";
+    src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
 
-  .nav-right{
-    display:none;
+  @font-face {
+    font-family: "Newfont3";
+    src: url(./font/Garamond.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Newfont4";
+    src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   .top-nav{
-    justify-content:center;
-    padding:12px 0;
-    font-size:18px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2000;
+    font-family: 'Newfont4';
+    font-size: 23px;
   }
 
   .nav-left{
@@ -208,40 +61,192 @@ body.overlay-open .page{
     z-index: 2;
   }
 
+  .nav-right{
+    display: flex;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+    font-size: 23px;
+  }
+
+  .nav-right a{
+    text-decoration: none;
+    white-space: nowrap;
+    color: black;
+    font-size: 23px;
+  }
+
   .click-note{
+    position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    font-size: 16px;
+    font-family: 'Newfont4';
+    font-size: 20px;
+    color: blue;
+    line-height: 1.1;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .click-note.show{
+    opacity: 1;
+  }
+
+  .click-note.hide{
+    opacity: 0;
+  }
+
+  .page{
+    transition: filter 0.3s ease, opacity 0.3s ease;
+    padding-bottom: 50px;
   }
 
   .work-unit{
-    width:100%;
-    margin:18px 0 0 0;
-    padding:0;
+    width: 732px;
+    margin: 150px auto 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-out, filter 0.3s ease;
+    justify-content: center;
   }
 
-  .first-work-wrap{
-    width:100%;
-    margin:18px 0 0 0;
+  .work-unit.reveal-visible{
+    opacity: 1;
   }
 
   .work-inner{
-    width:100%;
+    display: inline-block;
+    margin: 0 auto;
+  }
+
+  .first-work-wrap{
+    width: 732px;
+    margin: 150px auto 0;
+    position: relative;
+  }
+
+  .first-work-unit{
+    width: 100%;
+    margin: 0;
   }
 
   img.work{
-    width:100%;
-    height:auto;
-    max-width:none;
-    max-height:none;
-    filter:none;
+    display: block;
+    max-width: 100%;
+    max-height: 530px;
+    width: auto;
+    height: auto;
+    filter: grayscale(100%);
+    transition: filter 0.8s ease;
+  }
+
+  .work-unit:hover img.work{
+    filter: grayscale(0%);
   }
 
   figcaption{
-    padding:8px 12px 0 12px;
+    position: static;
+    display: block;
+    text-align: left;
+    line-height: 1.1;
   }
-}
+
+  .des{
+    font-family: 'Newfont4';
+    color: #000;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  .date{
+    margin-top: 6px;
+    font-family: 'Newfont4';
+    color: grey;
+  }
+
+  .work-inner.window-only{
+    display:block;
+    width:100%;
+  }
+
+  .work-inner.window-only .media-center{
+    display:flex;
+    justify-content:center;
+  }
+
+  .work-inner.window-only figcaption{
+    text-align:left;
+  }
+
+  body.overlay-open .page{
+    filter: blur(2px);
+    opacity: 0.6;
+  }
+
+  .work-unit:last-of-type{
+    margin-bottom: 10px;
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    img.work {
+      filter: grayscale(0%);
+    }
+  }
+
+  @media (max-width:800px){
+
+    .nav-right{
+      display:none;
+    }
+
+    .top-nav{
+      justify-content:center;
+      padding:12px 0;
+      font-size:18px;
+    }
+
+    .nav-left{
+      position: relative;
+      z-index: 2;
+    }
+
+    .click-note{
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+    }
+
+    .work-unit{
+      width:100%;
+      margin:18px 0 0 0;
+      padding:0;
+    }
+
+    .first-work-wrap{
+      width:100%;
+      margin:18px 0 0 0;
+    }
+
+    .work-inner{
+      width:100%;
+    }
+
+    img.work{
+      width:100%;
+      height:auto;
+      max-width:none;
+      max-height:none;
+      filter:none;
+    }
+
+    figcaption{
+      padding:8px 12px 0 12px;
+    }
+  }
   </style>
 </head>
 
@@ -344,34 +349,48 @@ body.overlay-open .page{
     </figure>
   </div>
 
- <script>
-window.addEventListener('DOMContentLoaded', () => {
-  const units = document.querySelectorAll('.work-unit');
-  const images = document.querySelectorAll('.work');
-  const clickNote = document.getElementById('clickNote');
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const units = document.querySelectorAll('.work-unit');
+    const clickNote = document.getElementById('clickNote');
+    const firstWorkImage = document.getElementById('firstWorkImage');
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('reveal-visible');
-        obs.unobserve(entry.target);
+    let noteDisabledByScroll = false;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    units.forEach(unit => observer.observe(unit));
+
+    firstWorkImage.addEventListener('mouseenter', () => {
+      if (!noteDisabledByScroll) {
+        clickNote.classList.add('show');
+        clickNote.classList.remove('hide');
       }
     });
-  }, { threshold: 0.3 });
 
-  units.forEach(unit => observer.observe(unit));
-
-  images.forEach(img => {
-    img.addEventListener('mouseenter', () => {
-      clickNote.classList.add('hide');
+    firstWorkImage.addEventListener('mouseleave', () => {
+      if (!noteDisabledByScroll) {
+        clickNote.classList.remove('show');
+        clickNote.classList.add('hide');
+      }
     });
 
-    img.addEventListener('mouseleave', () => {
-      clickNote.classList.remove('hide');
-    });
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 0) {
+        noteDisabledByScroll = true;
+        clickNote.classList.remove('show');
+        clickNote.classList.add('hide');
+      }
+    }, { passive: true });
   });
-});
-</script>
+  </script>
 
 </body>
 </html>

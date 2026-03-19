@@ -195,45 +195,66 @@
     }
   @media (max-width:800px){
 
-  /* ===== HEADER ===== */
-  .nav-right{
-    display: none;
-  }
-
   .top-nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 12px 16px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 12px 16px; /* 이미지 기준과 동일 */
+    align-items: flex-start;
+    z-index: 2000;
+    font-family: 'Newfont4';
     font-size: 18px;
   }
 
   .nav-left{
+    position: relative;
+    z-index: 2;
     font-size: 18px;
+    line-height: 1;
+  }
+
+  .nav-right{
+    display: flex;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .nav-right a{
+    text-decoration: none;
+    white-space: nowrap;
+    color: black;
+    font-size: 18px;
+    line-height: 1;
   }
 
   .click-note{
     display: none;
   }
 
-  /* ===== PAGE LAYOUT ===== */
   .page{
-    padding: 0 16px 40px 16px; /* 핵심: header와 동일 */
+    padding: 0 16px 40px 16px;
   }
 
-  /* ===== WORK LAYOUT ===== */
   .work-unit{
     width: 100%;
-    margin: 40px 0 0 0;
+    margin: 32px 0 0 0;
+    padding: 0;
   }
 
   .first-work-wrap{
     width: 100%;
-    margin: 60px 0 0 0; /* header 아래 간격 */
+    margin: 64px 0 0 0;
   }
 
   .first-work-unit{
     width: 100%;
+    margin: 0;
   }
 
   .work-inner{
@@ -242,14 +263,20 @@
   }
 
   .work-inner.window-only{
+    display: block;
     width: 100%;
   }
 
   .work-inner.window-only .media-center{
     display: block;
+    width: 100%;
   }
 
-  /* ===== IMAGE ===== */
+  .work-inner.window-only .media-center a{
+    display: block;
+    width: 100%;
+  }
+
   img.work{
     display: block;
     width: 100%;
@@ -259,22 +286,25 @@
     filter: none;
   }
 
-  /* ===== TEXT ===== */
   figcaption{
-    padding: 8px 0 0 0;
+    display: block;
     text-align: left;
+    padding: 8px 0 0 0;
+    line-height: 1.1;
   }
 
   .des{
-    font-size: 16px;
+    font-family: 'Newfont4';
+    color: #000;
+    font-size: 15px;
     margin-top: 8px;
-    line-height: 1.1;
   }
 
   .date{
-    font-size: 16px;
-    margin-top: 2px;
-    line-height: 1.1;
+    margin-top: 3px;
+    font-family: 'Newfont4';
+    color: grey;
+    font-size: 15px;
   }
 }
   </style>

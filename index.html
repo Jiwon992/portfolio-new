@@ -262,18 +262,30 @@
   </header>
 
   <div class="page">
+    <!-- foliage를 첫 번째 프로젝트로 배치 -->
     <div class="first-work-wrap">
       <figure class="work-unit first-work-unit">
         <div class="work-inner">
-          <a href="perspective transition.html">
-            <img src="7M4A2297-2-3.jpg" class="work" id="firstWorkImage">
+          <a href="foilage.html">
+            <img src="foliagebigimage.png" class="work first-work-image" alt="foilage">
           </a>
-          <figcaption class="des">Perspective Transition</figcaption>
+          <figcaption class="des">Foliage</figcaption>
           <figcaption class="date">publication, 2025</figcaption>
         </div>
       </figure>
     </div>
-    
+
+    <!-- 기존 첫 프로젝트는 아래로 이동 -->
+    <figure class="work-unit">
+      <div class="work-inner">
+        <a href="perspective transition.html">
+          <img src="7M4A2297-2-3.jpg" class="work">
+        </a>
+        <figcaption class="des">Perspective Transition</figcaption>
+        <figcaption class="date">publication, 2025</figcaption>
+      </div>
+    </figure>
+
     <figure class="work-unit">
       <div class="work-inner">
         <a href="fake-news.html">
@@ -281,16 +293,6 @@
         </a>
         <figcaption class="des">Fake news on facebook</figcaption>
         <figcaption class="date">publication, 2025</figcaption>
-      </div>
-    </figure>
-
-    <figure class="work-unit">
-      <div class="work-inner">
-        <a href="foilage.html">
-          <img src="foliagebigimage.png" class="work">
-        </a>
-        <figcaption class="des">Foliage</figcaption>
-        <figcaption class="date">photo series, 2025</figcaption>
       </div>
     </figure>
 
@@ -353,7 +355,7 @@
   window.addEventListener('DOMContentLoaded', () => {
     const units = document.querySelectorAll('.work-unit');
     const clickNote = document.getElementById('clickNote');
-    const firstWorkImage = document.getElementById('firstWorkImage');
+    const firstWorkImage = document.querySelector('.first-work-image');
 
     let noteDisabledByScroll = false;
 
@@ -368,19 +370,21 @@
 
     units.forEach(unit => observer.observe(unit));
 
-    firstWorkImage.addEventListener('mouseenter', () => {
-      if (!noteDisabledByScroll) {
-        clickNote.classList.add('show');
-        clickNote.classList.remove('hide');
-      }
-    });
+    if (firstWorkImage) {
+      firstWorkImage.addEventListener('mouseenter', () => {
+        if (!noteDisabledByScroll) {
+          clickNote.classList.add('show');
+          clickNote.classList.remove('hide');
+        }
+      });
 
-    firstWorkImage.addEventListener('mouseleave', () => {
-      if (!noteDisabledByScroll) {
-        clickNote.classList.remove('show');
-        clickNote.classList.add('hide');
-      }
-    });
+      firstWorkImage.addEventListener('mouseleave', () => {
+        if (!noteDisabledByScroll) {
+          clickNote.classList.remove('show');
+          clickNote.classList.add('hide');
+        }
+      });
+    }
 
     window.addEventListener('scroll', () => {
       if (window.scrollY > 0) {

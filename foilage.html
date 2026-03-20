@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>foliage</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
    @font-face {
@@ -365,12 +365,11 @@ body.about-open .work-unit{
 
 <script>
 /* ====== MAIN IMAGE SLIDER ====== */
-const images = [ "Scan 7-min.jpg", "Scan 11-min.png", "Scan 21-min.png", "Scan 12-min.png", "Scan 14.jpg", "Scan 15.jpg","Scan 16.jpg", "Scan 27-min.png", "Scan 32-min.png"];
+const images = [ "foliage image 0-min.png","foliage image 1-min.png", "foliage image 4-min copy.png", "foliage image 7-min.png", "foliage image 8-min.png", "foliage image 9-min.png", "foliage 10-min.png", "foliage image 11-min.png", ];
+
 let currentIndex = 0;
 const slideImage = document.getElementById("slideImage");
 const counter = document.getElementById("counter");
-
-counter.textContent = `${currentIndex + 1} of ${images.length}`;
 
 slideImage.addEventListener("click", () => {
     currentIndex = (currentIndex + 1) % images.length;

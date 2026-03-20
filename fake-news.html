@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Fake news on facebook</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   @font-face {
   font-family: "Newfont";
@@ -118,12 +119,56 @@
     max-height: 40vh;       /* 화면 높이에 맞춰 텍스트 높이 제한 */
     overflow: hidden;       /* 넘치는 텍스트 숨김 */
 }
-   @media (max-width: 768px) {
-  
-    .nav-left a {
-      font-size: 148px;
-    }
+@media (max-width: 800px) {
+
+  .top-nav {
+    padding: 20px 18px 0 18px;
+    font-size: 16px;
   }
+
+  .nav-left a {
+    font-size: 16px;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .detail-container {
+    min-height: auto;
+    display: block;
+    padding: 96px 18px 40px 18px;
+  }
+
+  .image-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    max-height: none;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .counter {
+    margin-top: 10px;
+    font-family: 'Newfont4';
+    text-align: left;
+    color: gray;
+    font-size: 13px;
+  }
+
+  .text-center {
+    width: 100%;
+  }
+
+  .text-center .description {
+    max-height: none;
+    overflow: visible;
+    font-size: 10px;   
+  }
+}
 </style>
 </head>
 

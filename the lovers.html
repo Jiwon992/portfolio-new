@@ -270,21 +270,21 @@ body.about-open .work-unit{
     position: relative;
   }
 
-  .grid-gallery {
+ .grid-gallery {
     display: flex;
-    width: 100%;
+    gap: 10px;
     transition: transform 0.8s ease-in-out;
-  }
+}
 
 .grid-page {
-    flex: 0 0 100%;
-    width: 100%;
-    min-width: 100%;
+    flex: 0 0 calc(100vw - 36px);
+    width: calc(100vw - 36px);
+    min-width: calc(100vw - 36px);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, auto);
     gap: 10px;
-    padding-right: 10px;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -398,8 +398,9 @@ function updateSlide() {
     gridGallery.style.transition = "transform 0.8s ease-in-out";
 
     if (window.innerWidth <= 800) {
-        const mobileGap = 10;
-        const slideWidth = gridWrapper.clientWidth + mobileGap;
+        const firstPage = gridGallery.querySelector(".grid-page");
+        const galleryGap = 10;
+        const slideWidth = firstPage.offsetWidth + galleryGap;
         gridGallery.style.transform = `translateX(-${currentPage * slideWidth}px)`;
     } else {
         gridGallery.style.transform = `translateX(-${currentPage * 100}%)`;
@@ -431,8 +432,9 @@ gridGallery.addEventListener("transitionend", () => {
 });
 window.addEventListener("resize", () => {
     if (window.innerWidth <= 800) {
-        const mobileGap = 10;
-        const slideWidth = gridWrapper.clientWidth + mobileGap;
+        const firstPage = gridGallery.querySelector(".grid-page");
+        const galleryGap = 10;
+        const slideWidth = firstPage.offsetWidth + galleryGap;
         gridGallery.style.transition = "none";
         gridGallery.style.transform = `translateX(-${currentPage * slideWidth}px)`;
     } else {

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>perspective transition</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
   @font-face {
@@ -203,29 +204,56 @@
     opacity: 1;
   }
 
-  @media (max-width: 520px) {
-    .about-overlay .panel {
-      left: 16px;
-      top: 78px;
-    }
+  @media (max-width: 800px) {
+
+  .top-nav {
+    padding: 20px 18px 0 18px;
+    font-size: 16px;
   }
 
-  body.about-open .work-unit {
-    filter: blur(2px);
-    opacity: 0.6;
-    transition: filter 0.3s ease, opacity 0.3s ease;
+  .nav-left a {
+    font-size: 16px;
+    padding: 0;
+    line-height: 1;
   }
 
-  .work-unit {
-    transition: filter 0.3s ease, opacity 0.3s ease;
+  .detail-container {
+    min-height: auto;
+    display: block;
+    padding: 96px 18px 40px 18px;
   }
 
-  @media (max-width: 768px) {
-  
-    .nav-left a {
-      font-size: 148px;
-    }
+  .image-wrapper {
+    width: 100%;
+    max-width: 100%;
   }
+
+  .image-wrapper img {
+    width: 100%;
+    max-height: none;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .counter {
+    margin-top: 10px;
+    font-family: 'Newfont4';
+    text-align: left;
+    color: gray;
+    font-size: 13px;
+  }
+
+  .text-center {
+    width: 100%;
+  }
+
+  .text-center .description {
+    max-height: none;
+    overflow: visible;
+    font-size: 10px;   
+  }
+}
 </style>
 </head>
 
@@ -235,7 +263,6 @@
   <div class="nav-left">
     <a href="#" onclick="history.back(); return false;">←</a>
   </div>
-  <div class="nav-right"></div>
 </header>
 
 <div class="detail-container">

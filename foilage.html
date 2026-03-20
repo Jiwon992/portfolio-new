@@ -186,10 +186,6 @@
   cursor: n-resize !important;
 }
 
-    /* 모바일: 패널 조금 아래로 */
-    @media (max-width: 520px){
-      .about-overlay .panel{ left: 16px; top: 78px; }
-    }
 body.about-open .work-unit{
   filter: blur(2px);
   opacity: 0.6;
@@ -199,12 +195,117 @@ body.about-open .work-unit{
 .work-unit{
   transition: filter 0.3s ease, opacity 0.3s ease;
 }
-  @media (max-width: 768px) {
-  
-    .nav-left a {
-      font-size: 148px;
-    }
+@media (max-width: 800px) {
+
+  .top-nav {
+    padding: 20px 18px 0 18px;
+    font-size: 16px;
+    color: black;
   }
+
+  .nav-left a {
+    font-size: 16px;
+    padding: 0;
+    line-height: 1;
+    color: black;
+  }
+
+  .detail-container {
+    margin-top: 0;
+    padding: 96px 18px 40px 18px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    display: block;
+  }
+
+  .counter {
+    margin-top: 10px;
+    font-family: 'Newfont4';
+    text-align: left;
+    color: gray;
+        font-size: 13px;
+  }
+
+  .text-center {
+    width: 100%;
+  }
+
+  .text-center .description {
+    font-family: 'Newfont4';
+    color: black;
+    font-size: 10px;
+    margin-top: 10px;
+    max-height: none;
+    overflow: visible;
+    width: 100%;
+  }
+
+  .extra-gallery {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 30px;
+    margin-bottom: 60px;
+  }
+
+  .grid-gallery-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+ .grid-gallery {
+    display: flex;
+    gap: 10px;
+    transition: transform 0.8s ease-in-out;
+}
+
+.grid-page {
+    flex: 0 0 calc(100vw - 36px);
+    width: calc(100vw - 36px);
+    min-width: calc(100vw - 36px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 10px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+  .grid-page img {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+  }
+
+  .lightbox-btn {
+    font-size: 28px;
+    padding: 12px;
+  }
+
+  .lightbox-prev {
+    left: 6px;
+  }
+
+  .lightbox-next {
+    right: 6px;
+  }
+}
+
 </style>
 </head>
 
@@ -263,11 +364,12 @@ body.about-open .work-unit{
 
 <script>
 /* ====== MAIN IMAGE SLIDER ====== */
-const images = [ "foliage image 0-min.png","foliage image 1-min.png", "foliage image 4-min copy.png", "foliage image 7-min.png", "foliage image 8-min.png", "foliage image 9-min.png", "foliage 10-min.png", "foliage image 11-min.png", ];
-
+const images = [ "Scan 7-min.jpg", "Scan 11-min.png", "Scan 21-min.png", "Scan 12-min.png", "Scan 14.jpg", "Scan 15.jpg","Scan 16.jpg", "Scan 27-min.png", "Scan 32-min.png"];
 let currentIndex = 0;
 const slideImage = document.getElementById("slideImage");
 const counter = document.getElementById("counter");
+
+counter.textContent = `${currentIndex + 1} of ${images.length}`;
 
 slideImage.addEventListener("click", () => {
     currentIndex = (currentIndex + 1) % images.length;
@@ -277,22 +379,32 @@ slideImage.addEventListener("click", () => {
 
 /* ====== GRID SLIDER (한 방향 루프) ====== */
 const gridGallery = document.getElementById("gridGallery");
+const gridWrapper = document.querySelector(".grid-gallery-wrapper");
 let pages = document.querySelectorAll(".grid-page");
 let currentPage = 0;
 let autoSlide;
 const slideSpeed = 3000;
 
+
+
 /* 첫 페이지 복제 (무한루프용) */
 const firstClone = pages[0].cloneNode(true);
 gridGallery.appendChild(firstClone);
-pages = document.querySelectorAll(".grid-page");  // 페이지 다시 선택
+pages = document.querySelectorAll(".grid-page");
 const totalPages = pages.length;
 
 function updateSlide() {
     gridGallery.style.transition = "transform 0.8s ease-in-out";
-    gridGallery.style.transform = `translateX(-${currentPage * 100}%)`;
-}
 
+    if (window.innerWidth <= 800) {
+        const firstPage = gridGallery.querySelector(".grid-page");
+        const galleryGap = 10;
+        const slideWidth = firstPage.offsetWidth + galleryGap;
+        gridGallery.style.transform = `translateX(-${currentPage * slideWidth}px)`;
+    } else {
+        gridGallery.style.transform = `translateX(-${currentPage * 100}%)`;
+    }
+}
 function startAutoSlide() {
     autoSlide = setInterval(() => {
         currentPage++;
@@ -305,13 +417,30 @@ gridGallery.addEventListener("transitionend", () => {
     if (currentPage === totalPages - 1) {
         gridGallery.style.transition = "none";
         currentPage = 0;
-        gridGallery.style.transform = `translateX(0)`;
+
+        if (window.innerWidth <= 800) {
+            gridGallery.style.transform = `translateX(0px)`;
+        } else {
+            gridGallery.style.transform = `translateX(0)`;
+        }
+
         setTimeout(() => {
             gridGallery.style.transition = "transform 0.8s ease-in-out";
         }, 20);
     }
 });
-
+window.addEventListener("resize", () => {
+    if (window.innerWidth <= 800) {
+        const firstPage = gridGallery.querySelector(".grid-page");
+        const galleryGap = 10;
+        const slideWidth = firstPage.offsetWidth + galleryGap;
+        gridGallery.style.transition = "none";
+        gridGallery.style.transform = `translateX(-${currentPage * slideWidth}px)`;
+    } else {
+        gridGallery.style.transition = "none";
+        gridGallery.style.transform = `translateX(-${currentPage * 100}%)`;
+    }
+});
 startAutoSlide();
 function stopAutoSlide(){ clearInterval(autoSlide); }
 
@@ -360,6 +489,7 @@ document.addEventListener("keydown", e=>{
         if(e.key==="ArrowLeft") showPrev();
     }
 });
+
 function updateCursorDirection() {
   const scrollTop = window.scrollY;
   const atBottom = window.innerHeight + scrollTop >= document.body.scrollHeight - 10;

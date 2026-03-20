@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Fake news on facebook</title>
+<title>meditation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
    @font-face {
   font-family: "Newfont";
@@ -146,30 +147,56 @@
 
 /* 모바일 */
 @media (max-width: 800px) {
-    .content-wrap {
-        width: 90vw;
-    }
-
-    .image-wrapper {
-        width: 90vw;
-        height: calc(90vw * 500 / 732);
-    }
-
-    .image-wrapper iframe {
-        width: 100%;
-        height: 100%;
-    }
-
-    .description {
-        width: 100%;
-    }
-} 
-  @media (max-width: 768px) {
-  
-    .nav-left a {
-      font-size: 148px;
-    }
+  .top-nav {
+    padding: 20px 18px 0 18px;
+    font-size: 16px;
   }
+
+  .nav-left a {
+    font-size: 16px;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .detail-container {
+    min-height: auto;
+    display: block;
+    padding: 96px 18px 40px 18px;
+  }
+
+  .content-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .image-wrapper {
+    width: 100%;
+  }
+
+  .image-wrapper iframe {
+    width: 100%;
+    height: calc((100vw - 36px) * 500 / 732);
+  }
+
+  .counter {
+    margin-top: 10px;
+  }
+
+  .text-center {
+    width: 100%;
+    max-width: 520px;
+  }
+
+.text-center .description {
+    font-family: 'Newfont4';
+    color: black;
+    font-size: 10px;
+    margin-top: 10px;
+    max-height: none;
+    overflow: visible;
+    width: 100%;
+  }
+}
 </style>
 </head>
 

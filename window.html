@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>window</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
   @font-face {
@@ -122,12 +123,56 @@
     overflow: hidden;
     
   }
-   @media (max-width: 768px) {
-  
-    .nav-left a {
-      font-size: 148px;
-    }
+@media (max-width: 800px) {
+  .top-nav {
+    padding: 20px 18px 0 18px;
+    font-size: 16px;
   }
+
+  .nav-left a {
+    font-size: 16px;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .detail-container {
+    min-height: auto;
+    display: block;
+    padding: 96px 18px 40px 18px;
+  }
+
+  .image-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .media-frame {
+    width: 100%;
+    aspect-ratio: 732 / 500;
+  }
+
+  .counter {
+        margin-top: 10px;
+        font-family: 'Newfont4';
+        text-align: left;
+        color: gray;
+        font-size: 13px;
+    }
+
+  .text-center {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .text-center .description {
+    font-family: 'Newfont4';
+    color: black;
+    font-size: 10px;
+    margin-top: 10px;
+    max-height: none;
+    overflow: visible;
+    width: 100%;
+  }}
 </style>
 </head>
 
@@ -150,7 +195,7 @@
 
       <div class="text-center">
         <div class="description">
-        Raining is a window installation that visualizes the sadness of losing my grandmother.
+           Raining is a window installation that visualizes the sadness of losing my grandmother.
           Because the text is printed directly on the glass so when it rains, the letters blur, flows, and it slowly disappears.
           The letters that fall off the paint visually express the feeling of falling apart by myself, like a moment when I can no longer hold onto a loved one after losing it.
         </div>

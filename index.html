@@ -3,352 +3,461 @@
 <head>
   <meta charset="UTF-8">
   <title>jiwonkm</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="/favicon.png" type="image/png">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
-
   <style>
-  @font-face {
-    font-family: "Newfont";
-    src: url(./font/Bodoni-72.ttc#0) format("truetype");
-    font-style: normal;
-    font-weight: 500;
-  }
+    @font-face {
+      font-family: "Newfont";
+      src: url(./font/Bodoni-72.ttc#0) format("truetype");
+      font-style: normal;
+      font-weight: 500;
+    }
 
-  @font-face {
-    font-family: "Newfont1";
-    src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
-    font-style: normal;
-    font-weight: 500;
-  }
+    @font-face {
+      font-family: "Newfont1";
+      src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
+      font-style: normal;
+      font-weight: 500;
+    }
 
-  @font-face {
-    font-family: "Newfont3";
-    src: url(./font/Garamond.ttf) format("truetype");
-    font-style: normal;
-    font-weight: 500;
-  }
+    @font-face {
+      font-family: "Newfont3";
+      src: url(./font/Garamond.ttf) format("truetype");
+      font-style: normal;
+      font-weight: 500;
+    }
 
-  @font-face {
-    font-family: "Newfont4";
-    src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
-    font-style: normal;
-    font-weight: 500;
-  }
+    @font-face {
+      font-family: "Newfont4";
+      src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
+      font-style: normal;
+      font-weight: 500;
+    }
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  .top-nav{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 2000;
-    font-family: 'Newfont4';
-    font-size: 23px;
-  }
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2000;
+      font-family: 'Newfont4';
+      font-size: 23px;
+    }
 
-  .nav-left{
-    position: relative;
-    z-index: 2;
-  }
+    .nav-left {
+      position: relative;
+      z-index: 2;
+      color: black;
+      text-decoration: none;
+      display: inline-block;
+    }
 
-  .nav-right{
-    display: flex;
-    gap: 20px;
-    position: relative;
-    z-index: 2;
-    font-size: 23px;
-  }
+    .nav-left a {
+      color: black;
+      text-decoration: none;
+    }
 
-  .nav-right a{
-    text-decoration: none;
-    white-space: nowrap;
-    color: black;
-    font-size: 23px;
-  }
+    .nav-right {
+      display: flex;
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+      font-size: 23px;
+    }
 
-  .click-note{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Newfont4';
-    font-size: 20px;
-    color: blue;
-    line-height: 1.1;
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.35s ease;
-    z-index: 1;
-    pointer-events: none;
-  }
+    .nav-right a {
+      text-decoration: none;
+      white-space: nowrap;
+      color: black;
+      font-size: 23px;
+    }
 
-  .click-note.show{
-    opacity: 1;
-  }
+    .click-note {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Newfont4';
+      font-size: 20px;
+      color: blue;
+      line-height: 1.1;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      z-index: 1;
+      pointer-events: none;
+    }
 
-  .click-note.hide{
-    opacity: 0;
-  }
+    .click-note.show {
+      opacity: 1;
+    }
 
-  .page{
-    transition: filter 0.3s ease, opacity 0.3s ease;
-    padding-bottom: 50px;
-  }
+    .click-note.hide {
+      opacity: 0;
+    }
 
-  .work-unit{
-    width: 732px;
-    margin: 150px auto 0;
-    opacity: 0;
-    transition: opacity 0.3s ease-out, filter 0.3s ease;
-    justify-content: center;
-  }
+    .page {
+      transition: filter 0.3s ease, opacity 0.3s ease;
+      padding-bottom: 50px;
+    }
 
-  .work-unit.reveal-visible{
-    opacity: 1;
-  }
+    .work-unit {
+      width: 732px;
+      margin: 150px auto 0;
+      opacity: 0;
+      transition: opacity 0.3s ease-out, filter 0.3s ease;
+      justify-content: center;
+    }
 
-  .work-inner{
-    display: inline-block;
-    margin: 0 auto;
-  }
+    .work-unit.reveal-visible {
+      opacity: 1;
+    }
 
-  .first-work-wrap{
-    width: 732px;
-    margin: 150px auto 0;
-    position: relative;
-  }
+    .work-inner {
+      display: inline-block;
+      margin: 0 auto;
+    }
 
-  .first-work-unit{
-    width: 100%;
-    margin: 0;
-  }
+    .first-work-wrap {
+      width: 732px;
+      margin: 150px auto 0;
+      position: relative;
+    }
 
-  img.work{
-    display: block;
-    max-width: 100%;
-    max-height: 530px;
-    width: auto;
-    height: auto;
-    filter: grayscale(100%);
-    transition: filter 0.8s ease;
-  }
+    .first-work-unit {
+      width: 100%;
+      margin: 0;
+    }
 
-  .work-unit:hover img.work{
-    filter: grayscale(0%);
-  }
-
-  figcaption{
-    position: static;
-    display: block;
-    text-align: left;
-    line-height: 1.1;
-  }
-
-  .des{
-    font-family: 'Newfont4';
-    color: #000;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-
-  .date{
-    margin-top: 6px;
-    font-family: 'Newfont4';
-    color: grey;
-  }
-
-  .work-inner.window-only{
-    display:block;
-    width:100%;
-  }
-
-  .work-inner.window-only .media-center{
-    display:flex;
-    justify-content:center;
-  }
-
-  .work-inner.window-only figcaption{
-    text-align:left;
-  }
-
-  body.overlay-open .page{
-    filter: blur(2px);
-    opacity: 0.6;
-  }
-
-  .work-unit:last-of-type{
-    margin-bottom: 10px;
-  }
-
-  @media (hover: none) and (pointer: coarse) {
     img.work {
+      display: block;
+      max-width: 100%;
+      max-height: 530px;
+      width: auto;
+      height: auto;
+      filter: grayscale(100%);
+      transition: filter 0.8s ease;
+    }
+
+    .work-unit:hover img.work {
       filter: grayscale(0%);
     }
-  }
-@media (max-width:800px){
 
-  .top-nav{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 18px 0 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 2000;
-    font-family: 'Newfont4';
-    font-size: 16px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    color: black;
-  }
+    figcaption {
+      position: static;
+      display: block;
+      text-align: left;
+      line-height: 1.1;
+    }
 
-  .nav-left{
-    position: relative;
-    z-index: 2;
-    font-size: 16px;
-    line-height: 1;
-    color: black;
-  }
+    .des {
+      font-family: 'Newfont4';
+      color: #000;
+      font-size: 16px;
+      margin-top: 10px;
+    }
 
-  .nav-right{
-    display: flex;
-    gap: 16px;
-    position: relative;
-    z-index: 2;
-    font-size: 16px;
-    line-height: 1;
-    color: black;
-  }
+    .date {
+      margin-top: 6px;
+      font-family: 'Newfont4';
+      color: grey;
+    }
 
-  .nav-right a{
-    text-decoration: none;
-    white-space: nowrap;
-    color: black;
-    font-size: 16px;
-    line-height: 1;
-  }
+    .work-inner.window-only {
+      display: block;
+      width: 100%;
+    }
 
-  .top-nav.nav-hidden{
-    transform: translateY(-120%);
-    opacity: 0;
-  }
+    .work-inner.window-only .media-center {
+      display: flex;
+      justify-content: center;
+    }
 
-  .click-note{
-    display: none;
-  }
+    .work-inner.window-only figcaption {
+      text-align: left;
+    }
 
-  .page{
-    padding: 0 18px 40px 18px;
-  }
+    body.overlay-open .page {
+      filter: blur(2px);
+      opacity: 0.6;
+    }
 
-  .work-unit{
-    width: 100%;
-    margin: 60px 0 0 0;
-    padding: 0;
-  }
+    .work-unit:last-of-type {
+      margin-bottom: 10px;
+    }
 
-  .first-work-wrap{
-    width: 100%;
-    margin: 128px 0 0 0;
-    position: relative;
-  }
+    .logo-link-text,
+    .nav-link-text {
+      --wave-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='5' viewBox='0 0 52 5'%3E%3Cpath d='M0 3 C 2.15 3, 2.15 1.75, 4.3 1.75 S 6.45 3, 8.6 3 S 10.75 1.75, 12.9 1.75 S 15.05 3, 17.2 3 S 19.35 1.75, 21.5 1.75 S 23.65 3, 25.8 3 S 27.95 1.75, 30.1 1.75 S 32.25 3, 34.4 3 S 36.55 1.75, 38.7 1.75 S 40.85 3, 43 3 S 45.15 1.75, 47.3 1.75 S 49.45 3, 52 3' fill='none' stroke='%23002BFF' stroke-width='1.15' stroke-linecap='round'/%3E%3C/svg%3E");
+      position: relative;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
 
-  .first-work-unit{
-    width: 100%;
-    margin: 0;
-  }
+    .logo-link-text::after,
+    .nav-link-text::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 100%;
+      height: 5px;
+      opacity: 0;
+      pointer-events: none;
+      background-image: var(--wave-image);
+      background-repeat: repeat-x;
+      background-size: 52px 5px;
+      background-position: 0 100%;
+      transform: scaleX(0.55);
+      transform-origin: left center;
+      transition: opacity 0.28s ease, transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    }
 
-  .work-inner{
-    width: 100%;
-    display: block;
-  }
+    .nav-left:hover .logo-link-text::after,
+    .nav-right a:hover .nav-link-text::after {
+      opacity: 1;
+      transform: scaleX(1);
+      animation: navWaveShift 1.35s linear infinite;
+    }
 
-  .work-inner.window-only{
-    display: block;
-    width: 100%;
-  }
+    @keyframes navWaveShift {
+      from {
+        background-position-x: -52px;
+      }
+      to {
+        background-position-x: 0;
+      }
+    }
 
-  .work-inner.window-only .media-center{
-    display: block;
-    width: 100%;
-  }
+    .ripple-text {
+      --wave-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='5' viewBox='0 0 56 5'%3E%3Cpath d='M0 3 C 2.333 3, 2.333 1.75, 4.666 1.75 S 7 3, 9.333 3 S 11.666 1.75, 14 1.75 S 16.333 3, 18.666 3 S 21 1.75, 23.333 1.75 S 25.666 3, 28 3 S 30.333 1.75, 32.666 1.75 S 35 3, 37.333 3 S 39.666 1.75, 42 1.75 S 44.333 3, 46.666 3 S 49 1.75, 51.333 1.75 S 53.666 3, 56 3' fill='none' stroke='%23002BFF' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E");
+      position: relative;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
 
-  .work-inner.window-only .media-center a{
-    display: block;
-    width: 100%;
-  }
+    .ripple-text::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 5px;
+      opacity: 0;
+      pointer-events: none;
+      background-image: var(--wave-image);
+      background-repeat: repeat-x;
+      background-size: 56px 5px;
+      background-position: 0 100%;
+      transform: scaleX(0.5);
+      transform-origin: left center;
+      transition: opacity 0.28s ease, transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    }
 
-  img.work{
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: none;
-    max-height: none;
-    filter: none;
-  }
-   .des{
-    font-family: 'Newfont4';
-    color: #000;
-    font-size: 12px;
-    margin-top: 10px;
-  }
+    .work-inner:hover .ripple-text::after {
+      opacity: 1;
+      transform: scaleX(1);
+      animation: workWaveShiftSmall 1.45s linear infinite;
+    }
 
-  .date{
-    margin-top: 6px;
-    font-family: 'Newfont4';
+    @keyframes workWaveShiftSmall {
+      from {
+        background-position-x: -56px;
+      }
+      to {
+        background-position-x: 0;
+      }
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+      img.work {
+        filter: grayscale(0%);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .top-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 18px 0 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 2000;
+        font-family: 'Newfont4';
+        font-size: 16px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        color: black;
+      }
+
+      .nav-left {
+        position: relative;
+        z-index: 2;
+        font-size: 16px;
+        line-height: 1;
+        color: black;
+      }
+
+      .nav-right {
+        display: flex;
+        gap: 16px;
+        position: relative;
+        z-index: 2;
+        font-size: 16px;
+        line-height: 1;
+        color: black;
+      }
+
+      .nav-right a {
+        text-decoration: none;
+        white-space: nowrap;
+        color: black;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      .top-nav.nav-hidden {
+        transform: translateY(-120%);
+        opacity: 0;
+      }
+
+      .click-note {
+        display: none;
+      }
+
+      .page {
+        padding: 0 18px 40px 18px;
+      }
+
+      .work-unit {
+        width: 100%;
+        margin: 60px 0 0 0;
+        padding: 0;
+      }
+
+      .first-work-wrap {
+        width: 100%;
+        margin: 128px 0 0 0;
+        position: relative;
+      }
+
+      .first-work-unit {
+        width: 100%;
+        margin: 0;
+      }
+
+      .work-inner {
+        width: 100%;
+        display: block;
+      }
+
+      .work-inner.window-only {
+        display: block;
+        width: 100%;
+      }
+
+      .work-inner.window-only .media-center {
+        display: block;
+        width: 100%;
+      }
+
+      .work-inner.window-only .media-center a {
+        display: block;
+        width: 100%;
+      }
+
+      img.work {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: none;
+        max-height: none;
+        filter: none;
+      }
+
+      .des {
+        font-family: 'Newfont4';
+        color: #000;
         font-size: 12px;
-    color: grey;
-  }
+        margin-top: 10px;
+      }
 
-}
+      .date {
+        margin-top: 6px;
+        font-family: 'Newfont4';
+        font-size: 12px;
+        color: grey;
+      }
+
+      .logo-link-text,
+      .nav-link-text {
+        padding-bottom: 5px;
+      }
+
+      .logo-link-text::after,
+      .nav-link-text::after {
+        height: 4px;
+        background-size: 44px 4px;
+      }
+
+      .ripple-text {
+        padding-bottom: 5px;
+      }
+
+      .ripple-text::after {
+        height: 4px;
+        background-size: 46px 4px;
+      }
+    }
   </style>
 </head>
 
 <body>
-
   <header class="top-nav">
-    <div class="nav-left">Jiwon Kim</div>
+    <div class="nav-left">
+      <a href="index.html"><span class="logo-link-text">Jiwon Kim</span></a>
+    </div>
     <div class="click-note" id="clickNote">click images to view more</div>
     <div class="nav-right">
-      <a href="index.html">Works</a>
-      <a href="about.html">About</a>
+      <a href="index.html"><span class="nav-link-text">Works</span></a>
+      <a href="about.html"><span class="nav-link-text">About</span></a>
     </div>
   </header>
 
   <div class="page">
-    <!-- foliage를 첫 번째 프로젝트로 배치 -->
     <div class="first-work-wrap">
       <figure class="work-unit first-work-unit">
         <div class="work-inner">
           <a href="foilage.html">
             <img src="foliagebigimage.png" class="work first-work-image" alt="foilage">
           </a>
-          <figcaption class="des">foliage</figcaption>
+          <figcaption class="des ripple-text" data-wave-color="#2FFF00">foliage</figcaption>
           <figcaption class="date">publication, 2025</figcaption>
         </div>
       </figure>
     </div>
 
-    <!-- 기존 첫 프로젝트는 아래로 이동 -->
     <figure class="work-unit">
       <div class="work-inner">
         <a href="perspective transition.html">
-          <img src="7M4A2297-2-3.jpg" class="work">
+          <img src="7M4A2297-2-3.jpg" class="work" alt="Perspective Transition">
         </a>
-        <figcaption class="des">Perspective Transition</figcaption>
+        <figcaption class="des ripple-text" data-wave-color="#002BFF">Perspective Transition</figcaption>
         <figcaption class="date">publication, 2025</figcaption>
       </div>
     </figure>
@@ -356,9 +465,9 @@
     <figure class="work-unit">
       <div class="work-inner">
         <a href="fake-news.html">
-          <img src="PU5A92361-11-min.png" class="work">
+          <img src="PU5A92361-11-min.png" class="work" alt="Fake news on facebook">
         </a>
-        <figcaption class="des">Fake news on facebook</figcaption>
+        <figcaption class="des ripple-text" data-wave-color="#FF0000">Fake news on facebook</figcaption>
         <figcaption class="date">publication, 2025</figcaption>
       </div>
     </figure>
@@ -366,9 +475,9 @@
     <figure class="work-unit">
       <div class="work-inner">
         <a href="the lovers.html">
-          <img src="12-2.jpg" class="work">
+          <img src="12-2.jpg" class="work" alt="The Lovers">
         </a>
-        <figcaption class="des">The Lovers</figcaption>
+        <figcaption class="des ripple-text" data-wave-color="#FF4FA3">The Lovers</figcaption>
         <figcaption class="date">publication, 2025</figcaption>
       </div>
     </figure>
@@ -376,9 +485,9 @@
     <figure class="work-unit">
       <div class="work-inner">
         <a href="Graphic scores.html">
-          <img src="Untitled-1-10-min.png" class="work">
+          <img src="Untitled-1-10-min.png" class="work" alt="Graphic Scores in the Library">
         </a>
-        <figcaption class="des">Graphic Scores in the Library</figcaption>
+        <figcaption class="des ripple-text" data-wave-color="#7C3AED">Graphic Scores in the Library</figcaption>
         <figcaption class="date">publication, 2024</figcaption>
       </div>
     </figure>
@@ -387,10 +496,10 @@
       <div class="work-inner window-only">
         <div class="media-center">
           <a href="window.html">
-            <img src="IMG_7321-4.jpg" class="work" alt="window still">
+            <img src="IMG_7321-4.jpg" class="work" alt="Raining">
           </a>
         </div>
-        <figcaption class="des">Raining</figcaption>
+        <figcaption class="des ripple-text" data-wave-color="#FF9D00">Raining</figcaption>
         <figcaption class="date">Installation, 2025</figcaption>
       </div>
     </figure>
@@ -398,9 +507,9 @@
     <figure class="work-unit">
       <div class="work-inner">
         <a href="video.html">
-          <img src="IMG_7359-3-2-2.jpg" class="work">
+          <img src="IMG_7359-3-2-2.jpg" class="work" alt="Navigation">
         </a>
-        <figcaption class="des">Navigation</figcaption>
+        <figcaption class="des ripple-text" data-wave-color="#002BFF">Navigation</figcaption>
         <figcaption class="date">video, 2025</figcaption>
       </div>
     </figure>
@@ -409,74 +518,178 @@
       <div class="work-inner window-only">
         <div class="media-center">
           <a href="meditation.html">
-            <img src="meditation1.jpeg" class="work" alt="window still">
+            <img src="meditation1.jpeg" class="work" alt="Meditation">
           </a>
         </div>
-        <figcaption class="des">Meditation</figcaption>
+        <figcaption class="des ripple-text" data-wave-color="#FF0000">Meditation</figcaption>
         <figcaption class="date">video, 2025</figcaption>
       </div>
     </figure>
   </div>
 
   <script>
-window.addEventListener('DOMContentLoaded', () => {
-  const units = document.querySelectorAll('.work-unit');
-  const clickNote = document.getElementById('clickNote');
-  const firstWorkImage = document.querySelector('.first-work-image');
-  const topNav = document.querySelector('.top-nav');
+    window.addEventListener('DOMContentLoaded', () => {
+      const units = document.querySelectorAll('.work-unit');
+      const clickNote = document.getElementById('clickNote');
+      const firstWorkImage = document.querySelector('.first-work-image');
+      const topNav = document.querySelector('.top-nav');
 
-  let noteDisabledByScroll = false;
-  let lastScrollY = window.scrollY;
+      let noteDisabledByScroll = false;
+      let lastScrollY = window.scrollY;
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('reveal-visible');
-        obs.unobserve(entry.target);
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      units.forEach(unit => observer.observe(unit));
+
+      if (firstWorkImage) {
+        firstWorkImage.addEventListener('mouseenter', () => {
+          if (!noteDisabledByScroll && clickNote) {
+            clickNote.classList.add('show');
+            clickNote.classList.remove('hide');
+          }
+        });
+
+        firstWorkImage.addEventListener('mouseleave', () => {
+          if (!noteDisabledByScroll && clickNote) {
+            clickNote.classList.remove('show');
+            clickNote.classList.add('hide');
+          }
+        });
       }
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 0) {
+          noteDisabledByScroll = true;
+
+          if (clickNote) {
+            clickNote.classList.remove('show');
+            clickNote.classList.add('hide');
+          }
+        }
+
+        if (topNav && window.innerWidth <= 800) {
+          if (window.scrollY > lastScrollY && window.scrollY > 20) {
+            topNav.classList.add('nav-hidden');
+          } else {
+            topNav.classList.remove('nav-hidden');
+          }
+        }
+
+        lastScrollY = window.scrollY;
+      }, { passive: true });
+
+      const NAV_WAVE_COLORS = [
+        '#FF0000',
+        '#FF5A00',
+        '#2FFF00',
+        '#002BFF',
+        '#7C3AED',
+        '#FF4FA3'
+      ];
+
+      let recentNavWaveColors = [];
+
+      function randomNavWaveColorNoRepeat() {
+        const available = NAV_WAVE_COLORS.filter(color => !recentNavWaveColors.includes(color));
+        const nextColor = available.length
+          ? available[Math.floor(Math.random() * available.length)]
+          : NAV_WAVE_COLORS[Math.floor(Math.random() * NAV_WAVE_COLORS.length)];
+
+        recentNavWaveColors.push(nextColor);
+        if (recentNavWaveColors.length > 2) recentNavWaveColors.shift();
+
+        return nextColor;
+      }
+
+      function buildWaveDataUrl({ width, height, strokeWidth, color, segment, baseY, peakY }) {
+        const encodedColor = color.replace('#', '%23');
+        let d = `M0 ${baseY}`;
+        let x = 0;
+
+        while (x < width) {
+          const next = Math.min(x + segment, width);
+          const mid = x + segment / 2;
+          d += ` C ${mid - segment / 4} ${baseY}, ${mid - segment / 4} ${peakY}, ${mid} ${peakY}`;
+          d += ` S ${next - segment / 4} ${baseY}, ${next} ${baseY}`;
+          x += segment;
+        }
+
+        return `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width}' height='${height}' viewBox='0 0 ${width} ${height}'%3E%3Cpath d='${d}' fill='none' stroke='${encodedColor}' stroke-width='${strokeWidth}' stroke-linecap='round'/%3E%3C/svg%3E")`;
+      }
+
+      function applyWave(el, config, color) {
+        if (!el) return;
+
+        const wave = buildWaveDataUrl({
+          width: config.width,
+          height: config.height,
+          strokeWidth: config.strokeWidth,
+          color,
+          segment: config.segment,
+          baseY: config.baseY,
+          peakY: config.peakY
+        });
+
+        el.style.setProperty('--wave-image', wave);
+      }
+
+      function applyRandomNavWave(el, config) {
+        const color = randomNavWaveColorNoRepeat();
+        applyWave(el, config, color);
+      }
+
+      const logoText = document.querySelector('.logo-link-text');
+      if (logoText) {
+        const logoWrap = document.querySelector('.nav-left');
+        logoWrap.addEventListener('mouseenter', () => {
+          applyRandomNavWave(logoText, {
+            width: 52,
+            height: 5,
+            strokeWidth: 1.15,
+            segment: 8.6,
+            baseY: 3,
+            peakY: 1.75
+          });
+        });
+      }
+
+      document.querySelectorAll('.nav-right a').forEach(link => {
+        const text = link.querySelector('.nav-link-text');
+        if (!text) return;
+
+        link.addEventListener('mouseenter', () => {
+          applyRandomNavWave(text, {
+            width: 52,
+            height: 5,
+            strokeWidth: 1.15,
+            segment: 8.6,
+            baseY: 3,
+            peakY: 1.75
+          });
+        });
+      });
+
+      document.querySelectorAll('.ripple-text').forEach(text => {
+        const color = text.dataset.waveColor;
+        if (!color) return;
+
+        applyWave(text, {
+          width: 56,
+          height: 5,
+          strokeWidth: 1.1,
+          segment: 9.333,
+          baseY: 3,
+          peakY: 1.75
+        }, color);
+      });
     });
-  }, { threshold: 0.3 });
-
-  units.forEach(unit => observer.observe(unit));
-
-  if (firstWorkImage) {
-    firstWorkImage.addEventListener('mouseenter', () => {
-      if (!noteDisabledByScroll && clickNote) {
-        clickNote.classList.add('show');
-        clickNote.classList.remove('hide');
-      }
-    });
-
-    firstWorkImage.addEventListener('mouseleave', () => {
-      if (!noteDisabledByScroll && clickNote) {
-        clickNote.classList.remove('show');
-        clickNote.classList.add('hide');
-      }
-    });
-  }
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 0) {
-      noteDisabledByScroll = true;
-
-      if (clickNote) {
-        clickNote.classList.remove('show');
-        clickNote.classList.add('hide');
-      }
-    }
-
-    if (topNav && window.innerWidth <= 800) {
-      if (window.scrollY > lastScrollY && window.scrollY > 20) {
-        topNav.classList.add('nav-hidden');
-      } else {
-        topNav.classList.remove('nav-hidden');
-      }
-    }
-
-    lastScrollY = window.scrollY;
-  }, { passive: true });
-});
-</script>
-
+  </script>
 </body>
 </html>

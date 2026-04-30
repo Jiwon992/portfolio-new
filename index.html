@@ -207,71 +207,8 @@
       padding-bottom: 6px;
     }
 
-    .logo-link-text::after,
-    .nav-link-text::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -1px;
-      width: 100%;
-      height: 5px;
-      opacity: 0;
-      pointer-events: none;
-      background-image: var(--wave-image);
-      background-repeat: repeat-x;
-      background-size: 52px 5px;
-      background-position: 0 100%;
-      transform: scaleX(0.55);
-      transform-origin: left center;
-      transition: opacity 0.28s ease, transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
-    }
+  
 
-    .nav-left:hover .logo-link-text::after,
-    .nav-right a:hover .nav-link-text::after {
-      opacity: 1;
-      transform: scaleX(1);
-      animation: navWaveShift 1.35s linear infinite;
-    }
-
-    @keyframes navWaveShift {
-      from {
-        background-position-x: -52px;
-      }
-      to {
-        background-position-x: 0;
-      }
-    }
-
-    .ripple-text {
-      --wave-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='5' viewBox='0 0 56 5'%3E%3Cpath d='M0 3 C 2.333 3, 2.333 1.75, 4.666 1.75 S 7 3, 9.333 3 S 11.666 1.75, 14 1.75 S 16.333 3, 18.666 3 S 21 1.75, 23.333 1.75 S 25.666 3, 28 3 S 30.333 1.75, 32.666 1.75 S 35 3, 37.333 3 S 39.666 1.75, 42 1.75 S 44.333 3, 46.666 3 S 49 1.75, 51.333 1.75 S 53.666 3, 56 3' fill='none' stroke='%23002BFF' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E");
-      position: relative;
-      display: inline-block;
-      padding-bottom: 6px;
-    }
-
-    .ripple-text::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 100%;
-      height: 5px;
-      opacity: 0;
-      pointer-events: none;
-      background-image: var(--wave-image);
-      background-repeat: repeat-x;
-      background-size: 56px 5px;
-      background-position: 0 100%;
-      transform: scaleX(0.5);
-      transform-origin: left center;
-      transition: opacity 0.28s ease, transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .work-inner:hover .ripple-text::after {
-      opacity: 1;
-      transform: scaleX(1);
-      animation: workWaveShiftSmall 1.15s linear infinite;
-    }
 
     @keyframes workWaveShiftSmall {
       from {
@@ -403,26 +340,6 @@
         font-size: 12px;
         color: grey;
       }
-
-      .logo-link-text,
-      .nav-link-text {
-        padding-bottom: 5px;
-      }
-
-      .logo-link-text::after,
-      .nav-link-text::after {
-        height: 4px;
-        background-size: 44px 4px;
-      }
-
-      .ripple-text {
-        padding-bottom: 5px;
-      }
-
-      .ripple-text::after {
-        height: 4px;
-        background-size: 46px 4px;
-      }
     }
   </style>
 </head>
@@ -446,7 +363,7 @@
           <a href="foilage.html">
             <img src="foliagebigimage.png" class="work first-work-image" alt="foilage">
           </a>
-          <figcaption class="des ripple-text" data-wave-color="#2FFF00">foliage</figcaption>
+          <figcaption class="des ripple-text" data-wave-color="#2FFF00">Foliage</figcaption>
           <figcaption class="date">publication, 2025</figcaption>
         </div>
       </figure>
@@ -499,8 +416,8 @@
             <img src="IMG_7321-4.jpg" class="work" alt="Raining">
           </a>
         </div>
-        <figcaption class="des ripple-text" data-wave-color="#FF4FA3">Raining</figcaption>
-        <figcaption class="date">Installation, 2025</figcaption>
+        <figcaption class="des ripple-text" data-wave-color="#FF9D00">Raining</figcaption>
+        <figcaption class="date">installation, 2025</figcaption>
       </div>
     </figure>
 
@@ -586,7 +503,7 @@
       }, { passive: true });
 
       const NAV_WAVE_COLORS = [
-        '#2DB400',
+        '#FF0000',
         '#FF5A00',
         '#2FFF00',
         '#002BFF',
@@ -683,7 +600,7 @@
         applyWave(text, {
           width: 56,
           height: 5,
-          strokeWidth: 1.15,
+          strokeWidth: 1.1,
           segment: 9.333,
           baseY: 3,
           peakY: 1.75

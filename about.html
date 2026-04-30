@@ -45,8 +45,8 @@ html, body {
 }
 
 body {
-  color: black;
   font-family: "Newfont4";
+  color: black;
 }
 
 .top-nav{
@@ -61,31 +61,35 @@ body {
   z-index: 2000;
   font-family: 'Newfont4';
   font-size: 23px;
-  background: white;
 }
 
-.nav-left a{
-  text-decoration: none;
-  color: black;
-  font-family: "Newfont4";
-  font-size: 23px;
-  font-weight: 600;
-  line-height: 1;
-}
+  .nav-left {
+      position: relative;
+      z-index: 2;
+      color: black;
+      text-decoration: none;
+      display: inline-block;
+    }
 
-.nav-right{
-  display: flex;
-  gap: 22px;
-}
+    .nav-left a {
+      color: black;
+      text-decoration: none;
+    }
 
-.nav-right a{
-  text-decoration: none;
-  color: black;
-  font-family: "Newfont4";
-  font-size: 23px;
-  font-weight: 600;
-  line-height: 1;
-}
+    .nav-right {
+      display: flex;
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+      font-size: 23px;
+    }
+
+    .nav-right a {
+      text-decoration: none;
+      white-space: nowrap;
+      color: black;
+      font-size: 23px;
+    }
 
 .about-page{
   min-height: 100vh;

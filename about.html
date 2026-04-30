@@ -96,14 +96,15 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px;
+  align-items: center; /* center → flex-start */
+  padding-top: 120px;      /* 위에서 떨어뜨리기 */
 }
 
 .about-content{
   width: 100%;
-  max-width: 780px;
+  max-width: 640px; /* 780 → 640 (더 좁게) */
 }
+
 
 .contact-block{
   font-family: "Newfont4";
@@ -123,18 +124,21 @@ body {
 }
 
 .bio{
-  margin-top: 20px;
-  max-width: 760px;
-  font-family: "Newfont4";
-  font-size: 17px;
-  line-height: 1.32;
-  letter-spacing: -0.01em;
+  margin-top: 0;
+  max-width: 100%;
+  font-size: 18px;     /* 17 → 18 */
+  line-height: 1.45;   /* 더 여유 있게 */
+  letter-spacing: -0.005em;
 }
 
 .bio a{
   color: grey;
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+.bio p{
+  margin-bottom: 22px;
 }
 
 @media (max-width: 800px){
@@ -201,12 +205,10 @@ body {
   <div class="about-content">
 
     <div class="bio">
-    Jiwon Kim is a designer currently studying graphic design at ArtEZ University of the Arts in the Netherlands. Her work explores experimental graphic design based on research into materiality, structure, and visual perception, with a focus on books and printed matter.
+  <p>Jiwon Kim is a designer currently studying graphic design at ArtEZ University of the Arts in the Netherlands. Her work explores experimental graphic design based on research into materiality, structure, and visual perception, with a focus on books and printed matter.</p>
 
-She experiments with various binding and printing techniques, examining how the form, structure, and physical qualities of a medium influence the way information is read and understood. Through this process, she expands the possibilities of graphic design to create new ways of seeing, reading, and experiencing content across different media.
-
-<br><br> Her work begins from an interest in the past and the future, reflecting on social and environmental issues to encourage deeper thinking about the world. By engaging viewers and inviting reflection, she aims to help people better understand and empathize with these social issues, and ultimately make positive change.<br><br> 
-    </div>
+  <p>Her work begins from an interest in the past and the future, reflecting on social and environmental issues to encourage deeper thinking about the world. By engaging viewers and inviting reflection, she aims to help people better understand and empathize with these social issues, and ultimately make positive change.</p>
+</div>
      <div class="contact-block">
       <a href="mailto:jiwongim992@gmail.com">jiwongim992@gmail.com</a><br>
       <a href="https://www.instagram.com/_jiwonkm/" target="_blank" rel="noopener">@_jiwonkm</a>

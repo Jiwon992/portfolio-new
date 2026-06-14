@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>window</title>
+<link rel="icon" type="image/svg+xml" href="wave-icon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  @font-face {
+    font-family: "Newfont";
+    src: url(./font/Bodoni-72.ttc#0) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Newfont1";
+    src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Newfont3";
+    src: url(./font/Garamond.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Newfont4";
+    src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100%;
+  }
+
+  body {
+    background: white;
+  }
+
+  .top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Newfont4';
+    font-size: 20px;
+    background: white;
+    z-index: 1000;
+  }
+
+  .nav-right {
+    display: flex;
+    gap: 20px;
+  }
+
+
+ .nav-left a {
+    text-decoration: none;
+    color: black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    line-height: 1;
+    padding: 6px 10px;
+  }
+
+  .detail-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 90px 20px 30px 20px;
+  }
+
+ .image-wrapper {
+    width: 732px;
+}
+
+/* graphic score와 동일한 비율 프레임 */
+.media-frame {
+    width: 100%;
+    aspect-ratio: 732 / 500;
+    overflow: hidden;
+}
+
+/* 비디오를 프레임에 맞게 채움 */
+.media-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+  .counter {
+    margin-top: 10px;
+    font-family: 'Newfont4';
+    text-align: left;
+    color: gray;
+  }
+
+.text-center .description {
+    font-family: 'Newfont4';
+    color:black;
+    font-size:15px;
+    margin-top:10px;
+    max-height:100vh;
+    overflow:hidden;
+      line-height: 1.3;
+
+}
+
+@media (max-width: 800px) {
+  .top-nav {
+    padding: 20px 18px 0 18px;
+    font-size: 16px;
+  }
+
+  .nav-left a {
+    font-size: 16px;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .detail-container {
+    min-height: auto;
+    display: block;
+    padding: 96px 18px 40px 18px;
+  }
+
+  .image-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .media-frame {
+    width: 100%;
+    aspect-ratio: 732 / 500;
+  }
+
+  .counter {
+        margin-top: 10px;
+        font-family: 'Newfont4';
+        text-align: left;
+        color: gray;
+        font-size: 13px;
+    }
+
+  .text-center {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .text-center .description {
+    font-family: 'Newfont4';
+    color: black;
+    font-size: 10px;
+    margin-top: 10px;
+    max-height: none;
+    overflow: visible;
+    width: 100%;
+  }}
+</style>
+</head>
+
+<body>
+  <header class="top-nav">
+    <div class="nav-left">
+      <a href="#" onclick="history.back(); return false;">←</a>
+    </div>
+  </header>
+
+  <div class="detail-container">
+    <div class="image-wrapper">
+      <div class="media-frame">
+        <video autoplay muted loop playsinline>
+          <source src="Sequence 01_3.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="counter" id="counter">1 of 1</div>
+
+      <div class="text-center">
+        <div class="description">
+      
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const images = ["window.mp4"];
+    let currentIndex = 0;
+    const counter = document.getElementById("counter");
+  </script>
+</body>
+</html>

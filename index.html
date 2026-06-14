@@ -53,7 +53,7 @@
       justify-content: space-between;
       align-items: center;
       z-index: 2000;
-      font-size: 23px;
+      font-size: 28px;
     }
 
     .nav-left {
@@ -74,14 +74,14 @@
       gap: 20px;
       position: relative;
       z-index: 2;
-      font-size: 23px;
+      font-size: 28px;
     }
 
     .nav-right a {
       text-decoration: none;
       white-space: nowrap;
       color: black;
-      font-size: 23px;
+      font-size: 28px;
     }
 
     .click-note {
@@ -90,7 +90,7 @@
       top: 0%;
       padding-top: 20px;
       transform: translate(-50%, 0);
-      font-size: 20px;
+      font-size: 23px;
       color: blue;
       line-height: 1.1;
       white-space: nowrap;
@@ -107,13 +107,31 @@
       padding-bottom: 50px;
     }
 
-    .work-unit {
-      width: 732px;
-      margin: 150px auto 0;
-      opacity: 1;
-      transition: opacity 0.3s ease-out, filter 0.3s ease;
-      justify-content: center;
-    }
+   .work-unit {
+  width: 820px;
+  margin: 150px auto 0;
+  opacity: 1;
+  transition: opacity 0.3s ease-out, filter 0.3s ease;
+  display: flex;
+  justify-content: center;
+}
+
+.first-work-wrap {
+  width: 820px;
+  margin: 150px auto 0;
+  position: relative;
+}
+
+img.work {
+  display: block;
+  max-width: 100%;
+  max-height: 660px;
+  width: auto;
+  height: auto;
+  filter: grayscale(100%);
+  transition: filter 0.8s ease;
+    object-fit: contain;
+}
 
     .work-unit.reveal-visible {
       opacity: 1;
@@ -121,60 +139,47 @@
 
     .work-inner {
       display: inline-block;
+      width: fit-content;
+      max-width: 100%;
       margin: 0 auto;
     }
 
-    .first-work-wrap {
-      width: 732px;
-      margin: 150px auto 0;
-      position: relative;
-    }
+   
 
     .first-work-unit {
       width: 100%;
       margin: 0;
     }
 
-    img.work {
-      display: block;
-      max-width: 100%;
-      max-height: 530px;
-      width: auto;
-      height: auto;
-      filter: grayscale(100%);
-      transition: filter 0.8s ease;
-    }
 
     .work-unit:hover img.work {
       filter: grayscale(0%);
     }
 
-    figcaption {
-      position: static;
-      display: block;
-      text-align: left;
-      line-height: 1.1;
-    }
+.des,
+.date {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.des {
+  margin-top: 13px;
+}
 
     .des {
-      color: #000;
-      font-size: 16px;
-      margin-top: 10px;
+      font-size: 18px;
+        margin-top: 13px;
     }
 
     .date {
-      margin-top: 6px;
-      color: grey;
+            font-size: 18px;
+            color: grey;
     }
 
     .work-inner.window-only {
-      display: block;
-      width: 100%;
-    }
-
-    .work-inner.window-only .media-center {
-      display: flex;
-      justify-content: center;
+      display: inline-block;
+      width: fit-content;
+      max-width: 100%;
     }
 
     .work-inner.window-only figcaption {
@@ -274,6 +279,14 @@
         width: 100%;
         margin: 60px 0 0 0;
         padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .work-inner,
+      .work-inner.window-only {
+        width: 100%;
+        max-width: 100%;
       }
 
       .first-work-wrap {
@@ -338,93 +351,103 @@ body{
   <div class="page">
     <div class="first-work-wrap">
       <figure class="work-unit first-work-unit">
+        <div class="work-inner">
           <a href="foilage.html">
             <img src="foliagebigimage.png" class="work first-work-image" alt="foilage">
           </a>
-          <figcaption class="des ripple-text" data-wave-color="#2FFF00">Foliage</figcaption>
-          <figcaption class="date">publication</figcaption>
+          <figcaption class="des ripple-text" data-wave-color="#2FFF00">Foliage, </figcaption>
+                            <figcaption class="date"> 2025</figcaption>
+        </div>
       </figure>
-    </div>
-
     <figure class="work-unit">
+      <div class="work-inner">
         <a href="perspective transition.html">
           <img src="7M4A2297-2-3.jpg" class="work" alt="Perspective Transition">
         </a>
-        <figcaption class="des ripple-text" data-wave-color="#002BFF">Perspective Transition</figcaption>
-        <figcaption class="date">publication</figcaption>
+        <figcaption class="des ripple-text" data-wave-color="#002BFF">Perspective Transition, </figcaption>
+                  <figcaption class="date"> 2025</figcaption>
+      </div>
     </figure>
-
-    
+<br><br>
     <figure class="work-unit">
+      <div class="work-inner">
         <a href="fake-news.html">
           <img src="PU5A92361-11-min.png" class="work" alt="Fake news on facebook">
         </a>
-        <figcaption class="des ripple-text" data-wave-color="#FF0000">Fake News on Facebook</figcaption>
-        <figcaption class="date">publication</figcaption>
+        <figcaption class="des ripple-text" data-wave-color="#FF0000">Fake News on Facebook,</figcaption>
+                      <figcaption class="date">2025</figcaption>
+      </div>
     </figure>
-
+<br><br>
     <figure class="work-unit">
+      <div class="work-inner">
+        <a href="survelliance.html">
+          <img src="IMG_1450-2.jpg" class="work" alt="Calm Stress">
+        </a>
+        <figcaption class="des ripple-text" data-wave-color="#FF0000">Surveillance, </figcaption>
+                        <figcaption class="date">2026 </figcaption>
+            
+      </div>
+    </figure>
+    <br>
+        <figure class="work-unit">
+      <div class="work-inner">
+        <a href="window.html">
+          <img src="IMG_7321-4.jpg" class="work" alt="Raining">
+        </a>
+        <figcaption class="des ripple-text" data-wave-color="#FF9D00">Raining,</figcaption>
+                             <figcaption class="date">2025</figcaption>
+      </div>
+    </figure>
+    <br>
+    <figure class="work-unit">
+      <div class="work-inner">
         <a href="the lovers.html">
-          <img src="12-2.jpg" class="work" alt="The Lovers">
+          <img src="the lovers.jpg" class="work" alt="The Lovers">
         </a>
-        <figcaption class="des ripple-text" data-wave-color="#FF4FA3">The Lovers</figcaption>
-        <figcaption class="date">publication</figcaption>
+        <figcaption class="des ripple-text" data-wave-color="#FF4FA3">The Lovers, </figcaption>
+        <figcaption class="date">2025</figcaption>
+      </div>
     </figure>
-
+    <br><br><br>
     <figure class="work-unit">
+      <div class="work-inner">
         <a href="Graphic scores.html">
-          <img src="graphic score 12.png" class="work" alt="Graphic Scores in the Library">
-        </a>
-        <figcaption class="des ripple-text" data-wave-color="#7C3AED">Graphic Scores in the Library</figcaption>
-        <figcaption class="date">publication</figcaption>
+          <img src="graphic score 12-3 small.jpg" class="work" alt="Graphic Scores in the Library">
+        </a><figcaption class="des ripple-text" data-wave-color="#7C3AED">Graphic Scores in the Library, </figcaption>
+  <figcaption class="date">2024</figcaption>
+      </div>
     </figure>
-
-
-<figure class="work-unit">
+    <br><br>
+         <figure class="work-unit">
       <div class="work-inner">
         <a href="territory.html">
-          <img src="buuble.jpeg" class="work" alt="bubble">
+          <img src="buuble.png" class="work" alt="Transparent Scent">
         </a>
-        <figcaption class="des ripple-text" data-wave-color="#002BFF">Transparent Scent</figcaption>
-        <figcaption class="date">objects</figcaption>
+        <figcaption class="des ripple-text" data-wave-color="#002BFF">Transparent Scent, </figcaption>
+  <figcaption class="date">2023</figcaption>
       </div>
     </figure>
-
-
-    <figure class="work-unit">
-      <div class="work-inner window-only">
-        <div class="media-center">
-          <a href="window.html">
-            <img src="IMG_7321-4.jpg" class="work" alt="Raining">
-          </a>
-        </div>
-        <figcaption class="des ripple-text" data-wave-color="#FF9D00">Raining</figcaption>
-        <figcaption class="date">installation</figcaption>
-      </div>
-    </figure>
-
-
     <figure class="work-unit">
       <div class="work-inner">
         <a href="video.html">
           <img src="IMG_7359-3-2-2.jpg" class="work" alt="Navigation">
         </a>
-        <figcaption class="des ripple-text" data-wave-color="#002BFF">Navigation</figcaption>
-        <figcaption class="date">video</figcaption>
+        <figcaption class="des ripple-text" data-wave-color="#002BFF">Navigation,</figcaption>
+  <figcaption class="date">2025</figcaption>
       </div>
     </figure>
 
     <figure class="work-unit">
-      <div class="work-inner window-only">
-        <div class="media-center">
-          <a href="meditation.html">
-            <img src="meditation1.jpeg" class="work" alt="Meditation">
-          </a>
-        </div>
-        <figcaption class="des ripple-text" data-wave-color="#FF0000">Meditation</figcaption>
-        <figcaption class="date">video</figcaption>
+      <div class="work-inner">
+        <a href="meditation.html">
+          <img src="meditation1.jpeg" class="work" alt="Meditation">
+        </a>
+        <figcaption class="des ripple-text" data-wave-color="#FF0000">Meditation,</figcaption>
+        <figcaption class="date">2025</figcaption>
       </div>
     </figure>
+
   </div>
 
   <script>

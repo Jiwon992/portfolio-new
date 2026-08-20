@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Graphic Scores</title>
+<link rel="icon" type="image/svg+xml" href="wave-icon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  @font-face {
+    font-family: "Newfont";
+    src: url(./font/Bodoni-72.ttc#0) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Newfont1";
+    src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Newfont3";
+    src: url(./font/Garamond.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Newfont4";
+    src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Newfont4';
+    background: white;
+    z-index: 1000;
+  }
+
+  .nav-left a {
+    text-decoration: none;
+    color: black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    line-height: 1;
+    padding: 6px 10px;
+  }
+
+  .nav-right a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .detail-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 90px 20px 30px 20px;
+  }
+
+  .image-wrapper {
+    width: 732px;
+    cursor: pointer;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    cursor: pointer;
+  }
+
+  .counter {
+    margin-top: 10px;
+    font-family: 'Newfont4';
+    text-align: left;
+    color: gray;
+  }
+
+  .text-box {
+    width: 586px;
+    height: auto;
+    margin: 30px auto 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .text-center .title {
+    font-family: 'Newfont4';
+    font-size: 20px;
+    margin-top: 20px;
+  }
+
+  .text-center .description {
+    font-family: 'Newfont4';
+    color: black;
+    font-size: 14px;
+    margin-top: 10px;
+    max-height: 40vh;
+    overflow: hidden;
+  }
+
+  .about-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    pointer-events: none;
+  }
+
+  .about-overlay .dim {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0);
+    opacity: 0;
+    transition: opacity 220ms ease;
+  }
+
+  .about-overlay .panel {
+    position: absolute;
+    left: 20px;
+    top: 82px;
+    width: 210px;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 260ms ease, transform 260ms ease;
+  }
+
+  .about-overlay.is-open {
+    pointer-events: auto;
+  }
+
+  .about-overlay.is-open .dim {
+    opacity: 1;
+  }
+
+  .about-overlay.is-open .panel {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .about-portrait {
+    width: 86px;
+    height: 110px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 18px;
+    filter: contrast(1.02) saturate(0.98);
+  }
+
+  .about-info {
+    font-family: 'Life','Regular';
+    font-size: 14px;
+    line-height: 3.0;
+    color: #000;
+  }
+
+  .about-info a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .about-info a:hover {
+    opacity: 0.6;
+  }
+
+  .about-close {
+    position: absolute;
+    right: 0;
+    top: -34px;
+    border: 0;
+    background: transparent;
+    font-family: 'Life','Regular';
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+  }
+
+  .about-close:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 800px) {
+
+  .top-nav {
+    padding: 20px 18px 0 18px;
+    font-size: 16px;
+  }
+
+  .nav-left a {
+    font-size: 16px;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .detail-container {
+    min-height: auto;
+    display: block;
+    padding: 96px 18px 40px 18px;
+  }
+
+  .image-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    max-height: none;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .counter {
+    margin-top: 10px;
+    font-family: 'Newfont4';
+    text-align: left;
+    color: gray;
+    font-size: 13px;
+  }
+
+  .text-center {
+    width: 100%;
+  }
+
+.text-center .description {
+    font-family: 'Newfont4';
+    color: black;
+    font-size: 10px;
+    margin-top: 10px;
+    max-height: none;
+    overflow: visible;
+    width: 100%;
+  }}
+</style>
+</head>
+
+<body>
+
+<!-- --- 상단 네비게이션 --- -->
+<header class="top-nav">
+    <div class="nav-left">
+        <a href="#" onclick="history.back(); return false;">←</a>
+    </div>
+</header>
+<div class="detail-container">
+    <div class="image-wrapper">
+        <img id="slideImage" src= "cover1.jpeg">
+  <div class="counter" id="counter">1 of 12</div>
+
+<div class="text-center">
+    <div class="description">
+        <div style="line-height:1.4;">
+
+           Redesigned a collection of 21 stories, divided into two parts: stress and calm. Used different layouts and typography to reflect each mood. For the calm part, created a spacious and organized layout, while for the stress part, condensed the elements and stretched the threads tightly.
+        </div>
+    </div>
+</div> 
+
+<script>
+ 
+    
+const images = [
+    "cover1.jpeg",
+    "group1.jpeg",
+    "group2.jpeg",
+    "group3.jpeg",
+    "group4.jpeg",
+    "group6.jpeg",
+    "group7.jpeg",
+    "group8.jpeg",
+    "group9.jpeg",
+    "group10.jpeg",
+     "group11.jpeg",
+     "cover back.jpeg"
+
+];
+
+let currentIndex = 0;
+
+const slideImage = document.getElementById("slideImage");
+const counter = document.getElementById("counter");
+
+slideImage.addEventListener("click", () => {
+    currentIndex++;
+    if (currentIndex >= images.length) {
+        currentIndex = 0;
+    }
+
+    slideImage.src = images[currentIndex];
+    counter.textContent = `${currentIndex + 1} of ${images.length}`;
+});
+</script>
+
+</body>
+</html>

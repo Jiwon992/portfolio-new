@@ -363,10 +363,12 @@ body{
   transform: translateX(100%);
 }
 
+
   </style>
 </head>
 
 <body>
+
 
   <div class="first-window" id="firstWindow">
     <div class="first-window-panel left"></div>
@@ -556,13 +558,78 @@ body{
 
 const firstWindow = document.getElementById("firstWindow");
 
-if (firstWindow) {
+function openFirstWindow() {
+  if (!firstWindow) return;
+
+  firstWindow.style.display = "block";
+
   setTimeout(function () {
     firstWindow.classList.add("open");
   }, 300);
 }
 
-   const untitledImages = [
+function hideFirstWindow() {
+  if (!firstWindow) return;
+
+  firstWindow.classList.remove("open");
+  firstWindow.style.display = "none";
+}
+
+
+// 페이지가 처음 로드됐을 때
+window.addEventListener("pageshow", function (event) {
+
+  const navigationEntry = performance.getEntriesByType("navigation")[0];
+
+  // 새로고침인지 확인
+  const isReload =
+    navigationEntry &&
+    navigationEntry.type === "reload";
+
+  // 다른 페이지에서 돌아온 것인지 확인
+  const cameFromOtherPage =
+    sessionStorage.getItem("cameFromOtherPage") === "true";
+
+
+  if (isReload || !cameFromOtherPage) {
+
+    // 첫 방문 또는 새로고침
+    openFirstWindow();
+
+  } else {
+
+    // 프로젝트 페이지에서 돌아온 경우
+    hideFirstWindow();
+
+  }
+
+});
+
+
+// index.html에서 다른 페이지로 이동할 때 기록
+document.querySelectorAll('a[href]').forEach(function (link) {
+
+  link.addEventListener("click", function () {
+
+    const href = this.getAttribute("href");
+
+    if (
+      href &&
+      !href.startsWith("#") &&
+      !href.startsWith("http") &&
+      !href.startsWith("mailto:")
+    ) {
+
+      sessionStorage.setItem("cameFromOtherPage", "true");
+
+    }
+
+  });
+
+});
+
+
+     const untitledImages = [
        "fig_image_4_8.jpg",
        "fig_image_10_12.jpg",
        "Untitled.jpeg",

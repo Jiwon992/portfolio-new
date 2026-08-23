@@ -100,8 +100,6 @@
       pointer-events: none;
     }
 
-   
-
     .page {
       transition: filter 0.3s ease, opacity 0.3s ease;
       padding-bottom: 50px;
@@ -144,13 +142,10 @@ img.work {
       margin: 0 auto;
     }
 
-   
-
     .first-work-unit {
       width: 100%;
       margin: 0;
     }
-
 
     .work-unit:hover img.work {
       filter: grayscale(0%);
@@ -269,8 +264,6 @@ img.work {
         opacity: 0;
       }
 
-      
-
       .page {
         padding: 0 18px 40px 18px;
       }
@@ -300,7 +293,6 @@ img.work {
         margin: 0;
       }
 
-      
       img.work {
         display: block;
         width: 100%;
@@ -330,128 +322,275 @@ img.work {
 
 body{
           font-family: 'Newfont4';
-        
-
 }
+
+
+.first-window {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.first-window-panel {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: white;
+  border: #000 1px solid;
+  box-sizing: border-box;
+  transition: transform 1.5s;
+}
+
+.first-window-panel.left {
+  left: 0;
+}
+
+.first-window-panel.right {
+  right: 0;
+}
+
+.first-window.open .first-window-panel.left {
+  transform: translateX(-100%);
+}
+
+.first-window.open .first-window-panel.right {
+  transform: translateX(100%);
+}
+
+/* ================================================= */
+
   </style>
 </head>
 
 <body>
+
+  <!-- ================================================= -->
+  <!-- FIRST VISIT WINDOW - ADDED ONLY FOR FIRST ENTRY -->
+  <!-- ================================================= -->
+
+  <div class="first-window" id="firstWindow">
+    <div class="first-window-panel left"></div>
+    <div class="first-window-panel right"></div>
+  </div>
+
+  <!-- ================================================= -->
+
   <header class="top-nav">
     <div class="nav-left">
       <a href="index.html"><span class="logo-link-text">Jiwon Kim</span></a>
     </div>
+
     <div class="nav-right">
       <a href="index.html"><span class="nav-link-text">Works</span></a>
       <a href="about.html"><span class="nav-link-text">About</span></a>
     </div>
   </header>
+
    <div class="click-note" id="clickNote">click images to view more</div>
 
   <div class="page">
+
     <div class="first-work-wrap">
+
+      <figure class="work-unit">
+        <div class="work-inner">
+          <a href="Untitled.html">
+            <img src="cover1-5.png" class="work" alt="Untitled">
+          </a>
+          <figcaption class="des ripple-text" data-wave-color="#FF9D00">Untitled,</figcaption>
+          <figcaption class="date">2026</figcaption>
+        </div>
+      </figure>
+
+      <br>
+
       <figure class="work-unit first-work-unit">
         <div class="work-inner">
           <a href="foilage.html">
             <img src="foliagebigimage.png" class="work first-work-image" alt="foilage">
           </a>
           <figcaption class="des ripple-text" data-wave-color="#2FFF00">Foliage, </figcaption>
-                            <figcaption class="date"> 2025</figcaption>
+          <figcaption class="date"> 2025</figcaption>
         </div>
       </figure>
-    <figure class="work-unit">
-      <div class="work-inner">
-        <a href="perspective transition.html">
-          <img src="7M4A2297-2-3.jpg" class="work" alt="Perspective Transition">
-        </a>
-        <figcaption class="des ripple-text" data-wave-color="#002BFF">Perspective Transition, </figcaption>
-                  <figcaption class="date"> 2025</figcaption>
-      </div>
-    </figure>
-<br><br>
-    <figure class="work-unit">
-      <div class="work-inner">
-        <a href="fake-news.html">
-          <img src="PU5A92361-11-min.png" class="work" alt="Fake news on facebook">
-        </a>
-        <figcaption class="des ripple-text" data-wave-color="#FF0000">Fake News on Facebook,</figcaption>
-                      <figcaption class="date">2025</figcaption>
-      </div>
-    </figure>
-<br><br>
-    <figure class="work-unit">
-      <div class="work-inner">
-        <a href="survelliance.html">
-          <img src="surveillance.jpeg" class="work" alt="Calm Stress">
-        </a>
-        <figcaption class="des ripple-text" data-wave-color="#FF0000">Surveillance, </figcaption>
-                        <figcaption class="date">2026 </figcaption>
-            
-      </div>
-    </figure>
-    <br>
-        <figure class="work-unit">
-      <div class="work-inner">
-        <a href="window.html">
-          <img src="IMG_7321-4.jpg" class="work" alt="Raining">
-        </a>
-        <figcaption class="des ripple-text" data-wave-color="#FF9D00">Raining,</figcaption>
-                             <figcaption class="date">2025</figcaption>
-      </div>
-    </figure>
-    <br>
-    <figure class="work-unit">
-      <div class="work-inner">
-        <a href="the lovers.html">
-          <img src="the lovers.jpg" class="work" alt="The Lovers">
-        </a>
-        <figcaption class="des ripple-text" data-wave-color="#FF4FA3">The Lovers, </figcaption>
-        <figcaption class="date">2025</figcaption>
-      </div>
-    </figure>
-    <br><br><br>
-    <figure class="work-unit">
-      <div class="work-inner">
-        <a href="Graphic scores.html">
-          <img src="graphic score 12-3 small.jpg" class="work" alt="Graphic Scores in the Library">
-        </a><figcaption class="des ripple-text" data-wave-color="#7C3AED">Graphic Scores in the Library, </figcaption>
-  <figcaption class="date">2024</figcaption>
-      </div>
-    </figure>
-    <br><br>
-         <figure class="work-unit">
-      <div class="work-inner">
-        <a href="territory.html">
-          <img src="buuble.png" class="work" alt="Transparent Scent">
-        </a>
-        <figcaption class="des ripple-text" data-wave-color="#002BFF">Transparent Scent, </figcaption>
-  <figcaption class="date">2023</figcaption>
-      </div>
-    </figure>
-    <figure class="work-unit">
-      <div class="work-inner">
-        <a href="video.html">
-          <img src="IMG_7359-3-2-2.jpg" class="work" alt="Navigation">
-        </a>
-        <figcaption class="des ripple-text" data-wave-color="#002BFF">Navigation,</figcaption>
-  <figcaption class="date">2025</figcaption>
-      </div>
-    </figure>
 
-    <figure class="work-unit">
-      <div class="work-inner">
-        <a href="meditation.html">
-          <img src="meditation1.jpeg" class="work" alt="Meditation">
-        </a>
-        <figcaption class="des ripple-text" data-wave-color="#FF0000">Meditation,</figcaption>
-        <figcaption class="date">2025</figcaption>
-      </div>
-    </figure>
+      <figure class="work-unit">
+        <div class="work-inner">
+          <a href="perspective transition.html">
+            <img src="7M4A2297-2-3.jpg" class="work" alt="Perspective Transition">
+          </a>
+          <figcaption class="des ripple-text" data-wave-color="#002BFF">Perspective Transition, </figcaption>
+          <figcaption class="date"> 2025</figcaption>
+        </div>
+      </figure>
 
+      <br><br>
+
+      <figure class="work-unit">
+        <div class="work-inner">
+          <a href="fake-news.html">
+            <img src="PU5A92361-11-min.png" class="work" alt="Fake news on facebook">
+          </a>
+          <figcaption class="des ripple-text" data-wave-color="#FF0000">Fake News on Facebook,</figcaption>
+          <figcaption class="date">2025</figcaption>
+        </div>
+      </figure>
+
+      <br><br>
+
+      <figure class="work-unit">
+        <div class="work-inner">
+          <a href="survelliance.html">
+            <img src="surveillance.jpeg" class="work" alt="surveillance">
+          </a>
+          <figcaption class="des ripple-text" data-wave-color="#FF0000">Surveillance, </figcaption>
+          <figcaption class="date">2026 </figcaption>
+        </div>
+      </figure>
+
+      <br>
+
+      <figure class="work-unit">
+        <div class="work-inner">
+          <a href="window.html">
+            <img src="IMG_7321-4.jpg" class="work" alt="Raining">
+          </a>
+          <figcaption class="des ripple-text" data-wave-color="#FF9D00">Raining,</figcaption>
+          <figcaption class="date">2025</figcaption>
+        </div>
+      </figure>
+
+      <br>
+
+      <figure class="work-unit">
+        <div class="work-inner">
+          <img src="CENSORSHIP.png" class="work" alt="Censorship Loop">
+          </a>
+          <figcaption class="des ripple-text" data-wave-color="#FF0000">Censorship Loop,</figcaption>
+          <figcaption class="date">2026</figcaption>
+        </div>
+      </figure>
+
+      <br>
+      <br>
+
+      <figure class="work-unit">
+        <div class="work-inner">
+          <a href="the lovers.html">
+            <img src="the lovers.jpg" class="work" alt="The Lovers">
+          </a>
+          <figcaption class="des ripple-text" data-wave-color="#FF4FA3">The Lovers, </figcaption>
+          <figcaption class="date">2025</figcaption>
+        </div>
+      </figure>
+
+      <br><br><br>
+
+      <figure class="work-unit">
+        <div class="work-inner">
+          <a href="Graphic scores.html">
+            <img src="graphic score 12-3 small.jpg" class="work" alt="Graphic Scores in the Library">
+          </a>
+          <figcaption class="des ripple-text" data-wave-color="#7C3AED">Graphic Scores in the Library, </figcaption>
+          <figcaption class="date">2024</figcaption>
+        </div>
+      </figure>
+
+      <br><br>
+
+      <figure class="work-unit">
+        <div class="work-inner">
+          <a href="territory.html">
+            <img src="buuble.png" class="work" alt="Transparent Scent">
+          </a>
+          <figcaption class="des ripple-text" data-wave-color="#002BFF">Transparent Scent, </figcaption>
+          <figcaption class="date">2023</figcaption>
+        </div>
+      </figure>
+
+      <figure class="work-unit">
+        <div class="work-inner">
+          <img src="addiction.png" class="work" alt="Navigation">
+          </a>
+          <figcaption class="des ripple-text" data-wave-color="#002BFF">Strange Addiction,</figcaption>
+          <figcaption class="date">2026</figcaption>
+        </div>
+      </figure>
+
+      <figure class="work-unit">
+        <div class="work-inner">
+          <a href="video.html">
+            <img src="IMG_7359-3-2-2.jpg" class="work" alt="Navigation">
+          </a>
+          <figcaption class="des ripple-text" data-wave-color="#002BFF">Navigation,</figcaption>
+          <figcaption class="date">2025</figcaption>
+        </div>
+      </figure>
+
+      <figure class="work-unit">
+        <div class="work-inner">
+          <a href="meditation.html">
+            <img src="meditation1.jpeg" class="work" alt="Meditation">
+          </a>
+          <figcaption class="des ripple-text" data-wave-color="#FF0000">Meditation,</figcaption>
+          <figcaption class="date">2025</figcaption>
+        </div>
+      </figure>
+
+      <figure class="work-unit">
+        <div class="work-inner">
+          <img 
+            id="untitled2023"
+            src="fig_image_4_8.jpg"
+            class="work" 
+            alt="poster"
+            style="cursor: pointer;"
+          >
+          <figcaption class="des ripple-text" data-wave-color="#FF4FA3">Untitled, </figcaption>
+          <figcaption class="date">2023</figcaption>
+        </div>
+      </figure>
+
+    </div>
   </div>
 
   <script>
-   
+
+const firstWindow = document.getElementById("firstWindow");
+
+if (firstWindow) {
+  setTimeout(function () {
+    firstWindow.classList.add("open");
+  }, 300);
+}
+
+     /* ================================================= */
+
+     const untitledImages = [
+       "fig_image_4_8.jpg",
+       "fig_image_10_12.jpg",
+       "Untitled.jpeg",
+     ];
+
+     let untitledIndex = 0;
+
+     document.getElementById("untitled2023").addEventListener("click", function () {
+       untitledIndex++;
+
+       if (untitledIndex >= untitledImages.length) {
+         untitledIndex = 0;
+       }
+
+       this.src = untitledImages[untitledIndex];
+     });
+
   </script>
+
 </body>
 </html>

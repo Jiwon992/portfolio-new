@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Fake news on facebook</title>
+<link rel="icon" type="image/svg+xml" href="wave-icon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+@font-face {
+  font-family: "Newfont";
+  src: url(./font/Bodoni-72.ttc#0) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Newfont1";
+  src: url(./font/Garamond-Book-Regular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Newfont3";
+  src: url(./font/Garamond.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Newfont4";
+  src: url(./font/CenturyExpandedRegular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 상단 네비게이션 */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Newfont4";
+  font-size: 20px;
+  z-index: 1000;
+}
+
+.nav-left a {
+  text-decoration: none;
+  color: black;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1;
+  padding: 6px 10px;
+}
+
+/* 전체 영역 */
+.detail-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 90px 20px 30px 20px;
+}
+
+/* 영상 + 카운터 + 설명 */
+.content-wrap {
+  width: 732px;
+}
+
+/* 영상 */
+.image-wrapper {
+  position: relative;
+  width: 732px;
+}
+
+.image-wrapper iframe {
+  width: 732px;
+  height: 500px;
+  border: none;
+  display: block;
+  background: black;
+}
+
+/* 카운터 */
+.counter {
+  margin-top: 10px;
+  font-family: "Newfont4";
+  text-align: left;
+  color: gray;
+}
+
+/* 타이틀 */
+.text-center .title {
+  font-family: "Newfont4";
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+/* 설명 */
+.text-center .description {
+  font-family: "Newfont4";
+  color: black;
+  font-size: 14px;
+  margin-top: 10px;
+  max-height: 40vh;
+  overflow: hidden;
+  line-height: 1.5;
+}
+
+/* 모바일 */
+@media (max-width: 800px) {
+
+  .top-nav {
+    padding: 20px 18px 0 18px;
+    font-size: 16px;
+  }
+
+  .nav-left a {
+    font-size: 16px;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .detail-container {
+    min-height: auto;
+    display: block;
+    padding: 96px 18px 40px 18px;
+  }
+
+  .content-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .image-wrapper {
+    width: 100%;
+  }
+
+  .image-wrapper iframe {
+    width: 100%;
+    height: calc((100vw - 36px) * 500 / 732);
+  }
+
+  .counter {
+    margin-top: 10px;
+    font-family: "Newfont4";
+    text-align: left;
+    color: gray;
+    font-size: 13px;
+  }
+
+  .text-center {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .text-center .description {
+    font-family: "Newfont4";
+    color: black;
+    font-size: 10px;
+    margin-top: 10px;
+    max-height: none;
+    overflow: visible;
+    width: 100%;
+    line-height: 1.5;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="top-nav">
+  <div class="nav-left">
+    <a href="#" onclick="history.back(); return false;">←</a>
+  </div>
+</header>
+
+<div class="detail-container">
+
+  <div class="content-wrap">
+
+    <div class="image-wrapper">
+
+      <iframe
+        id="mainVideo"
+        src="https://drive.google.com/file/d/1BWLgrMA7veitidIKG56ahdWm39taypip/preview"
+        allow="autoplay; fullscreen"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+    <div class="counter">
+      1 of 1
+    </div>
+
+    <div class="text-center">
+
+      <div class="description">
+
+      CORAVY vs REVO is a video work that explores rising sea surface temperatures through a fictional debate between two opposing groups in a future society. CORAVY uses technology to restore marine ecosystems, while REVO questions technological intervention and advocates for nature conservation. The project combines branding and video storytelling to explore the relationship between technology and nature.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

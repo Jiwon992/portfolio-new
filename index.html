@@ -362,6 +362,33 @@ body{
 .first-window.open .first-window-panel.right {
   transform: translateX(100%);
 }
+    /* 기존 고정 여백 제거 */
+.first-work-wrap {
+  width: min(820px, 100%);
+  margin: 0 auto;
+}
+
+/* 첫 프로젝트가 첫 화면을 차지하도록 설정 */
+.first-work-wrap > .work-unit:first-child {
+  width: 100%;
+  min-height: var(--screen-height, 100vh);
+  margin: 0;
+  padding-top: var(--lovers-top, 0px);
+  align-items: flex-start;
+}
+
+.first-work-wrap > .work-unit:first-child .work-inner {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.first-work-wrap > .work-unit:first-child img.work {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: var(--lovers-max-height, 660px);
+  margin-inline: auto;
+}
 
 
   </style>
@@ -540,6 +567,78 @@ body{
   </div>
 
   <script>
+    const loversFigure = document.querySelector(
+  ".first-work-wrap > .work-unit:first-child"
+);
+const loversImage = loversFigure.querySelector("img.work");
+const loversInner = loversFigure.querySelector(".work-inner");
+const topNav = document.querySelector(".top-nav");
+const clickNote = document.getElementById("clickNote");
+
+let loversFrame;
+
+function centerLovers() {
+  cancelAnimationFrame(loversFrame);
+
+  loversFrame = requestAnimationFrame(() => {
+    const screenHeight = document.documentElement.clientHeight;
+
+    // 스크롤 위치와 관계없이 메뉴와 안내 문구의 원래 높이를 계산
+    const navBottom = topNav.offsetTop + topNav.offsetHeight;
+    const noteBottom =
+      getComputedStyle(clickNote).display === "none"
+        ? 0
+        : clickNote.offsetTop + clickNote.offsetHeight;
+
+    const captionHeight = Math.max(
+      0,
+      loversInner.offsetHeight - loversImage.offsetHeight
+    );
+
+    // 위쪽 문구와 아래쪽 설명에 필요한 공간을 대칭으로 확보
+    const edgeSpace =
+      Math.max(navBottom, noteBottom, captionHeight) + 20;
+
+    loversFigure.style.setProperty(
+      "--screen-height",
+      `${screenHeight}px`
+    );
+
+    loversFigure.style.setProperty(
+      "--lovers-max-height",
+      `${Math.max(1, Math.min(660, screenHeight - edgeSpace * 2))}px`
+    );
+
+    // 사진 위 여백 = 사진 아래 여백
+    const imageHeight = loversImage.getBoundingClientRect().height;
+
+    loversFigure.style.setProperty(
+      "--lovers-top",
+      `${Math.max(0, (screenHeight - imageHeight) / 2)}px`
+    );
+  });
+}
+
+loversImage.addEventListener("load", centerLovers);
+window.addEventListener("resize", centerLovers);
+window.addEventListener("pageshow", centerLovers);
+
+if (window.visualViewport) {
+  window.visualViewport.addEventListener("resize", centerLovers);
+}
+
+if (document.fonts) {
+  document.fonts.ready.then(centerLovers);
+}
+
+if ("ResizeObserver" in window) {
+  const observer = new ResizeObserver(centerLovers);
+  [loversImage, loversInner, topNav, clickNote].forEach(element => {
+    observer.observe(element);
+  });
+}
+
+centerLovers();
 
 const firstWindow = document.getElementById("firstWindow");
 
